@@ -7,8 +7,9 @@ And JavaScript library that simplifies project development.<br />
 * HTML and CSS codes are written automatically by the library. Thus, students can initially focus only on algorithm development.
 * It is built on five basic objects. (Label, Button, TextBox, Image, Box)
 * It is designed with an object-oriented logic close to desktop and mobile application development experience.
+* C, C++, C#, Java, Python, Swift, PHP, ASP.NET etc. It will help you learn programming languages more easily.
 * It works in harmony with interface design tools. Thus, it allows you to easily translate your designs into applications.
-* The programming language used is JavaScript.
+* The programming language used is JavaScript. Projects can be run in the browser or WebView.
 
 ### Some of the Sample Projects
 
