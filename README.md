@@ -17,8 +17,8 @@ And JavaScript library that simplifies project development.<br />
 
 ### Contact information
 
-Starting Date: 25 Ekim 2020<br>
-Developer: Buğra ÖZDEN<br>
+Starting Date: 25 October 2020<br>
+Developer: Bugra Ozden<br>
 Email: bugra.ozden@gmail.com<br>
 Web Site: http://bugraozden.com<br><br>
 
