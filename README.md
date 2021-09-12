@@ -25,7 +25,7 @@ Web Site: http://bugraozden.com<br><br>
 I wish you well,<br />
 Good work.<br /><br />
 
-### Licence
+### License
 
 You are free:<br />
 
