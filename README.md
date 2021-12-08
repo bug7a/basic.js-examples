@@ -1,14 +1,15 @@
 ### Information
 
-For those new to programming: Object-oriented sample software projects.<br>
+Object-based sample software projects designed for beginners to programming.<br>
 And JavaScript library that simplifies project development.<br />
 
 * The first 10 projects are specifically designed to help you learn software development logic.
 * HTML and CSS codes are written automatically by the library. Thus, students can initially focus only on algorithm development.
 * It is built on five basic objects. (Label, Button, TextBox, Image, Box)
-* It is designed with an object-oriented logic close to desktop and mobile application development experience.
-* C, C++, C#, Java, Python, Swift, PHP, ASP.NET etc. It will help you learn programming languages more easily.
-* It works in harmony with interface design tools. Thus, it allows you to easily translate your designs into applications.
+* It is designed with an object-based logic close to desktop and mobile application development experience.
+* C, C++, C#, Java, Python, Swift, PHP, ASP.NET, etc. It will help you learn programming languages more easily.
+* It has the same positioning logic as the interface design tools. This too; It makes it easy to translate your design into an application.
+* With these techniques, fully customizable and dynamic applications can be developed.
 * The programming language used is JavaScript. Projects can be run in the browser or WebView.
 
 ### Some of the Sample Projects
