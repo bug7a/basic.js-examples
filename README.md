@@ -13,7 +13,7 @@ And JavaScript library that simplifies project development.<br />
 
 ### Some of the Sample Projects
 
-![alt tag](https://bug7a.github.io/basicjs-turkce/projeler.png)
+![alt tag](https://bug7a.github.io/basic.js/preview.png)
 
 ### Contact information
 
