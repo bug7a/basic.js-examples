@@ -1,0 +1,49 @@
+
+HOW TO USE THIS?
+
+Here are some things you need to know to benefit from these project files.
+
+
+1. DEVELOPMENT ENVIRONMENT:
+
+As a code editor, I recommend Visual Studio Code.
+https://code.visualstudio.com/
+
+Video for installation and use:
+https://www.youtube.com/watch?v=vSt5EFDkhpI
+
+
+2. WHAT THE FILES DO:
+
+- Each numbered HTM file is a software project developed with JavaScript.
+- Projects are numbered starting from easy.
+- Each project can run on any browser.
+- The "library" folder contains the basic.js library.
+- The "images" folder contains images used by some sample projects.
+- When creating a new project; Copy the "0C-blank-project-theme.htm" file and the "library" folder to a different folder. Rename the HTM file you copied (project-name.htm etc.) and open this folder in the development environment. (In the narration videos, these stages are shown.)
+
+
+3. FIRST EXAMPLE PROJECT:
+
+The first example is the project "01-hello.htm".
+
+Development video:
+https://youtu.be/zPOKz3w1YmY
+
+
+4. DESIGN ENVIRONMENT:
+
+As an interface design tool, I recommend Figma.
+https://www.figma.com/
+
+
+RECOMMENDED WORKING METHOD:
+
+- While watching the narration video of a project; Take notes in the notebook. And think about the working logic of the algorithm.
+- Using these notes, rewrite the project. And try to improve it further with additional features that come to mind.
+- To use in your project; Also note the use of codes.
+
+
+I wish you well,
+Good work.
+

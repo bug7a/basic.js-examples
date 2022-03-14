@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Multiplication Table</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script>
+            
+        /*
+
+        ALGORITHM:
+        
+        With a text box (TextBox), the number to be processed is requested.
+        And when the button (Button) is pressed; The products of the given number from 1 to 10 are listed.
+        
+        
+        PROJECT DESCRIPTION:
+
+        A step-by-step video of the project. (Language: Turkish)
+        https://www.youtube.com/watch?v=euFpefGUNYs
+        
+        */
+        
+        // Text box to get the number. (TextBox)
+        var txtNumber
+        // Create button. (button)
+        var btnCreate
+        // Label to list the multiplication table. (label)
+        var lblTable
+        
+        // First run function.
+        var start = function() {
+
+            // Set the background color of the page as white smoke.
+            page.color = "whitesmoke"
+
+            // Create a text box (TextBox) object.
+            txtNumber = createTextBox()
+            // Determine the content of the object.
+            txtNumber.text = "8"
+            // Set the title of the object.
+            txtNumber.title = "Enter a number:"
+            // Set the distance of the object to the left.
+            txtNumber.left = 50
+            // Set the distance of the object up.
+            txtNumber.top = 50
+            // Set the width of the object. (in pixels)
+            txtNumber.width = 130
+
+            // Create Button object.
+            btnCreate = createButton()
+            // Determine the text on the object.
+            btnCreate.text = "Create"
+            // Determine its location by calculating it relative to the txtNumber object.
+            btnCreate.left = txtNumber.left
+            btnCreate.top = txtNumber.top + txtNumber.height + 10
+            // Set the function to run when the button is pressed.
+            btnCreate.onClick(createTable)
+            
+            // Create Label object.
+            lblTable = createLabel()
+            // Clear the contents of the object.
+            lblTable.text = ""
+            // Let the distance to the left be 30px to the right of the txtNumber object.
+            lblTable.left = txtNumber.left + txtNumber.width + 30
+            // Let the distance to the top be the same as the txtNumber object.
+            lblTable.top = txtNumber.top
+            
+        }
+
+        // Function that creates the multiplication table when the button is pressed.
+        var createTable = function() {
+            
+            // Clear the inside of the tag.
+            lblTable.text = ""
+            
+            // repeat 10 times.
+            for (var i = 1; i <= 10; i++) {
+                
+                // Create the view of the process. Example: 1 x 7 =
+                var process = i + " x " + txtNumber.text + " = "
+                
+                // Calculate the result of the multiplication operation.
+                var result = num(txtNumber.text) * i
+                
+                // Note: the num(text) function,
+                // parameter sent as text,
+                // returns the converted number.
+
+                // Add the action to the tag
+                lblTable.text = lblTable.text + process + result + "<br>"
+                
+                // Note: The word <br> is in HTM (Hyper Text Markup) language,
+                // used to move to a lower line.
+                
+            }
+            
+        }
+        
+        /*
+        
+        DEVELOPMENT PROPOSAL:
+        
+        Have another one of the same, to the right of the lblTable object, and
+        Create a second multiplication table with one more of the desired number.
+
+        */
+
+        </script>
+
+    </head>
+    <body>
+        
+        <!-- HTML content -->
+        
+    </body>
+</html>

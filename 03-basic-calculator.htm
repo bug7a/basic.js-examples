@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Basic Calculator</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+
+        
+        <script>
+            
+        /*
+
+        ALGORITHM:
+            
+         - With two text boxes (TextBox), numbers to be processed are requested.
+         - Four buttons (Button) are used to perform mathematical operations.
+         - The result of the action is displayed in another text box.
+        
+
+         PROJECT DESCRIPTION:
+
+         A step-by-step video of the project. (Language: Turkish)
+         https://youtu.be/fAMWzewpE1Q
+        
+        */
+        
+        // Input and result text boxes. (TextBox)
+        var txtNum1
+        var txtNum2
+        var txtResult
+        
+        // Action buttons. (Button)
+        var btnSum
+        var btnMinus
+        var btnMultiply
+        var btnDivide
+        
+        // First run function.
+        var start = function() {
+            
+            // Set the background color of the page as white smoke.
+            page.color = "whitesmoke"
+
+            // Create a text box (TextBox) for the first number input.
+            txtNum1 = createTextBox()
+            // For it to be perceived as text, let's write it in quotes.
+            txtNum1.text = "0"
+            txtNum1.title = "Number 1:"
+            txtNum1.left = 20
+            txtNum1.top = 50
+
+            // Create text box for second number input.
+            txtNum2 = createTextBox()
+            txtNum2.text = "0"
+            txtNum2.title = "Number 2:"
+            txtNum2.left = txtNum1.left
+            // Place this object 40px (pixels) below the txtNum1 object.
+            txtNum2.top = txtNum1.top + txtNum1.height + 40
+
+            // Create addition button.
+            btnSum = createButton()
+            btnSum.text = "Sum"
+            btnSum.left = txtNum1.left
+            // Place this object 10px below the txtNum2 object.
+            btnSum.top = txtNum2.top + txtNum2.height + 10
+            btnSum.onClick(doAddition)
+
+            // Create subtraction button.
+            btnMinus = createButton()
+            btnMinus.text = "Minus"
+            // Place this object 10px to the right of the btnSum object.
+            btnMinus.left = btnSum.left + btnSum.width + 10
+            btnMinus.top = btnSum.top
+            // Change the color of the object to tomato red.
+            btnMinus.color = "tomato"
+            btnMinus.onClick(doSubtraction)
+
+            // Create multiplication button.
+            btnMultiply = createButton()
+            btnMultiply.text = "Multiply"
+            btnMultiply.left = txtNum1.left
+            // Place this object 10px below the btnSum object.
+            btnMultiply.top = btnSum.top + btnSum.height + 10
+            btnMultiply.color = "lightgray"
+            btnMultiply.onClick(doMultiplication)
+
+            // Create division button.
+            btnDivide = createButton()
+            btnDivide.text = "Divide"
+            // Let the object be the same left space as the btnMinus object.
+            btnDivide.left = btnMinus.left
+            // Let the object be the same top space as the btnMultiply object.
+            btnDivide.top = btnMultiply.top
+            btnDivide.color = "lightgray"
+            btnDivide.onClick(doDivision)
+
+            // Create text box for result.
+            txtResult = createTextBox()
+            txtResult.title = "Result:"
+            txtResult.left = txtNum1.left
+            txtResult.top = btnMultiply.top + btnMultiply.height + 40
+
+        }
+
+        // Addition function.
+        var doAddition = function() {
+            
+            // Perform the addition and write the result in the text box.
+            txtResult.text = num(txtNum1.text) + num(txtNum2.text)
+
+            // NOTE: num(text) function,
+            // parameter sent as text,
+            // returns the converted number.
+
+            // EXAMPLE USES:
+            // num("5") answer: 5
+            // num("5.5") answer: 5.5
+            // num("5.5", "integer") answer: 5
+            // str(5) answer: "5"
+
+            // NOTE: If the str(number) function is
+            // parameter sent as a number,
+            // returns the translated version of the text.
+            
+        }
+
+        // Subtraction function.
+        var doSubtraction = function() {
+            
+            // Write the result in the text box.
+            txtResult.text = num(txtNum1.text) - num(txtNum2.text)
+            
+        }
+
+        // Multiplication function.
+        var doMultiplication = function() {
+            
+            // Write the result in the text box.
+            txtResult.text = num(txtNum1.text) * num(txtNum2.text)
+            
+        }
+
+        // Division function.
+        var doDivision = function() {
+            
+            // Write the result in the text box.
+            txtResult.text = num(txtNum1.text) / num(txtNum2.text)
+
+            // Note: Converting decimal to integer:
+            // The answer to 3 / 2 is a decimal number. 1.5
+            // The num("1.5", "integer") function converts the result to an integer. 1
+            // txtResult.text = num(num(txtNum1.text) / num(txtNum2.text), "integer")
+
+        }
+        
+        
+        /*
+        
+        DEVELOPMENT SUGGESTIONS:
+        
+         - Each action button is pressed, the title (.title) of the result text box may change.
+           "Result of addition:", "Result of subtraction:" etc.
+         - The result can be displayed as a full transaction. 2 + 1 = 3
+         - Continue operation button can be added. Writes the result in the first text box
+           and clears the second text box.
+
+
+        */
+            
+        </script>
+
+    </head>
+    <body>
+        
+        <!-- HTML content -->
+        
+    </body>
+</html>

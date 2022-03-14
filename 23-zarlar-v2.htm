@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Zarlar v2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+
+        <script>
+
+        /*
+
+        Zar atma uygulaması.
+
+        */
+
+        // Zarların taşıyıcısı
+        var b1
+        var lblBilgi
+
+        //ilk çalışan fonksiyon.
+        var start = function() {
+
+            page.color = "lightgray"
+            
+            b1 = createBox(0, 0, 300, 150)
+            // Kutunun arkaplan rengi şeffaf olsun.
+            that.color = "transparent"
+            that.border = 0
+            that.round = 10
+            // Kutuyu sayfanın ortasına koy.
+            that.center()
+            // İlk ortalamadan sonra, CSS animasyonu ekle.
+            that.setMotion("left 0.5s, top 0.5s")
+
+            // NESNE: Birinci zar.
+            b1.imgZar1 = createImage(20, 20, 100, 100)
+            that.load("images/zar1.png")
+            // Zarların dönüşüne, CSS animasyonu ekle.
+            that.setMotion("transform 1s")
+            
+            // NESNE: İkinci zar.
+            b1.imgZar2 = createImage(20, 20, 100, 100)
+            that.right = 20
+            that.load("images/zar6.png")
+            that.setMotion("transform 1s")
+
+            // NESNE: Kullanım bilgisi veren yazı.
+            lblBilgi = createLabel()
+            that.text = "Zar atmak için dokunun."
+            that.textAlign = "center"
+            that.fontSize = 16
+            that.textColor = "gray"
+            that.color = "transparent"
+            // Yazının genişliği, kutu ile aynı olsun.
+            that.width = b1.width
+            // Yazıyı, kutunun altına hizala.
+            that.aline(b1, "bottom", 10)
+            // CSS animasyonu ekle.
+            lblBilgi.setMotion("opacity 0.5s, left 0.5s, top 0.5s")
+
+            // Sayfaya basıldığında zar at.
+            page.onClick(zarAt)
+
+            // Sayfanın boyutu değiştirildiğinde çalıştır.
+            page.onResize(yenidenOrtala)
+
+
+        }
+
+        // Zar imagesini rasgele değiştiren fonksiyon.
+        var zarAt = function() {
+            
+            // 1 ile 6 arasında rasgele 2 sayı belirle.
+            var sayi1 = random(1, 6)
+            var sayi2 = random(1, 6)
+            
+            // Resim dosyalarını yükle.
+            b1.imgZar1.load("images/zar" + sayi1 + ".png")
+            b1.imgZar2.load("images/zar" + sayi2 + ".png")
+            
+            // Nesneleri, 0 ile 90 arasında rasgele açılarda döndür.
+            b1.imgZar1.rotate = random(0, 90)
+            b1.imgZar2.rotate = random(0, 90)
+
+            // İlk zar atıldığında, bilgi nesnesini gizle.
+            if (lblBilgi.opacity == 1) {
+                lblBilgi.opacity = 0
+            }
+
+        }
+
+        // Sayfa boyutu değiştiğinde çalıştır.
+        var yenidenOrtala = function() {
+
+            // Kutuyu ortala.
+            b1.center()
+            // Bilgiyi kutuya göre hizala.
+            lblBilgi.aline(b1, "bottom", 10)
+
+        }
+        
+        </script>
+
+    </head>
+    <body></body>
+</html>

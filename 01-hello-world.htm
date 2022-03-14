@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Hello World</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+
+        <script>
+
+        // BEGINNING OF THE CODE WRITE AREA
+
+        /*
+
+        ALGORITHM:
+
+        When a button/key (Button) object is pressed,
+        the algorithm that prints "Hello World" inside a text box (TextBox) object.
+
+
+        WORKING LOGIC:
+
+        - A text box and a button object are rendered and aligned to the desired positions.
+        - When the button object named btnWrite is pressed, the writeMessage() function is running.
+        - writeMessage() function prints "Hello World" to text box object named txtMessage.
+
+
+        PROJECT DESCRIPTION:
+
+        A step-by-step video of the project. (Language: Turkish)
+        https://youtu.be/zPOKz3w1YmY
+
+        */
+        
+        // Define the variables to use.
+
+        // Define the variable to hold the TextBox object.
+        var txtMessage
+        // Define the variable that will hold the Button object.
+        var btnWrite
+
+        // NOTE: The first 3 letters at the beginning of the variables (abbreviation)
+        // the objects they carry inside the algorithm
+        // has been added so that we can follow it more easily.
+
+        // First running function; when everything is installed, it will run automatically.
+        var start = function() {
+
+            // Create the view of the program.
+
+            // Create the text box (TextBox) object.
+            txtMessage = createTextBox()
+            // Set the distance of the object to the left. (in pixels)
+            txtMessage.left = 50
+            // Set the distance of the object up. (in pixels)
+            txtMessage.top = 50
+
+            // Create the Button object.
+            btnWrite = createButton()
+            // Determine the text on the object.
+            btnWrite.text = "Write"
+            // Determine the distance of the object from the solo.
+            btnWrite.left = 50
+            // Set the distance of the object up.
+            btnWrite.top = 110
+
+            // Every time the object is pressed, the WriteMessage() function will run.
+            btnWrite.onClick(writeMessage)
+
+            // NOTE: When we use parentheses at the end of the WriteMessage() function,
+            // we want the function to run.
+            // When sending a function as a parameter,
+            // we don't write the parentheses.
+            
+        }
+
+        // Function that displays the message in the text box when the button is pressed.
+        var writeMessage = function() {
+
+            // Pass the message inside the text box.
+            txtMessage.text = "Hello World"
+            
+        }
+
+        /*
+
+        DEVELOPMENT PROPOSAL:
+
+        clearing the text box (TextBox) named txtMessage,
+        another button (Button) object can be added.
+        Button name, btnClear and its calling function name,
+        message can be clear().
+
+
+        */
+
+        // END OF CODE WRITE AREA
+
+        </script>
+
+        <!-- NOTE: Outside the coding area are standard HTML tags. -->
+
+    </head>
+    <body>
+        
+        <!-- HTML content -->
+        
+    </body>
+</html>
