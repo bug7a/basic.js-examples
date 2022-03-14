@@ -45,8 +45,8 @@ INTRODUCTION
 In this book, you will find a list and brief explanations of the codes you can use with the basic.js library.
 
 - When a project using the library is first opened; If it exists, the start() function is called ONCE.
--- Before, all the variables and functions written on the outermost are ready to be used.
--- Uses the "load" event in JavaScript.
+- Before, all the variables and functions written on the outermost are ready to be used.
+- Uses the "load" event in JavaScript.
 See blank project template: 0C-blank-project-theme.htm
 See blank mobile app template: 35-mobile-app-template-v2.htm
 
@@ -65,17 +65,17 @@ Advanced data types:
 
 Other types:
 - BasicObject, the basic object. It can be a Label, Button, TextBox, Image or Box object.
--- This name is a special designation used to identify objects in the basic.js library.
+- This name is a special designation used to identify objects in the basic.js library.
 - function, function. function() { }
 
 
----
+--
 
 
 BASIC FUNCTIONS:
 
 - Generates a random number between two given numbers.
--- The numbers given are included.
+- The numbers given are included.
 - The meanings of the code shown above as an example are as follows;
 random is the name of the function.
 number1 is the name of the first parameter.
@@ -83,7 +83,7 @@ integer, the data type of the first parameter.
 number2 is the name of the second parameter.
 integer, the data type of the second parameter.
 integer, the data type of the response returned by the function.
-random(1, 8) --> 5
+random(1, 8) -> 5
 See: 04-dice.htm
 
 print(message:string)
@@ -94,7 +94,7 @@ num(text:string, type:string) : float veya integer
 - Converts a text type value to a number type.
 - type determines the type of number to answer.
 "integer" or "int": returns integer, "float": returns decimal.
--- Used as "float" when the parameter is left blank.
+- Used as "float" when the parameter is left blank.
 - In decimal numbers, only 2 digits after the period are allowed.
 NOTE: If you need more digits, look into the parseFloat() function.
 See: 03-basic-calculator.htm
@@ -107,7 +107,7 @@ go(url:string, windowType:string)
 - Redirects to another .htm file or URL.
 - windowType determines how the page is opened.
 "_self": open on same page, "_blank": open on different page.
--- If the parameter is left blank, it is treated as "_self".
+- If the parameter is left blank, it is treated as "_self".
 
 twoDigitFormat(number:integer) : string
 - Allows the number to be converted into a 2-digit text.
@@ -120,13 +120,13 @@ isMobile() : boolean
 1: mobile device, 0: computer 
 
 
----
+--
 
 
 PAGE OBJECT (OBJECT NAME: page, CLASS NAME: MainBox):
 - It is the object that provides the management of the page.
 - Represents the visible area of ​​the screen. Does not support Scroll Bar.
--- The scrollbar is only available with the box object (BOX).
+- The scrollbar is only available with the box object (BOX).
 
 page.bodyElement
 - Element object that connects the object with HTML.
@@ -138,18 +138,18 @@ page.color
 
 page.width
 - Allows you to get the page width.
--- This value cannot be changed. It can only be read.
+- This value cannot be changed. It can only be read.
 
 page.height
 - Allows you to get the page height.
--- This value cannot be changed. It can only be read.
+- This value cannot be changed. It can only be read.
 
 page.fit(originalWidth:integer, maxWidth:integer)
 - Adjusts the width of the content to fit the screen.
 originalWidth is the width of the content you want to appear on the screen. (Including the spaces to be left on the sides.)
 maxWidth, the maximum the content can be expanded.
--- If the parameter is left blank, it is considered the same as the originalWidth value.
--- maxWidth does not have to be larger than the original size of the content.
+- If the parameter is left blank, it is considered the same as the originalWidth value.
+- maxWidth does not have to be larger than the original size of the content.
 See: 20-basic-mobile-app-template.htm
 
 page.zoom
@@ -161,20 +161,20 @@ page.zoom
 
 page.onClick(func:function)
 - Each time the page is pressed; the specified function is called.
--- All objects added to the page are also part of the page. This event is also triggered when a different object in the page is pressed.
--- If you want to control printing, except for added objects, you can add a transparent box object inside the page object that will stay behind.
+- All objects added to the page are also part of the page. This event is also triggered when a different object in the page is pressed.
+- If you want to control printing, except for added objects, you can add a transparent box object inside the page object that will stay behind.
 See: 65-length-measure-conversion-application.htm
 
 page.onResize(func:function)
 - Every time the page size changes; the specified function is called.
--- NOT CALLED for the initial size of the page on load.
+- NOT CALLED for the initial size of the page on load.
 
 page.add(object:BasicObject)
 - Used to move a base object back into the page.
--- Objects are created, by default, within the page object.
+- Objects are created, by default, within the page object.
 
 
----
+--
 
 
 COMMON FEATURES AND METHODS OF BASIC OBJECTS:
@@ -186,7 +186,7 @@ that
 object.left
 - Determines the distance of the object to the left.
 - Its value is float data type.
--- Positioning as float allows for smoother movements.
+- Positioning as float allows for smoother movements.
 
 object.top
 - Determines the distance of the object up.
@@ -194,7 +194,7 @@ object.top
 
 object.right
 - Left leaning is cancelled. And the object starts to justify right with the given value.
--- If the page or object size changes, the distance to the right is maintained.
+- If the page or object size changes, the distance to the right is maintained.
 - Its value is float data type.
 
 object.bottom
@@ -255,7 +255,7 @@ object.clickable
 - Makes the object clickable/non-clickable.
 1: clickable, 0: not clickable
 - when using the object.onClick(func:function) function; The object is automatically clickable.
--- Button and TextBox objects are clickable by default.
+- Button and TextBox objects are clickable by default.
 - Uses pointer-events:auto or none property in CSS.
 
 object.element
@@ -266,21 +266,21 @@ object.upperObject
 - Returns a parent (containing) object of the object.
 - The top object is the page.
 - The created objects are first moved into the page object.
--- With the selectBox(target:Box) function, the first object to be moved can be changed.
+- With the selectBox(target:Box) function, the first object to be moved can be changed.
 
 object.onResize(func:function)
 - Every time the size of the object changes; the specified function is called.
--- Also called when the object is first created.
+- Also called when the object is first created.
 - It can be used to update the positions of auto-sized objects in the coordinate system.
--- Label.width, label.height, button.width and box.height properties can be set to "auto". Like lblName.width = "auto".
--- The object itself is sent to the called function.
+- Label.width, label.height, button.width and box.height properties can be set to "auto". Like lblName.width = "auto".
+- The object itself is sent to the called function.
 
 object.center(direction:string)
 - Centers the object relative to the object it is in.
 - direction, in which direction you want to average.
 "left": center horizontally, "ball": center vertically
--- If the parameter is left blank, it will center in both directions.
--- The .left and .top values ​​of the object are changed to appear in the middle.
+- If the parameter is left blank, it will center in both directions.
+- The .left and .top values ​​of the object are changed to appear in the middle.
 See: 19-objects-align.htm
 
 object.aline(target:BasicObject, direction:string, space:integer)
@@ -288,10 +288,10 @@ object.aline(target:BasicObject, direction:string, space:integer)
 - target, by which object to position.
 - direction, in which direction it will be positioned.
 "right": right, "left": left, "top": top, "bottom" position to bottom.
--- If the parameter is left blank, it will position the target directly above the object.
+- If the parameter is left blank, it will position the target directly above the object.
 - space, how much space to leave between objects.
--- If the parameter is left blank, it is assumed to be 0.
--- If the target object uses the .right and/or .bottom properties for positioning, the positioned object will also use these properties.
+- If the parameter is left blank, it is assumed to be 0.
+- If the target object uses the .right and/or .bottom properties for positioning, the positioned object will also use these properties.
 See: 19-objects-align.htm
 
 object.remove()
@@ -309,9 +309,9 @@ Examples:
 "left 1s, opacity 1s": smooth horizontal position change and transparency only. Let it take 1 second.
 "width 2s": only changes in the width of the object make it animated. Let it take 2 seconds.
 "left 1s, top 1s, width 0.5s, height 0.5s, transform 1s, background-color 1s, border-radius 1s, opacity 1s": Many motions are softened.
--- Once this property is set, that property of the object always changes slowly.
--- Use object.setMotion("none") to disable the object's motion property.
--- Or, to pause it temporarily, object.dontMotion() can be used.
+- Once this property is set, that property of the object always changes slowly.
+- Use object.setMotion("none") to disable the object's motion property.
+- Or, to pause it temporarily, object.dontMotion() can be used.
 - Uses transition property in CSS.
 See: 55-basic-css-animation.htm
 
@@ -330,7 +330,7 @@ object.canMotionNow()
 - It is used if dontMotion() is used in the top lines, but it is desired to return the motion features immediately.
 
 
----
+--
 
 
 BOX OBJECT (CLASS NAME: Box):
@@ -356,7 +356,7 @@ object.scrollY
 
 object.onClick(func:function)
 - Each time the object is pressed; the specified function is called.
--- The object itself is sent to the called function.
+- The object itself is sent to the called function.
 
 object.add(object:BasicObject)
 - Manually moves the object sent as a parameter inside this box object.
@@ -371,7 +371,7 @@ object.element
 - Uses <div> element in HTML.
 
 
----
+--
 
 
 BUTTON OBJECT (CLASS NAME: Button):
@@ -395,7 +395,7 @@ object.minimal
 
 object.onClick(func:function)
 - Each time the object is pressed; the specified function is called.
--- The object itself is sent to the called function.
+- The object itself is sent to the called function.
 
 object.element
 - Same as buttonElement as the object does not have a bearer element.
@@ -405,7 +405,7 @@ object.buttonElement
 - Uses <button> element in HTML.
 
 
----
+--
 
 
 TEXT BOX OBJECT (CLASS NAME: TextBox):
@@ -432,7 +432,7 @@ object.minimal
 
 object.onChange(func:function)
 - Each time the object content changes, the specified function is executed.
--- The object itself is sent to the called function.
+- The object itself is sent to the called function.
 
 object.element
 - Element object that connects the object's container with HTML.
@@ -447,7 +447,7 @@ object.titleElement
 - Uses <div> element in HTML.
 
 
----
+--
 
 
 TEXT OBJECT (CLASS NAME: Label):
@@ -473,14 +473,14 @@ object.spaceY
 
 object.onClick(func:function)
 - Each time the object is pressed; the specified function is called.
--- The object itself is sent to the called function.
+- The object itself is sent to the called function.
 
 object.element
 - Element object that connects the object with HTML.
 - Uses <div> element in HTML.
 
 
----
+--
 
 
 IMAGE OBJECT (CLASS NAME: Image):
@@ -493,23 +493,23 @@ createImage(left:integer, top:integer, width:integer, height:integer) : Image
 object.load(filePath:string)
 - Loads an image file into the object.
 - The image file takes a while to load.
--- When the loading is complete, the function defined with onLoad() is called.
+- When the loading is complete, the function defined with onLoad() is called.
 
 object.autoSize
 - Automatically resizes the uploaded image.
 0: fit the specified size of the object, 1: original size, 2: half the original size, 3: one-third of the original size ...
--- The default autoSize value is 1.
--- The autoSize value becomes 0 when the width or height of the image is changed.
+- The default autoSize value is 1.
+- The autoSize value becomes 0 when the width or height of the image is changed.
 NOTE: On high resolution mobile devices; In order to obtain a better quality view, image files can be saved large and reduced when loaded onto the screen.
 
 object.naturalWidth
 - Returns the original width of the image.
--- Must be used inside the onLoad() function.
+- Must be used inside the onLoad() function.
 NOTE: If object.autoSize = 1, the .width and .naturalWidth properties will have the same value when the image is uploaded.
 
 object.naturalHeight
 - Returns the original height of the image.
--- Must be used inside the onLoad() function.
+- Must be used inside the onLoad() function.
 
 object.space
 - Leaves (inner) space between the picture and the object boundary.
@@ -523,11 +523,11 @@ object.spaceY
 
 object.onClick(func:function)
 - Each time the object is pressed; the specified function is called.
--- The object itself is sent to the called function.
+- The object itself is sent to the called function.
 
 object.onLoad(func:function)
 - When the image object is loaded, the function is called.
--- The object itself is sent to the called function.
+- The object itself is sent to the called function.
 var myImage = createImage()
 that.load("images/roket.png")
 that.onLoad(function(self) {
@@ -543,7 +543,7 @@ object.imageElement
 - Uses <img> element in HTML.
 
 
----
+--
 
 
 GENERAL FUNCTIONS:
@@ -556,18 +556,18 @@ setLoopTimer(milisecond:integer)
 selectBox(boxObject:Box)
 - It determines the box in which the created objects will be moved first.
 - Its default value is the page object.
--- To revert to the default value, selectBox(page)
+- To revert to the default value, selectBox(page)
 
 getSelectedBox() : Box or MainBox
 - Returns the object to which the created objects were first moved.
 
 makeBasicObject(object:BasicObject)
 - Include the custom object you created in the ecosystem of the basic.js library.
--- If the created object is transferred as an element of another box, it is automatically moved into that box.
--- The created object can be accessed with the that variable until a new object is created.
+- If the created object is transferred as an element of another box, it is automatically moved into that box.
+- The created object can be accessed with the that variable until a new object is created.
 - If specially designed objects consist of more than one basic object, as a carrier object; box object should be used.
 
----
+--
 
 
 CLOCK OBJECT (OBJECT NAME: clock):
@@ -584,7 +584,7 @@ clock.second
 - It gives the current second information.
 
 
----
+--
 
 
 DATE OBJECT (OBJECT NAME: date):
@@ -620,14 +620,14 @@ date.now
 NOTE: Information referred to as Timestamp in databases.
 
 
----
+--
 
 
 INFORMATION STORAGE OBJECT (OBJECT NAME: storage):
 - Stores the value of a variable on the browser.
 - When the browser is closed and reopened; The stored information can be restored.
--- Can be used to store user selected settings.
--- It can be used to store information in a simple way that does not need a database.
+- Can be used to store user selected settings.
+- It can be used to store information in a simple way that does not need a database.
 - Uses the window.localStorage property in JavaScript.
 See: 58-to-do-list-app.htm
 
@@ -644,7 +644,7 @@ storage.remove(key:string)
 - Deletes the contents of the variable saved with the key.
 
 
----
+--
 
 
 CONSTANTS:
@@ -673,7 +673,7 @@ basic.IMAGE_WIDTH = 50
 basic.IMAGE_HEIGHT = 50
 
 
----
+--
 
 
 SOME FREQUENT FAULTS:
@@ -688,11 +688,11 @@ Uncaught SyntaxError: Unexpected end of input
 Uncaught SyntaxError: Unexpected token ')'
 Uncaught SyntaxError: missing ) after argument list
 - Check curly braces, braces and other marks.
--- The curly braces are not opened, but may be closed.
--- Parenthesis may not be closed when calling the function.
+- The curly braces are not opened, but may be closed.
+- Parenthesis may not be closed when calling the function.
 
 
----
+--
 
 
 AUTHOR:
