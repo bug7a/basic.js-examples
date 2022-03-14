@@ -12,6 +12,8 @@ And JavaScript library that simplifies project development.<br />
 * With these techniques, fully customizable and dynamic applications can be developed.
 * The programming language used is JavaScript. Projects can be run in the browser or WebView.
 
+NOTE: Some parts are in Turkish. I haven't finished the translation yet.
+
 ### Some of the Sample Projects
 
 ![alt tag](https://bug7a.github.io/basic.js/preview.png)
@@ -35,3 +37,5 @@ to Remix — to adapt the work<br />
 to make commercial use of the work<br />
 
 <https://creativecommons.org/licenses/by/4.0/><br /><br />
+
+### basic.js LIBRARY (v1.6.3) - HANDBOOK
