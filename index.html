@@ -52,7 +52,7 @@
               "Searchable<br>List (37)",
               "Length<br>Measure (65)",
               "Minesweeper (67)",
-              "Mobile Template (35)"
+              "Mobile Template"
           ];
 
         const sampleURLList = [
@@ -189,6 +189,7 @@
             that.visible = 0
 
             // BOX: JavaScript programlama dili ile neler yapılabilir? Butonu.
+            /*
             a0.b1.btnOpenSamples = cbox(0, 0, CONTENT_WIDTH - 120, 95);
             that.center("left");
             that.color = "transparent";
@@ -197,6 +198,19 @@
             that.round = 25;
             that.top = 340;
             that.text = document.getElementById("btntext-btnOpenSamples").innerHTML;
+            that.element.classList.add("motion-zoomOnMouseOver-forButton");
+            that.clickable = 1;
+            that.onClick(goto_b3);
+            */
+
+            a0.b1.btnOpenSamples = cbox(0, 0, CONTENT_WIDTH - 120, 95);
+            that.center("left");
+            that.color = "transparent";
+            that.element.style.padding = "20px";
+            that.element.style.paddingLeft = "35px";
+            that.round = 25;
+            that.top = 290;
+            that.text = document.getElementById("btntext-btnOpenSamples2").innerHTML;
             that.element.classList.add("motion-zoomOnMouseOver-forButton");
             that.clickable = 1;
             that.onClick(goto_b3);
@@ -343,7 +357,12 @@
                 that.element.classList.add("motion-zoomOnMouseOver-forButtonWithOutWhite");
                 that.index = i;
                 that.onClick(function(self) {
-                    goto_url("/basic.js/javascript/" + sampleURLList[self.index] + ".htm");
+                    if(self.index == 17) {
+                        goto_url("https://bug7a.github.io/cordova-mobile-app-ui-template/");
+                    } else {
+                        goto_url("/basic.js/javascript/" + sampleURLList[self.index] + ".htm");
+                    }
+                    
                 });
 
                 boxSample["b" + i].imgPreview = cimg(5, 5, 90, 90);
@@ -676,6 +695,11 @@
             <div id="btntext-btnOpenSamples">
                 <div class="btntext title">2. What can be done with the JavaScript?</div>
                 <div class="btntext description">- Download the examples and watch the tutorial videos.</div>
+            </div>
+
+            <div id="btntext-btnOpenSamples2">
+                <div class="btntext title" style="text-align:center;">What can be done with the JavaScript?</div>
+                <div class="btntext description" style="text-align:center;">Download the examples and watch the tutorial videos.</div>
             </div>
 
             <div id="content-1">
