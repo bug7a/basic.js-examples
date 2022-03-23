@@ -74,6 +74,7 @@ Other types:
 
 BASIC FUNCTIONS:
 
+random(number1:integer, number2:integer) : integer
 - Generates a random number between two given numbers.
 - The numbers given are included.
 - The meanings of the code shown above as an example are as follows;
