@@ -1,7 +1,7 @@
 ### Information
 
-Object-based sample software projects designed for beginners to programming.<br>
-And JavaScript library that simplifies project development.<br />
+Object-based sample projects designed for beginners to programming.<br>
+And JavaScript library that simplifies dynamic user interface development.<br />
 
 * The first 10 projects are specifically designed to help you learn software development logic.
 * HTML and CSS codes are written automatically by the library. Thus, students can initially focus only on algorithm development.
