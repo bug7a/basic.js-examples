@@ -1,7 +1,6 @@
 ### Information
 
-Object-based project examples for programming beginners.<br>
-And JavaScript library for developing dynamic user interfaces.<br />
+Object-based project examples for programming beginners. And JavaScript library for developing dynamic user interfaces.<br />
 
 * The first 10 projects are specifically designed to help you learn software development logic.
 * HTML and CSS codes are written automatically by the library. Thus, students can initially focus only on algorithm development.
