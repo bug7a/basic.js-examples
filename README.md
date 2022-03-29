@@ -13,6 +13,9 @@ Object-based project examples for programming beginners. And JavaScript library 
 
 NOTE: Some parts are in Turkish. I haven't finished the translation yet.
 
+### Live Preview:
+https://bug7a.github.io/basic.js/
+
 ### Some of the Example Projects
 
 ![alt tag](https://bug7a.github.io/basic.js/preview.png)
