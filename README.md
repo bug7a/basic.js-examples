@@ -14,7 +14,7 @@ And JavaScript library for developing dynamic user interfaces.<br />
 
 NOTE: Some parts are in Turkish. I haven't finished the translation yet.
 
-### Some of the Sample Projects
+### Some of the Example Projects
 
 ![alt tag](https://bug7a.github.io/basic.js/preview.png)
 
