@@ -1,7 +1,7 @@
 
 WHAT IS THIS?
 
-Object-based sample software projects designed for beginners to programming. And JavaScript library that simplifies project development.
+Object-based project examples for programming beginners. And JavaScript library for developing dynamic user interfaces.
 
 
 WHO CAN BENEFIT?

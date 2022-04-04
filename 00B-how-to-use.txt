@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=vSt5EFDkhpI
 - Each project can run on any browser.
 - The "library" folder contains the basic.js library.
 - The "images" folder contains images used by some sample projects.
-- When creating a new project; Copy the "0C-blank-project-theme.htm" file and the "library" folder to a different folder. Rename the HTM file you copied (project-name.htm etc.) and open this folder in the development environment. (In the narration videos, these stages are shown.)
+- When creating a new project; Copy the "00C-blank-project-theme.htm" file and the "library" folder to a different folder. Rename the HTM file you copied (project-name.htm etc.) and open this folder in the development environment. (In the narration videos, these stages are shown.)
 
 
 3. FIRST EXAMPLE PROJECT:
