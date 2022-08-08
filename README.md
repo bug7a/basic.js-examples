@@ -13,7 +13,7 @@ Object-based project examples for programming beginners.<br />
 
 ### Some of the Sample Projects
 
-![alt tag](https://bug7a.github.io/basic.js/preview.png)
+![alt tag](https://bug7a.github.io/basic.js-examples/preview.png)
 
 ### Contact information
 
