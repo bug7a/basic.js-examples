@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Stopwatch</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+
+        <script>
+
+        /*
+            
+        ALGORITHM:
+        
+        - An application that measures how much time has passed.
+        
+        */
+        
+        // Variables that carry objects.
+        var imgBackground
+        var imgMinute
+        var imgSecond
+        var btnStart
+        var lblCount
+        
+        // Variables that store the elapsed time.
+        var secondCount = 0
+        var minuteCount = 0
+
+        // First running function.
+        var start = function() {
+
+            page.color = "indianred"
+
+            // Create the background image of the clock. Parameters: left, top, width, height
+            imgBackground = createImage(0, 0, 200, 200)
+            that.load("images/clock-empty.png")
+            // Align the object to the center of the page object.
+            that.center()
+            
+            // NOTE: object.center() function, centers according to the object it is in.
+            // For horizontal centering only: object.center("left")
+            // For vertical center only: object.center("top")
+            
+            // Numerical information on the clock.
+            lblCount = createLabel()
+            that.text = "00:00"
+            that.textAlign = "center"
+            that.width = imgBackground.width
+            that.left = imgBackground.left
+            that.top = imgBackground.top + 135
+            
+            // NOTE: The numeric section, due to the order in which it was created,
+            // will stay under the second and minute bars.
+            // The last created object appears at the top.
+            
+            // The minute bar of the clock.
+            imgMinute = createImage()
+            that.load("images/clock-minute.png")
+            copySizes(that, imgBackground)
+            
+            // The second bar of the clock.
+            imgSecond = createImage()
+            that.load("images/clock-second.png")
+            copySizes(that, imgBackground)
+            
+            // Stopwatch start/stop button.
+            btnStart = createButton()
+            that.text = "Start"
+            that.color = "cadetblue"
+            // Align the object centered under the clock with a 25px spacing.
+            that.top = imgBackground.top + imgBackground.height + 25
+            that.left = imgBackground.left + ((imgBackground.width - btnStart.width) / 2)
+            that.onClick(startOrStop)
+
+        }
+        
+        // Function that repeats every second.
+        var loop = function() {
+
+            // If the start button is clicked:
+            if (btnStart.text == "Stop") {
+
+                // Increment the seconds variable by 1.
+                secondCount++
+
+                // If the second variable has reached 60:
+                if (secondCount == 60) {
+                    // Reset the seconds variable.
+                    secondCount = 0
+                    // Increment the minute variable by 1.
+                    minuteCount++
+                }
+
+                // Update watch display.
+                updateWatch()
+
+            }
+
+        }
+        
+        // Set the newObject at the position and size of the sampleObject.
+        var copySizes = function(newObject, sampleObject) {
+            
+            newObject.width = sampleObject.width
+            newObject.height = sampleObject.height
+            newObject.top = sampleObject.top
+            newObject.left = sampleObject.left
+            
+        }
+        
+        // Function that will run when the button is clicked.
+        var startOrStop = function() {
+            
+            // If the button that appears is start:
+            if (btnStart.text == "Start") {
+                // Make stop button and paint.
+                btnStart.text = "Stop"
+                btnStart.color = "tomato"
+            
+            // If the button that appears is stop:
+            } else if (btnStart.text == "Stop") {
+                // Make start button and paint.
+                btnStart.text = "Start"
+                btnStart.color = "cadetblue"
+                
+            }
+            
+        }
+        
+        // Function that updates clock parts and numeric display.
+        var updateWatch = function() {
+            
+            // Update watch parts.
+            imgSecond.rotate = secondCount * 6
+            imgMinute.rotate = minuteCount * 6
+            
+            // Update numeric display.
+            lblCount.text = minuteCount + ":" + secondCount
+            
+        }
+        
+        /*
+        
+        DEVELOPMENT SUGGESTIONS:
+        
+         - Reset button can be added.
+         - The format in which the time is displayed is 0:2, it should be 00:02.
+           Seconds and minutes should always appear as two digits.
+           if (x < 10) show as "0" + x.
+          
+        */
+        
+        </script>
+
+    </head>
+    <body></body>
+</html>

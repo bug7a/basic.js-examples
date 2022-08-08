@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Math Game</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+
+        <script>
+            
+        /*
+        
+        ALGORITHM:
+        
+        - It asks a math question and checks the given answer.
+        
+        */
+
+        // TextBox object.
+        var txtAnswer
+        // Button objects.
+        var btnCheckAnswer
+        var btnNewQuestion
+        
+        // Variables where numbers are stored.
+        var number1
+        var number2
+        var operationNumber
+        var correctAnswer
+
+        // First running function.
+        var start = function() {
+            
+            page.color = "whitesmoke"
+
+            // Create the TextBox object. Parameters: left, top
+            txtAnswer = createTextBox(50, 50)
+            
+            // Create the Button object. Parameters: left, top
+            btnNewQuestion = createButton(50, 110)
+            // Set the text on the object.
+            that.text = "New"
+            that.color = "lightgray"
+            // Determine which function will run when the object is clicked.
+            that.onClick(makeAQuestion)
+
+            // Create the Button object.
+            btnCheckAnswer = createButton()
+            // Align to the right of the btnNewQuestion object with a 10px spacing.
+            that.aline(btnNewQuestion, "right", 10)
+            // Set the text on the object.
+            that.text = "Check"
+            // When the object is clicked, the checkAnswer() function will run.
+            that.onClick(checkAnswer)
+            
+            // Make a question at the beginning.
+            makeAQuestion()
+
+        }
+        
+        // Function that creates a new question.
+        var makeAQuestion = function() {
+            
+            // Clear inside the TextBox.
+            txtAnswer.text = ""
+            
+            // Let the random numbers be between 1 and 20.
+            number1 = random(1, 20)
+            number2 = random(1, 20)
+            
+            // Random operation.
+            operationNumber = random(1, 3)
+            
+            // NOTE: operationNumber can be 1, 2, or 3.
+            // 1: addition, 2: subtraction, 3: multiplication.
+            
+            var questionText = " What is the result?"
+            
+            // If the operation is addition:
+            if (operationNumber == 1) {
+                correctAnswer = number1 + number2
+                txtAnswer.title = number1 + " + " + number2 + questionText
+                
+            } else if (operationNumber == 2) {
+                correctAnswer = number1 - number2
+                txtAnswer.title = number1 + " - " + number2 + questionText
+                
+            } else if (operationNumber == 3) {
+                correctAnswer = number1 * number2
+                txtAnswer.title = number1 + " x " + number2 + questionText
+                
+            }
+            
+        }
+
+        // The function that checks the txtAnswer.text with the correctAnswer variable when the button is clicked.
+        var checkAnswer = function() {
+            
+            // If the given answer is equal to the variable correctAnswer,
+            if (txtAnswer.text == correctAnswer) {
+                txtAnswer.text = "The answer is correct."
+                
+            } else {
+                txtAnswer.text = "Try again."
+                
+            }
+            
+        }
+        
+        /*
+        
+        DEVELOPMENT SUGGESTIONS:
+        
+        - Have a small (50x50) box next to the TextBox.
+          If the correct answer is given, it will be colored "green" and if the wrong answer is given, it will be colored "red".
+        - Show the total number of correct and incorrect answers given on the screen. Automatically increase.
+
+        */
+
+        </script>
+
+    </head>
+    <body></body>
+</html>

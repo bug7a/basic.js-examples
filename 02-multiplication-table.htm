@@ -17,8 +17,8 @@
 
         ALGORITHM:
         
-        With a text box (TextBox), the number to be processed is requested.
-        And when the button (Button) is pressed; The products of the given number from 1 to 10 are listed.
+        With a TextBox, the number to be processed is requested.
+        And when the Button is clicked; The products of the given number from 1 to 10 are listed.
         
         
         PROJECT DESCRIPTION:
@@ -28,11 +28,11 @@
         
         */
         
-        // Text box to get the number. (TextBox)
+        // TextBox to get the number.
         var txtNumber
-        // Create button. (button)
+        // Create Button.
         var btnCreate
-        // Label to list the multiplication table. (label)
+        // Label to list the multiplication table.
         var lblTable
         
         // First run function.
@@ -41,7 +41,7 @@
             // Set the background color of the page as white smoke.
             page.color = "whitesmoke"
 
-            // Create a text box (TextBox) object.
+            // TEXTBOX: Create a TextBox object.
             txtNumber = createTextBox()
             // Determine the content of the object.
             txtNumber.text = "8"
@@ -54,17 +54,17 @@
             // Set the width of the object. (in pixels)
             txtNumber.width = 130
 
-            // Create Button object.
+            // BUTTON: Create Button object.
             btnCreate = createButton()
             // Determine the text on the object.
             btnCreate.text = "Create"
             // Determine its location by calculating it relative to the txtNumber object.
             btnCreate.left = txtNumber.left
             btnCreate.top = txtNumber.top + txtNumber.height + 10
-            // Set the function to run when the button is pressed.
+            // Set the function to run when the button is clicked.
             btnCreate.onClick(createTable)
             
-            // Create Label object.
+            // LABEL: Create Label object.
             lblTable = createLabel()
             // Clear the contents of the object.
             lblTable.text = ""
@@ -75,7 +75,7 @@
             
         }
 
-        // Function that creates the multiplication table when the button is pressed.
+        // Function that creates the multiplication table when the button is clicked.
         var createTable = function() {
             
             // Clear the inside of the tag.
@@ -108,8 +108,8 @@
         
         DEVELOPMENT PROPOSAL:
         
-        Have another one of the same, to the right of the lblTable object, and
-        Create a second multiplication table with one more of the desired number.
+        - Have another one of the same, to the right of the lblTable object, and
+          Create a second multiplication table with one more of the desired number.
 
         */
 

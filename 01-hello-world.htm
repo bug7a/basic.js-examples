@@ -19,15 +19,15 @@
 
         ALGORITHM:
 
-        When a button/key (Button) object is pressed,
-        the algorithm that prints "Hello World" inside a text box (TextBox) object.
+        When a Button object is clicked,
+        the algorithm that prints "Hello World" inside a TextBox object.
 
 
         WORKING LOGIC:
 
-        - A text box and a button object are rendered and aligned to the desired positions.
-        - When the button object named btnWrite is pressed, the writeMessage() function is running.
-        - writeMessage() function prints "Hello World" to text box object named txtMessage.
+        - A TextBox and a Button object are rendered and aligned to the desired positions.
+        - When the Button object named btnWrite is clicked, the writeMessage() function is running.
+        - writeMessage() function prints "Hello World" to TextBox object named txtMessage.
 
 
         PROJECT DESCRIPTION:
@@ -48,19 +48,19 @@
         // the objects they carry inside the algorithm
         // has been added so that we can follow it more easily.
 
-        // First running function; when everything is installed, it will run automatically.
+        // First running function; when everything is loaded, it will run automatically.
         var start = function() {
 
             // Create the view of the program.
 
-            // Create the text box (TextBox) object.
+            // TEXTBOX: Create the TextBox object.
             txtMessage = createTextBox()
             // Set the distance of the object to the left. (in pixels)
             txtMessage.left = 50
             // Set the distance of the object up. (in pixels)
             txtMessage.top = 50
 
-            // Create the Button object.
+            // BUTTON: Create the Button object.
             btnWrite = createButton()
             // Determine the text on the object.
             btnWrite.text = "Write"
@@ -69,7 +69,7 @@
             // Set the distance of the object up.
             btnWrite.top = 110
 
-            // Every time the object is pressed, the WriteMessage() function will run.
+            // Every time the object is clicked, the WriteMessage() function will run.
             btnWrite.onClick(writeMessage)
 
             // NOTE: When we use parentheses at the end of the WriteMessage() function,
@@ -79,10 +79,10 @@
             
         }
 
-        // Function that displays the message in the text box when the button is pressed.
+        // Function that displays the message in the TextBox when the Button is clicked.
         var writeMessage = function() {
 
-            // Pass the message inside the text box.
+            // Pass the message inside the TextBox.
             txtMessage.text = "Hello World"
             
         }
@@ -91,11 +91,10 @@
 
         DEVELOPMENT PROPOSAL:
 
-        clearing the text box (TextBox) named txtMessage,
-        another button (Button) object can be added.
-        Button name, btnClear and its calling function name,
-        message can be clear().
-
+        - Clearing the TextBox named txtMessage,
+          another Button object can be added.
+          Button name, btnClear and its calling function name,
+          message can be clear().
 
         */
 

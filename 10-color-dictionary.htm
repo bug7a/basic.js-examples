@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Color Dictionary</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+
+        <script>
+
+        /*
+        
+        ALGORITHM:
+        
+        - A dictionary application that finds and returns the English equivalent of a color whose Turkish name is entered from the array variable.
+        
+        */
+
+        // TextBox objects.
+        var txtTurkish
+        var txtEnglish
+        // Button object.
+        var btnTranslate
+        
+        // List of words.
+        var wordList = [
+        
+          {turkish: "kırmızı", english: "red"},
+          {turkish: "mavi", english: "blue"},
+          {turkish: "yeşil", english: "green"},
+          {turkish: "sarı", english: "yellow"},
+          {turkish: "turuncu", english: "orange"},
+          {turkish: "siyah", english: "black"},
+          {turkish: "beyaz", english: "white"},
+          {turkish: "pembe", english: "pink"},
+          {turkish: "gri", english: "gray"},
+          {turkish: "lacivert", english: "darkblue"},
+          {turkish: "mor", english: "purple"},
+          {turkish: "kahverengi", english: "brown"}
+            
+        ]
+        
+        // NOTE: wordList is an array.
+        // And each element is an object.
+        
+        // Objects also have their own elements with turkish and english names.
+
+        // First running function.
+        var start = function() {
+            
+            // Set the background color.
+            page.color = "white"
+
+            // TEXTBOX: Turkish TextBox. Parameters: left, top, width
+            txtTurkish = createTextBox(50, 50, 150)
+            that.text = "yeşil"
+            that.title = "Türkçe:"
+            // Remove effects.
+            that.minimal = 1
+            that.color = "lightgray"
+            
+            // TEXTBOX: English TextBox.
+            txtEnglish = createTextBox()
+            that.width = 150
+            that.title = "İngilizce:"
+            // Remove effects.
+            that.minimal = 1
+            that.color = "lightgray"
+            // Do not enter text into the object.
+            that.enabled = 0
+            // Align it to the right of the txtTurkish object, leaving a 25px spacing.
+            that.aline(txtTurkish, "right", 25)
+
+            // BUTTON: Translate Button.
+            btnTranslate = createButton()
+            that.text = "Çevir"
+            that.width = 150
+            that.color = "lightgray"
+            // txtTurkish nesnesinin altına, 10px boşluk bırakarak hizala.
+            that.aline(txtTurkish, "bottom", 10)
+            // Nesneye basıldığında, hangi fonksiyonun çalışacağını belirle.
+            that.onClick(translateWord)
+
+        }
+
+        // Function that finds the English equivalent of the word.
+        var translateWord = function() {
+            
+            // Repeat for the length of the list.
+            for (var i = 0; i < wordList.length; i++) {
+                
+                // Find the index of the word in the list.
+                if (wordList[i].turkish == txtTurkish.text) {
+                    
+                    // Write the English equivalent.
+                    txtEnglish.text = wordList[i].english
+                    
+                    // Color by color name.
+                    btnTranslate.color = txtEnglish.text
+                    
+                }
+                
+            }
+            
+        }
+        
+        /*
+        
+        DEVELOPMENT SUGGESTIONS:
+        
+        - English colors can also be written. Then translate it into Turkish.
+        1. First, the .enabled property of the English TextBox must be 1.
+        2. Translation from English to Turkish can be done with a different button or
+        - If the English TextBox is full, translate from English to Turkish.
+        no, if only the Turkish TextBox is full, translate from Turkish to English.
+        as can be done.
+          
+        */
+
+        </script>
+
+    </head>
+    <body></body>
+</html>

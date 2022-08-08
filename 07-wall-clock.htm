@@ -2,7 +2,7 @@
 <html>
     <head>
         
-        <title>Duvar Saati</title>
+        <title>Wall Clock</title>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,113 +14,113 @@
 
         /*
             
-        ALGORİTMA:
+        ALGORITHM:
             
-        - Güncel saati gösteren, duvar saati.
+        - Wall clock that shows the current time.
 
 
-        ÇALIŞMA MANTIĞI:
+        WORKING LOGIC:
             
-        - Saatin her bir hareketli parçası için, bir resim tasarlanmıştır.
-          Ve güncel saat bilgisine göre, açıları değiştirilmektedir.
+        - For each moving part of the watch, a image is designed.
+          And according to the current time information, its angles are changed.
         
         */
         
-        // Saati oluşturan 4 resim nesnesi.
-        var imgArkaplan
-        var imgSaat
-        var imgDakika
-        var imgSaniye
+        // 4 images objects of the clock.
+        var imgBackground
+        var imgHour
+        var imgMinute
+        var imgSecond
         
         
-        // İlk çalışan fonksiyon.
+        // First running function.
         var start = function() {
 
             page.color = "tomato"
 
-            // Saatin arka plan resmini oluştur ve hizala.
-            imgArkaplan = createImage()
-            that.load("images/saat-arkaplan.png")
+            // IMAGE: Create and align the clock's background image.
+            imgBackground = createImage()
+            that.load("images/clock-background.png")
             that.width = 200
             that.height = 200
-            // Nesneyi, ekranın tam ortasına, hesaplayarak hizala.
+            // Calculate and align the object to the center of the screen.
             that.top = (page.height - that.height) / 2
             that.left = (page.width - that.width) / 2
 
-            // Saat resmini yükle ve hizala.
-            imgSaat = createImage()
-            that.load("images/saat-saat.png")
-            boyutKopyala(that, imgArkaplan)
+            // IMAGE: Load and align clock image.
+            imgHour = createImage()
+            that.load("images/clock-hour.png")
+            copySizes(that, imgBackground)
             
-            // Dakika resmini yükle ve hizala.
-            imgDakika = createImage()
-            that.load("images/saat-dakika.png")
-            boyutKopyala(that, imgArkaplan)
+            // IMAGE: Load and align minute image.
+            imgMinute = createImage()
+            that.load("images/clock-minute.png")
+            copySizes(that, imgBackground)
             
-            // Saniye resmini yükle ve hizala.
-            imgSaniye = createImage()
-            that.load("images/saat-saniye.png")
-            boyutKopyala(that, imgArkaplan)
+            // IMAGE: Load and align the seconds image.
+            imgSecond = createImage()
+            that.load("images/clock-second.png")
+            copySizes(that, imgBackground)
             
-            // Not: imagesin hepsi, aynı boyutta üst üste geldiğinde 
-            // bir saati oluşturacak şekilde tasarlanmıştır.
-            
-            // Ana dizinde, images klasörünün içindeki, 
-            // ilgili imagesi inceleyebilirsiniz.
+            // NOTE: When images all overlap the same size
+            // designed to form a clock.
+        
+            // In the main directory, inside the images folder,
+            // you can review related images.
 
         }
         
-        // Her saniye tekrar çalışan fonksiyon.
+        // Function that restarts every second.
         var loop = function() {
             
-            // BİLGİ:
-            // Bir daire, 360 derecedir.
-            // Bir saatin dairesinde, 
-            // 12 saat, 60 dakika veya 60 saniye vardır.
-            
-            // SORU:
-            // Saat 12'de, resmin derecesi 0 ise
-            // Saat 1'de resmin derecesi kaç olmalıdır?
-            
-            // ÇÖZÜM:
-            // 360 dereceyi, 12'ye bölerek,
-            // Her 1 saatlik hareketi hesaplayabiliriz.
-            
-            // CEVAP:
-            // 1 saat için 30 derece hareket etmelidir.
-            
-            // Dakika ve saniye için ise cevap,
-            // 360 / 60 = 6 derecedir.
-            
-            // Şimdi, bu bilgiler ile,
-            // saat imagesinin açılarını, 
-            // güncel saat bilgisine göre çevirelim.
+            // INFORMATION:
+            // A circle is 360 degrees.
+            // In the circle of a clock,
+            // There are 12 hours, 60 minutes, or 60 seconds.
+        
+            // QUESTION:
+            // At 12 o'clock, if the degree of the picture is 0
+            // What should the degree of the picture be at 1 o'clock?
+        
+            // SOLUTION:
+            // Divide 360 degrees by 12,
+            // We can calculate every 1 hour movement.
+        
+            // REPLY:
+            // It should move 30 degrees for 1 hour.
+        
+            // For minutes and seconds, the answer is,
+            // 360 / 60 = 6 degrees.
+        
+            // Now, with this information,
+            // the angles of the clock images,
+            // let's translate according to the current time information.
 
-            imgSaniye.rotate = clock.second * 6
-            imgDakika.rotate = clock.minute * 6
-            imgSaat.rotate = clock.hour * 30
+            imgSecond.rotate = clock.second * 6
+            imgMinute.rotate = clock.minute * 6
+            imgHour.rotate = clock.hour * 30
 
-            // Not: clock nesnesi, güncel zamanı verir.
+            // NOTE: the clock object returns the current time.
             
         }
         
-        // pYeni nesnesini, pOrnek nesnesinin konum ve boyutunda ayarla.
-        var boyutKopyala = function(yeniNesne, ornekNesne) {
+        // Set the newObject at the position and size of the sampleObject.
+        var copySizes = function(newObject, sampleObject) {
             
-            yeniNesne.width = ornekNesne.width
-            yeniNesne.height = ornekNesne.height
-            yeniNesne.top = ornekNesne.top
-            yeniNesne.left = ornekNesne.left
+            newObject.width = sampleObject.width
+            newObject.height = sampleObject.height
+            newObject.top = sampleObject.top
+            newObject.left = sampleObject.left
             
         }
         
         /*
         
-        GELİŞTİRME ÖNERİSİ: 
+        DEVELOPMENT PROPOSAL:
         
-        - Duvar saatinin altında, 12:09:00 formatında
-          saati dijital olarak gösteren bir bölüm eklenebilir.
-        - Başlangıçtaki duraksama iyileştirilebilir.
+        - Under the wall clock, in 12:09:00 format
+          A section that displays the time digitally can be added.
+        - Initial pause can be improved.
           
         */
 

@@ -4,12 +4,11 @@
 /*
 
 
-v1.6.4
-
-
-basic.js is a technique (JavaScript library) that simplifies project development.
+(v1.6.5) Create interactive user interfaces with basic programming skills.
 - Project Site: https://bug7a.github.io/basic.js/
 
+
+INFORMATION:
 
 Started Date: 25 October 2020
 Developer: Bugra Ozden
@@ -36,7 +35,6 @@ Have Fun.
 const basic = {};
 basic.startTime = Date.now();
 
-// Standart değerler.
 basic.ACTION_COLOR = "#689BD2";
 basic.ACTION2_COLOR = "cadetblue";
 basic.WARNING_COLOR = "tomato";
@@ -59,7 +57,6 @@ basic.BOX_HEIGHT = 100;
 basic.IMAGE_WIDTH = 50;
 basic.IMAGE_HEIGHT = 50;
 
-// Gün ve ayların isimleri.
 basic.gunler = [
     "Pazar",
     "Pazartesi", 
@@ -110,61 +107,39 @@ basic.months = [
     "December"
 ];
 
-// Sayfa kontrol nesnesi (<body> element).
 let page;
-// Son oluşturulan nesne ve bir önceki (ex).
+
 let that = "";
 let exThat = "";
 
-// Oluşturulan nesnelerin, ekleneceği ilk kutu.
 basic.selectedBox;
-// loop() fonksiyonunu çağıran zamanlayıcı.
 basic.loopTimer;
-// Oluşturulan box nesneleri.
-basic.createdBoxList = [];
-
-// Ayarlar.
-basic.settings = {};
-
-// Nesneleri bağlantılı kutulara taşır.
-basic.autoAddObjectIntoBoxController = {}
-basic.autoAddObjectIntoBoxController.DELAY_TIME = 1;
-basic.autoAddObjectIntoBoxController.timer = 0;
-basic.autoAddObjectIntoBoxController.isActive = 1;
-
-// Nesnelerin boyut değişimlerini kontrol eder.
 basic.resizeDetection = {};
 basic.resizeDetection.objectAndFunctionList = [];
 
-// Hazır olan nesnelerin görünmesini sağlar.
-basic.createdObjectVisibilityController = {}
-basic.createdObjectVisibilityController.DELAY_TIME = 1;
-basic.createdObjectVisibilityController.timer = 0;
-basic.createdObjectVisibilityController.objectList = [];
+basic.motionController = {};
+basic.motionController.WITH_MOTION_TIME = 2;
+basic.motionController.DONT_MOTION_TIME = 1;
 
-// CSS hareketi verir.
-basic.motionController = {}
-basic.motionController.SET_MOTION_TIME = 80;
-basic.motionController.WITH_MOTION_TIME = 100;
-basic.motionController.WITH_MOTION_TIME_SECOND = 10;
-basic.motionController.DONT_MOTION_TIME = 5;
-
-
-// Başlangıç fonksiyonu.
 basic.start = function () {
 
     page = new MainBox();
     selectBox(page);
 
+    page.bodyElement.style.margin = "0px";
+    page.bodyElement.style.overflow = "hidden";
     page.box = createBox(0, 0, page.width, page.height);
     that.element.style.position = "fixed";
+    //that.element.style.width = "100%";
+    //that.element.style.height = "100%";
     that.color = "transparent";
+    
     page.onResize(function() {
         if (typeof page.refreshSize === "function") {
             page.refreshSize();
         }
     });
-
+    
     if (typeof start === "function") {
         start();
         basic.afterStart();
@@ -173,49 +148,42 @@ basic.start = function () {
     if (typeof loop === "function") {
         if(!basic.loopTimer) setLoopTimer(1000);
     }
-    
+
 }
 
 basic.afterStart = function () {
-    // Kullanıcının start() fonksiyonu çalıştırıldıktan sonra,
-    var timeUsed = (Date.now() - basic.startTime)
-    if (timeUsed > 300) {
-        print("basic.js: Run time: " + timeUsed + "ms");
-        if(basic.autoAddObjectIntoBoxController.isActive == 1) {
-            console.log("basic.js: For performance, make passive autoAddObjectIntoBoxController and use selectBox() or .add() function. (Look handbook)")
-        }
-    }
-    
+    // Hız testi:
+    // var timeUsed = (Date.now() - basic.startTime)
+    // print(timeUsed);
 }
 
-
-// Konsola metin yazdır.
 basic.print = function ($message) {
     console.log($message);
 }
 var print = basic.print;
 
-// Rasgele bir sayı üretir. Tek parametreye izin verilmiyor.
 basic.random = function ($first, $second) {
 
-    let myNum = 0;
+    let result = 0;
 
     if ($second != undefined) {
+
         if ($second < $first) {
             console.log("basic.js: random(): The second parameter (number) must be greater than the first.");
+        
         } else {
-            myNum = $first + Math.round(Math.random() * ($second - $first));
+            result = $first + Math.round(Math.random() * ($second - $first));
         }
+
     } else {
         console.log("basic.js: random(): Two parameters (numbers) must be sent.");
     }
-    
-    return myNum;
+
+    return result;
 
 }
 var random = basic.random;
 
-// Sayıya çevir. ($type: "float" veya "integer")
 basic.num = function ($str, $type = "float") {
 
     if ($type == "float") {
@@ -225,19 +193,15 @@ basic.num = function ($str, $type = "float") {
     } else if ($type == "integer" || $type == "int") {
         return parseInt($str);
     }
-    
+
 }
 var num = basic.num;
 
-// Metine çevir.
 basic.str = function ($num) {
-
     return String($num);
-
 }
 var str = basic.str;
 
-// Mobil olup/olmadığını kontrol et. (1: mobil, 0: değil)
 basic.isMobile = function () {
 
     let answer = 0;
@@ -252,7 +216,6 @@ basic.isMobile = function () {
 }
 var isMobile = basic.isMobile;
 
-// URL aç.
 basic.go = function ($url, $windowType = "_self") {
 
     // window.location.href = $url;
@@ -264,7 +227,7 @@ basic.go = function ($url, $windowType = "_self") {
 }
 var go = basic.go;
 
-// İki haneli saat ve tarih için başında 0 gösterir. 03:10:05
+// Tek haneli sayıyı, başına "0" ekleyerek iki haneli yapar. 03:10:05
 basic.twoDigitFormat = function($number) {
 
     if ($number <= 9) {
@@ -274,10 +237,8 @@ basic.twoDigitFormat = function($number) {
     return $number;
 
 }
-
 var twoDigitFormat = basic.twoDigitFormat;
 
-// Bilgiyi kaydetmek ve geri yüklemek.
 basic.storage = {
 
     save(key, value) {
@@ -293,7 +254,6 @@ basic.storage = {
 }
 var storage = basic.storage;
 
-// Saat bilgileri.
 basic.clock = {
 
     get hour() {
@@ -307,29 +267,32 @@ basic.clock = {
     get second() {
         let dt = new Date();
         return dt.getSeconds();
+    }, 
+    get milisecond() {
+        let dt = new Date();
+        return dt.getMilliseconds();
     }
 
 };
 var clock = basic.clock;
 
-// Tarih bilgileri.
 basic.date = {
 
     get year() {
         let dt = new Date();
         return dt.getFullYear();
     },
-    get mountNumber() {
+    get monthNumber() {
         let dt = new Date();
-        let mouth = dt.getMonth();
-        mouth++;
-        return mouth;
+        let month = dt.getMonth();
+        month++;
+        return month;
     },
     get ayAdi() {
-        return basic.aylar[this.mountNumber - 1];
+        return basic.aylar[this.monthNumber - 1];
     },
-    get mountName() {
-        return basic.months[this.mountNumber - 1];
+    get monthName() {
+        return basic.months[this.monthNumber - 1];
     },
     get dayNumber() {
         let dt = new Date();
@@ -352,7 +315,7 @@ basic.date = {
 }
 var date = basic.date;
 
-// Temel nesnelerin, ortak metod ve özellikleri.
+// Common methods and properties of basic objects.
 class Basic_UIComponent {
 
     /*
@@ -467,9 +430,9 @@ class Basic_UIComponent {
     set height($value) {
         if ($value != "auto") {
             this.contElement.style.height = parseInt($value) + "px";
+
         } else {
             console.log("basic.js: .height: The 'auto' property is not supported for this object.");
-
         }
     }
 
@@ -494,15 +457,13 @@ class Basic_UIComponent {
 
         this._visible = $value;
 
+        // display tipini daha sonra kullanmak üzere sakla.
         if (this.contElement.style.display && this.contElement.style.display != "none") {
             this._displayType = this.contElement.style.display;
         }
 
-        if(this.contElement.style.visibility == "visible") {
-            this.contElement.style.display = ($value == 1) ? this._displayType : "none";
-        }
-        // NOT: Nesne olluşturulduktan sonra, görünür olana kadar display:none uygulanmaz.
-        // Böylece tarayıcı, "auto" boyutlandırma için hesaplamaları yapabilir.
+        this.contElement.style.display = ($value == 1) ? this._displayType : "none";
+
     }
 
     get clickable() {
@@ -612,23 +573,14 @@ class Basic_UIComponent {
         basic.moveToCenter(this, $position);
     }
 
-    aline($obj, $position, $space = 0) {
-        basic.moveToAline(this, $obj, $position, $space);
+    aline($obj, $position, $space = 0, $secondPosition) {
+        basic.moveToAline(this, $obj, $position, $space, $secondPosition);
     }
 
     // -- Otomatik hizalama metodları SONU
-
+    
     // Nesneyi sil.
     remove() {
-
-        if (this._type == "box") {
-            for (var i = 0; i < basic.createdBoxList.length; i++) {
-                if (basic.createdBoxList[i] == this) {
-                    basic.createdBoxList.splice(i, 1);
-                    break;
-                }
-            }
-        }
         this.contElement.remove();
     }
 
@@ -678,25 +630,9 @@ class Basic_UIComponent {
     // Hareket
     setMotion($motionString) {
 
-        // motionString: "left 1s, top 1s, width 1s, height 1s, transform 1s, background-color 1s, border-radius 1s, opacity 1s"
-
-        // Eğer nesne oluşturulduktan sonra, gösterilmiş ise,
-        if (this.contElement.style.visibility == "visible") {
-
-            this.setMotionNow($motionString);
-
-        } else {
-
-            this.contElement.style.transition = "none";
-            this._motionString = $motionString;
-            var _that = this;
-
-            setTimeout(function() {
-                _that.contElement.style.transition = _that._motionString;
-            }, basic.motionController.SET_MOTION_TIME);
-            // NOT: Nesnelerin ilk oluşturulduklarında, hareket ayarlarından etkilenmez.
-
-        }
+        // example motionString: "left 1s, top 1s, width 1s, height 1s, transform 1s, background-color 1s, border-radius 1s, opacity 1s"
+        // example motionString: "all 0.3s"
+        this.setMotionNow($motionString);
 
     }
 
@@ -716,17 +652,11 @@ class Basic_UIComponent {
 
         var _that = this;
 
-        if (this.contElement.style.visibility == "visible") {
-            setTimeout(function() {
-               _that.canMotionNow();
-                $func(_that);
-            }, basic.motionController.WITH_MOTION_TIME_SECOND);
-        
-        } else {
-            setTimeout(function() {
-                $func(_that);
-            }, basic.motionController.WITH_MOTION_TIME);
-        }
+        setTimeout(function() {
+            _that.canMotionNow();
+             $func(_that);
+         }, basic.motionController.WITH_MOTION_TIME);
+
     }
 
     // Harekete, belli bir süre ara ver.
@@ -737,7 +667,7 @@ class Basic_UIComponent {
 
         setTimeout(function(){
             _that.contElement.style.transition = _that._motionString;
-        }, basic.motionController.DONT_MOTION_TIME)
+        }, basic.motionController.DONT_MOTION_TIME);
 
     }
 
@@ -808,9 +738,6 @@ class MainBox {
 
     set zoom($value) {
         this._zoom = $value;
-        // page.zoom kullanılır ise, body margin 0px olarak ayarlanır.
-        // TODO: Bu kodu silebilirsin artık. fixed box eklendi.
-        this.bodyElement.style.margin = "0px"
         this.bodyElement.style.transformOrigin = "top left";
         this.bodyElement.style.transform = "scale(" + $value + ")";
 
@@ -832,10 +759,10 @@ class MainBox {
         page.zoom = 1
         let _w = page.width;
 
-        // ikinci değer yok ise
+        // ikinci değer yok ise,
         $maxValue = $maxValue || $value;
 
-        // ekran genişliği izin verilenden fazla ise
+        // ekran genişliği izin verilenden fazla ise,
         if (_w > $maxValue) {
             page.zoom = $maxValue / $value;
         } else {
@@ -849,29 +776,19 @@ class MainBox {
         page.box.height = page.height;
     }
 
-    /*
-    _addEventListener($event, $func) {
-        window.addEventListener($event, $func);
-    }
-    */
-
     onClick($func) {
         this._box._addEventListener("click", $func, window);
-        //this._addEventListener("click", $func);
     }
 
     remove_onClick($func) {
         this._box._removeEventListener("click", $func, window);
-        //this._addEventListener("click", $func);
     }
 
     onResize($func) {
-        //this._addEventListener("resize", $func);
         this._box._addEventListener("resize", $func, window);
     }
 
     remove_onResize($func) {
-        //this._addEventListener("resize", $func);
         this._box._removeEventListener("resize", $func, window);
     }
 
@@ -924,9 +841,7 @@ class Box extends Basic_UIComponent {
         this.width = $width;
         this.height = $height;
 
-        basic.createdBoxList.push(this);
         makeBasicObject(this);
-        basic.createdObjectVisibilityController.makeVisibleWhenReady(this);
 
     }
 
@@ -1084,7 +999,6 @@ class Button extends Basic_UIComponent {
         this.height = $height;
 
         makeBasicObject(this);
-        basic.createdObjectVisibilityController.makeVisibleWhenReady(this);
 
     }
 
@@ -1157,7 +1071,7 @@ class Button extends Basic_UIComponent {
     }
 
     remove_onClick($func) {
-        this.clickable = 0;
+        //this.clickable = 0;
         this._removeEventListener("click", $func, this.buttonElement);
     }
 
@@ -1237,7 +1151,6 @@ class TextBox extends Basic_UIComponent {
         basic.selectedBox.element.appendChild(this._mainElement);
 
         makeBasicObject(this);
-        basic.createdObjectVisibilityController.makeVisibleWhenReady(this);
 
     }
 
@@ -1435,7 +1348,6 @@ class Label extends Basic_UIComponent {
         this.height = $height;
 
         makeBasicObject(this);
-        basic.createdObjectVisibilityController.makeVisibleWhenReady(this);
 
     }
 
@@ -1553,6 +1465,7 @@ class Image extends Basic_UIComponent {
         super("image");
 
         this._autoSize = 1;
+        this._space = 0;
 
         // Renk
         this._backgroundColor = "transparent";
@@ -1597,7 +1510,6 @@ class Image extends Basic_UIComponent {
         basic.selectedBox.element.appendChild(this._element);
 
         makeBasicObject(this);
-        basic.createdObjectVisibilityController.makeVisibleWhenReady(this);
 
     }
 
@@ -1652,31 +1564,31 @@ class Image extends Basic_UIComponent {
     }
 
     get space() {
-        return parseInt(this.contElement.style.padding) || 0;
+        return this._space;
+        // return parseInt(this.contElement.style.padding) || 0;
     }
     
     set space($value) {
-        this.contElement.style.padding = $value + "px";
+
+        if ($value > 50) {
+            $value = 50;
+        }
+
+        if ($value < 0) {
+            $value = 0;
+        }
+
+        this._space = $value;
+        var spaceX = parseInt((this.width / 100) * $value);
+        var spaceY = parseInt((this.height / 100) * $value);
+
+        this.contElement.style.paddingLeft = spaceX + "px";
+        this.contElement.style.paddingRight = spaceX + "px";
+        this.contElement.style.paddingTop = spaceY + "px";
+        this.contElement.style.paddingBottom = spaceY + "px";
+
     }
 
-    get spaceX() {
-        return parseInt(this.contElement.style.paddingLeft) || 0;
-    }
-
-    set spaceX($value) {
-        this.contElement.style.paddingLeft = $value + "px";
-        this.contElement.style.paddingRight = $value + "px";
-    }
-
-    get spaceY() {
-        return parseInt(this.contElement.style.paddingTop) || 0;
-    }
-
-    set spaceY($value) {
-        this.contElement.style.paddingTop = $value + "px";
-        this.contElement.style.paddingBottom = $value + "px";
-    }
-    
     onClick($func) {
         this.clickable = 1
         this._addEventListener("click", $func, this.contElement);
@@ -1831,8 +1743,7 @@ class Sound {
 
 /* ### FUNCTIONS ### */
 
-
-// Dizideki tüm özellikleri, nesneye yansıt.
+// Set styles with style object.
 basic.setProparties = function ($this, $values = []) {
 
     for (var valueTitle in $values) {
@@ -1841,13 +1752,8 @@ basic.setProparties = function ($this, $values = []) {
 
 }
 
-// Bir nesnenin, başka bir nesneye göre ortalanması.
+// Centering one object to box.
 basic.moveToCenter = function ($this, $position) {
-
-    if (basic.autoAddObjectIntoBoxController.isActive) {
-        basic.autoAddObjectIntoBoxController.addIntoBox($this);
-        // NOT: center() kullanılmadan önce; nesne, kutu içine taşınmış olmalı.
-    }
 
     if ($position == "left" || !$position) {
         let _w = $this.upperObject.width - (($this.upperObject.border || 0) * 2);
@@ -1862,12 +1768,12 @@ basic.moveToCenter = function ($this, $position) {
     }
 
     // Her zaman tam sayı olarak ortala, yoksa bulanıklık yapabilir.
-    // TODO: Eğer, kenarlık kalınlıkları, aynı olmaz ise, doğru hesaplayamayacak.
+    // NOT: Eğer, kenarlık kalınlıkları, aynı olmaz ise, hesaba katılmaz.
 
 }
 
-// Bir nesnenin, başka bir nesneye göre hizalanması.
-basic.moveToAline = function ($this, $obj, $position, $space) {
+// Alignment of one object with respect to another object.
+basic.moveToAline = function ($this, $obj, $position, $space, $secondPosition) {
 
     if ($position == "left") {
         if (!isNaN($obj.left)) {
@@ -1958,17 +1864,69 @@ basic.moveToAline = function ($this, $obj, $position, $space) {
         }
 
     }
+
+    if ($position == "left" || $position == "right") {
+
+        var _difference = $obj.height - $this.height;
+
+        switch ($secondPosition) {
+            case "top":
+                break;
+            case "bottom":
+                if (!isNaN($obj.top)) {
+                    $this.top += parseInt(_difference);
+        
+                } else if (!isNaN($obj.bottom)) {
+                    $this.bottom -= parseInt(_difference);
+        
+                }
+                break;
+            case "center":
+                if (!isNaN($obj.top)) {
+                    $this.top += parseInt(_difference / 2);
+        
+                } else if (!isNaN($obj.bottom)) {
+                    $this.bottom -= parseInt(_difference / 2);
+        
+                }
+                break;
+        }
+
+    } else if ($position == "top" || $position == "bottom") {
+
+        var _difference = $obj.width - $this.width;
+
+        switch ($secondPosition) {
+            case "left":
+                break;
+            case "right":
+                if (!isNaN($obj.left)) {
+                    $this.left += parseInt(_difference);
+        
+                } else if (!isNaN($obj.right)) {
+                    $this.right -= parseInt(_difference);
+        
+                }
+                break;
+            case "center":
+                if (!isNaN($obj.left)) {
+                    $this.left += parseInt(_difference / 2);
+        
+                } else if (!isNaN($obj.right)) {
+                    $this.right -= parseInt(_difference / 2);
+        
+                }
+                break;
+        }
+
+    }
     
 }
 
-// Zoom değeri değiştirilmiş bir uzunluğun, orjinalini hesaplar.
 basic.antiZoom = function ($value) {
-
     return parseInt($value * (1 / page.zoom));
-
 }
 
-// Her saniye tekrar eden fonksiyonun zamanını ayarlar.
 basic.setLoopTimer = function ($time) {
     
     if (typeof loop === "function") {
@@ -1998,6 +1956,9 @@ basic.selectBox = function ($box) {
     // Bir div elementine, Box nesnesi eklemek için;
     // document.getElementById("elementID").appendChild(boxObject.element)
 
+    // Bir div elementini, Box nesnesi eklemek için;
+    // box.html = document.getElementById("elementID").innerHTML
+
 }
 var selectBox = basic.selectBox;
 
@@ -2009,93 +1970,12 @@ basic.getSelectedBox = function () {
 }
 var getSelectedBox = basic.getSelectedBox;
 
-// Özel bir nesne oluşturulduğunda, that ve exThat nesnelerini yeniden düzenle.
+// Add your custom object to basic.js ecosystem.
 const makeBasicObject = function($newObject) {
 
-    if (basic.autoAddObjectIntoBoxController.isActive && that) {
-        basic.autoAddObjectIntoBoxController.addIntoBox(that);
-        // NOT: Yeni bir nesne oluşturulduğunda,
-        // Bir önceki nesnenin, otomatik eklenmesini gerçekleştir.
-    }
-
-    // Oluşturulan nesne, that olarak kullanılabilsin.
+    // Object can be called as that.
     exThat = that
     that = $newObject
-
-    if (basic.autoAddObjectIntoBoxController.isActive) {
-        basic.autoAddObjectIntoBoxController.addIntoBoxAfterLinkedWithVariable(that);
-        // NOT: Eğer yeni bir nesne oluşturulmaz ise, bu nesne otomatik eklenir.
-    }
-
-}
-
-// Nesnenin, değişkene aktarılmasını bekler ve bağlantılı olduğu kutuya taşır.
-basic.autoAddObjectIntoBoxController.addIntoBoxAfterLinkedWithVariable = function ($object) {
-
-    // NOT: Kutu ile bağlantılı nesne örneği; box1.btn1 = createButton()
-
-    if (basic.autoAddObjectIntoBoxController.timer) {
-        basic.autoAddObjectIntoBoxController.timer = 
-            clearTimeout(basic.autoAddObjectIntoBoxController.timer);
-    }
-
-    basic.autoAddObjectIntoBoxController.timer = setTimeout(function () {
-        basic.autoAddObjectIntoBoxController.addIntoBox($object);
-        basic.autoAddObjectIntoBoxController.timer = 0;
-    }, basic.autoAddObjectIntoBoxController.DELAY_TIME);
-
-}
-
-// Nesneyi, bağlantılı olduğu kuyuya taşır.
-basic.autoAddObjectIntoBoxController.addIntoBox = function ($object) {
-    // Taşıyıcı nesne, alt nesnelere eklenmeye çalışılır ise devam et:
-    try {
-        var isFound = 0
-        //for (var boxIndex in basic.createdBoxList) {
-        for (var boxIndex = (basic.createdBoxList.length - 1); boxIndex >= 0; boxIndex--) {
-            for (var boxItemName in basic.createdBoxList[boxIndex]) {
-                if (basic.createdBoxList[boxIndex][boxItemName] == $object &&
-                    basic.createdBoxList[boxIndex].upperObject != $object) {
-                        basic.createdBoxList[boxIndex].add($object);
-                        isFound = 1;
-                }
-                if (isFound) {
-                    break;
-                }
-            }
-            if (isFound) {
-                break;
-            }
-        }
-        //}
-    } catch (e) {
-        console.log("basic.js: Automatic inbox error.")
-    }
-}
-
-// Otomatik taşıma sistemi aktif mi?
-basic.autoAddObjectIntoBoxController.setActive = function (value) {
-    basic.autoAddObjectIntoBoxController.isActive = value;
-}
-
-basic.autoAddObjectIntoBoxController.getActive = function () {
-    return basic.autoAddObjectIntoBoxController.isActive;
-}
-
-basic.setAutoAdd = basic.autoAddObjectIntoBoxController.setActive;
-basic.getAutoAdd = basic.autoAddObjectIntoBoxController.getActive
-
-// Denetçi şu anda çalışıyor mu?
-basic.autoAddObjectIntoBoxController.isRunning = function() {
-
-    var isRunning = 0;
-
-    // Eğer, nesnelerin taşınması devam ediyor ise,
-    if (basic.autoAddObjectIntoBoxController.timer) {
-        isRunning = 1;
-    }
-
-    return isRunning;
 
 }
 
@@ -2124,7 +2004,7 @@ basic.resizeDetection.remove_onResize = function($element, $func) {
     }
 
     // NOT: Dizi tersten kontrol edildiği için, silme işlemi, 
-    // kontrol edilmeyen kayıtların sıra numarasını değiştiremez.
+    // kontrol edilmeyen kayıtların sıra numarasını değiştirmez.
 
     basic.resizeDetection.whenDetected.unobserve($element);
 
@@ -2146,61 +2026,8 @@ basic.resizeDetection.whenDetected = new ResizeObserver(function(entries) {
 
 })
 
-// Oluşturulan nesneler hazır olduğunda, hepsini göster.
-basic.createdObjectVisibilityController.makeVisibleWhenReady = function ($object) {
+// When content is loaded,
 
-    var controller = basic.createdObjectVisibilityController;
-
-    if ($object) {
-        controller.objectList.push($object);
-    }
-
-    if (controller.timer) {
-        controller.timer = clearTimeout(controller.timer);
-    }
-
-    controller.timer = setTimeout(function() {
-
-        var howManyControllerAreRunning = 0;
-
-        howManyControllerAreRunning += basic.autoAddObjectIntoBoxController.isRunning();
-        
-        var areReadyToMakeVisible = 0;
-
-        if (howManyControllerAreRunning == 0) {
-            areReadyToMakeVisible = 1;
-        }
-
-        if (areReadyToMakeVisible) {
-
-            // Hazır, hepsini göster:
-            for ( var i = 0; i < controller.objectList.length; i++) {
-
-                controller.objectList[i].contElement.style.visibility = "visible";
-
-                // Nesne gizlenmiş ise gösterme.
-                if (controller.objectList[i]._visible == 0) {
-                    controller.objectList[i].visible = 0;
-                }
-                // NOT: Geciktirilmiş, display: none özelliği, burada devreye alınır.
-                
-            }
-            
-            controller.objectList = [];
-            // print("basic.js: show time: " + (Date.now() - basic.startTime) + "ms");
-
-        } else {
-
-            // Hazır değil, tekrar kontrol et:
-            controller.makeVisibleWhenReady();
-
-        }
-
-    }, controller.DELAY_TIME);
-
-}
-
-// İçerik yüklendiğinde,
 window.addEventListener("load", function () {
-    basic.start()
+    basic.start();
 });

@@ -3,12 +3,11 @@
 /*
 
 
-v1.6.4
-
-
-basic.js is a technique (JavaScript library) that simplifies project development.
+(v1.6.5) Create interactive user interfaces with basic programming skills.
 - Project Site: https://bug7a.github.io/basic.js/
 
+
+INFORMATION:
 
 Started Date: 25 October 2020
 Developer: Bugra Ozden
@@ -62,24 +61,24 @@ Have Fun.
 /* UI COMPONENTS */
 .basic_box {
     
-    position:absolute;
-    display:block;
-    visibility: hidden;
+    position: absolute;
+    display: block;
+    /* visibility: hidden; */
     overflow-x: hidden;
     overflow-y: hidden;
-    width:100px;
-    height:100px;
+    width: 100px;
+    height: 100px;
     background-color: whitesmoke;
     border-radius: 0px;
     border: 0px solid gray;
     font-family: opensans;
     font-size: 16px;
     text-align: left;
-    color:#4A4A4A;
+    color: #4A4A4A;
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    pointer-events:none;
+    pointer-events: none;
     /* firefoxda da scroll görünmesin */
     scrollbar-width: none;
     
@@ -88,8 +87,8 @@ Have Fun.
 .basic_label {
     
     position:absolute;
-    display:block;
-    visibility: hidden;
+    display: block;
+    /* visibility: hidden; */
     overflow: hidden;
     font-family: opensans;
     font-size: 20px;
@@ -107,8 +106,8 @@ Have Fun.
 .basic_button {
     
     position:absolute;
-    display:block;
-    visibility: hidden;
+    display: block;
+    /* visibility: hidden; */
     overflow: hidden;
     font-family: opensans;
     font-size: 20px;
@@ -152,8 +151,8 @@ Have Fun.
 
 .basic_textbox-main {
     position:absolute;
-    display:block;
-    visibility: hidden;
+    display: block;
+    /* visibility: hidden; */
 }
 
 .basic_textbox {
@@ -236,8 +235,8 @@ Have Fun.
 .basic_image {
     
     position:absolute;
-    display:block;
-    visibility: hidden;
+    display: block;
+    /* visibility: hidden; */
     overflow: hidden;
     background-color: transparent;
     border: 0px solid #000000;

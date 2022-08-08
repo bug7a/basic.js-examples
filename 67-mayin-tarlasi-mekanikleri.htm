@@ -78,6 +78,7 @@
 
             // BOX: Küçük kutuların taşındığı kutu. Parametreler: Yatay kare sayısı, Dikey kare sayısı.
             a1.b1 = createTheField(level.width, level.height)
+            a1.add(that)
             that.color = "white"
             that.border = 1
             that.center()
@@ -120,6 +121,7 @@
                     var boxName = "boxx" + j + "y" + i
 
                     boxField[boxName] = createBox(0, 0, BOX_WIDTH, BOX_HEIGHT)
+                    boxField.add(that)
                     that.left = j * BOX_WIDTH
                     that.top = i * BOX_HEIGHT
                     that.round = 1
@@ -127,13 +129,14 @@
                     boxList[boxName] = that
 
                     boxField[upperBoxName] = createImage(0, 0, BOX_WIDTH, BOX_HEIGHT)
+                    boxField.add(that)
                     var imageFilePath = "images/67/box.svg"
                     that.load(imageFilePath)
                     that.left = j * BOX_WIDTH
                     that.top = i * BOX_HEIGHT
-                    // that.visible = 0
                     that.x = j
                     that.y = i
+                    that.color = "white"
                     that.onClick(function(self) {
                         self.visible = 0
                         openNextWhiteBoxes(self.x, self.y)
@@ -144,11 +147,10 @@
                 }
             }
 
-            boxField.width = (leftCount * BOX_WIDTH) + (boxField.border * 2)
-            boxField.height = (topCount * BOX_HEIGHT) + (boxField.border * 2)
+            boxField.width = (leftCount * BOX_WIDTH) + 2
+            boxField.height = (topCount * BOX_HEIGHT) + 2
 
             makeBasicObject(boxField)
-
             return boxField
             
         }
@@ -173,9 +175,10 @@
 
                     // IMAGE: Bomba resmi
                     obj.imgBomb = createImage(0, 0, obj.width, obj.height)
+                    obj.add(that)
                     var imageFilePath = "images/67/bomb.png"
                     that.load(imageFilePath)
-                    that.space = 3
+                    that.space = 10
 
                     bombList[boxName] = that
 
@@ -232,6 +235,7 @@
 
                         if (bombCount != 0) {
                             boxObject.lblNumber = createLabel(0, 0, level.boxSize)
+                            boxObject.add(that)
                             that.text = bombCount
                             that.fontSize = level.fontSize
                             that.textAlign = "center"
