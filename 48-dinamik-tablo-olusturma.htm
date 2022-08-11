@@ -106,6 +106,7 @@
 
                 // NESNE: Başlık
                 tableObject["title" + i] = createButton(0, 0, titles[i].width, 40)
+                tableObject.add(that)
                 that.text = titles[i].name
                 that.buttonElement.style.cursor = "default"
                 that.prop(propTableTitle)
@@ -125,6 +126,7 @@
 
             // NESNE: İçeriği taşıyan kaydırılabilir kutu
             tableObject.b1 = createBox(0, 40, tableObject.width, tableObject.height - 40)
+            tableObject.add(that)
             that.color = "transparent"
             that.border = 0
             that.scrollY = 1
@@ -145,6 +147,7 @@
 
                 // NESNE: Satırın taşıyıcı kutusu.
                 tableObject.b1["b" + count] = createBox(0, (count * 30), tableObject.width, 30)
+                tableObject.b1.add(that)
                 that.border = 0
                 that.content = item
                 //that.onClick(itemClicked)
@@ -165,6 +168,7 @@
 
                     // NESNE: Bir satırdaki içerik taşıyan kare.
                     itemObject["lbl" + j] = createLabel(tableObject["title" + j].left, 0, tableObject["title" + j].width, itemObject.height)
+                    itemObject.add(that)
                     that.textAlign = titles[j].textAlign
 
                     // Sola dayalı olanların başına 10px boşluk koy.

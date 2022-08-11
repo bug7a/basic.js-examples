@@ -96,7 +96,8 @@
                     // Döngünün ürettiği sayılara göre konumlandır.
                     birKare.left = yataySira * 60
                     birKare.top = dikeySira * 60
-                    birKare.borderColor = "cadetblue"
+                    birKare.border = 1
+                    birKare.borderColor = "rgba(0,0,0,0.25)"
                     
                     // Her yeni karede rengi değiştir. (Bir kare beyaz, bir kare renkli)
                     // Satır sonuna geldiğinde, renk değiştirilmez. if (x < 8)
@@ -150,6 +151,7 @@
                 birTas.load("images/satranc/" + taslarBilgi[i].tip + "-" + taslarBilgi[i].renk + ".png")
                 birTas.width = 60
                 birTas.height = 60
+                birTas.space = 10
                 birTas.top = 60 * taslarBilgi[i].y
                 birTas.left = 60 * taslarBilgi[i].x
                 birTas.value = taslarBilgi[i]

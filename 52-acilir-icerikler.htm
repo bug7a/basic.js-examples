@@ -55,15 +55,16 @@
         // İlk çalışan fonksiyon.
         var start = function() {
 
-            // NESNE: İlk sayfayı taşıyan kutu.
+            // BOX: İlk sayfayı taşıyan kutu.
             a0 = createBox(0, 0, page.width, page.height)
             that.color = "white"
 
-            // NESNE: Akordeon taşıyıcı
+            // BOX: Akordeon taşıyıcı
             a0.accordion = createBox(0, 0, ACCORDION_CONTENT_WIDTH, 0)
+            a0.add(that)
             that.color = "transparent"
             // Taşıyıcınını konum değişikliği, hareketli olsun.
-            that.setMotion("top 0.5s, left 0.5s")
+            that.setMotion("top 0.5s")
 
             // a0.accordion nesnesi, accordion olarak da kullanılabilsin.
             accordion = a0.accordion
@@ -74,8 +75,9 @@
             // Butonları ve içeriklerini oluştur.
             for (var i = 0; i < accordionButtons.length; i++) {
                 
-                // NESNE: Buton taşıyıcı
+                // BOX: Buton taşıyıcı
                 accordion["btn" + i] = createBox(0, 0, ACCORDION_CONTENT_WIDTH, 80)
+                accordion.add(that)
                 that.round = 8
                 that.color = "white"
                 // ÖZEL DEĞİŞKEN
@@ -85,28 +87,32 @@
                 that.element.style.cursor = "pointer"
                 that.onClick(accordionBtnClicked)
 
-                // NESNE: Buton yazısı
+                // LABEL: Buton yazısı
                 accordion["btn" + i].lblTitle = createLabel(40, 22, "auto", "auto")
+                accordion["btn" + i].add(that)
                 that.text = accordionButtons[i].name
                 that.textColor = "rgba(0, 0, 0, 0.6"
                 that.fontSize = 25
 
-                // NESNE: Buton ok resmi
+                // IMAGE: Buton ok resmi
                 accordion["btn" + i].imgIcon = createImage(0, 0, 25, 25)
+                accordion["btn" + i].add(that)
                 that.load("images/52/ok.png")
                 that.right = 30
                 that.top = 30
                 that.opacity = 0.1
                 that.setMotion("opacity 0.5s")
 
-                // NESNE: Buton arkaplan rengi biraz koyulaştıran katman
+                // BOX: Buton arkaplan rengi biraz koyulaştıran katman
                 accordion["btn" + i].boxBlack = createBox(0, 0, ACCORDION_CONTENT_WIDTH, 80)
+                accordion["btn" + i].add(that)
                 that.round = 8
                 that.border = 0
                 that.color = "rgba(0, 0, 0, 0.07)"
                 
-                // NESNE: İçerik kutusu
+                // BOX: İçerik kutusu
                 accordion["box" + i] = createBox(0, 0, ACCORDION_CONTENT_WIDTH, 0)
+                accordion.add(that)
                 that.border = 0
                 that.round = 8
                 that.setMotion("top 0.5s, height 0.5s, background-color 0.5s")
@@ -124,18 +130,8 @@
             createBox1Content()
             createBox2Content()
 
-            // Tüm buton ve içeriklerin konumunu hesapla ve ayarla.
-            refreshAccordion()
-            // Nesneyi ortala.
-            accordion.center()
-
-            // ilk butona basılmış gibi hareket ettir.
-            accordion.withMotion(function(self) {
-                accordionBtnClicked(self.btn0)
-
-                // NOT: self.btn0 nesnesi, accordion.btn0 nesnesidir.
-
-            })
+            accordionBtnClicked(accordion.btn0)
+            //accordionBtnClicked(accordion.btn1)
 
             // Sayfa boyutu değiştiğinde, nesneyi yeniden ortala.
             page.onResize(pageResized)
@@ -176,6 +172,7 @@
             }
 
             accordion.height = objectHeight
+            accordion.center()
 
         }
         
@@ -189,23 +186,24 @@
             var newBox = accordion["box" + self.indexNumber]
 
             // Eski seçimi temizle.
+            oldBox.opened = 0
             oldBox.height = 0
             oldBtn.imgIcon.opacity = 0.1
             oldBtn.color = "white"
             oldBtn.element.style.cursor = "pointer"
 
             // Basılan içeriği seç.
-            newBox.height = newBox.lblContent.height
+            newBox.opened = 1
+            newBox.height = newBox.maxHeight
             newBtn.imgIcon.opacity = 0
             newBtn.color = newBox.color
             newBtn.element.style.cursor = "default"
 
-            // Yeniden konumlandır.
-            refreshAccordion()
             // Seçilen içeriğin sıra numarasını sakla.
             accordion.selectedButtonIndex = self.indexNumber
-            // Nesneyi ortala.
-            accordion.center()
+
+            // Yeniden konumlandır.
+            refreshAccordion()
 
         }
         
@@ -215,7 +213,9 @@
 
             box.color = "Lavender"
 
+            // IMAGE: Arkaplan resmi
             box.imgBackground = createImage()
+            box.add(that)
             that.load("images/52/scie3.png")
             that.autoSize = 2
             // NOT: Kapanırken, hareket etmemesi için bottom kullanılmamıştır.
@@ -223,16 +223,15 @@
             that.right = -50
             that.opacity = 0.1
 
-            // NESNE: İçerik yazısı
-            box.lblContent = createLabel(0, 00, box.width, "auto")
+            // LABEL: İçerik yazısı
+            box.lblContent = createLabel(0, 0, box.width, "auto")
+            box.add(that)
             that.text = "Türk Dil Kurumu'na göre bilim, evrenin ya da olayların bir bölümünü konu olarak seçen, deneysel yöntemlere ve gerçekliğe dayanarak yasalar çıkarmaya çalışan düzenli bilgidir. Daha basit bir anlatımla içinde bulunduğumuz hayatı açıklama çabaları olarak tanımlayabiliriz."
             that.textAlign = "left"
             that.textColor = "rgba(0, 0, 0, 0.4"
             that.space = 40
 
-            box.height = 0
-
-            // Bu kutunun içini burada doldur.
+            calculateContentHeight(box, box.lblContent)
 
         }
 
@@ -242,29 +241,25 @@
 
             box.color = "PaleTurquoise"
 
-            // NESNE: İçerik resmi
+            // IMAGE: İçerik resmi
             box.imgBackground = createImage()
+            box.add(that)
             that.load("images/52/tech2.png")
             that.right = 40
             that.width = 120
             that.height = 120
             that.opacity = 0.7
 
-            // NESNE: İçerik yazısı
+            // LABEL: İçerik yazısı
             box.lblContent = createLabel(0, 0, box.width - 140, "auto")
+            box.add(that)
             that.text = "Teknoloji, insanoğlunun gereklerine uygun yardımcı alet ve araçların yapılması ya da üretilmesi için gerekli bilgi ve yetenektir. Teknoloji ayrıca, bir sanayi dalıyla ilgili üretim yöntemlerini, kullanılan araç, gereç ve aletleri kapsayan bilgidir."
             that.textAlign = "left"
             that.textColor = "rgba(0, 0, 0, 0.4"
             that.space = 40
 
-            that.onResize(function(self) {
-                box.height = self.height
-                box.imgBackground.center("top")
-                box.height = 0
-
-                // NOT: imgBackground nesnesinin ortalanması,
-                // box.height bilgisine ihtiyaç duyar.
-
+            calculateContentHeight(box, box.lblContent, function(box, label) {
+                box.imgBackground.top = (box.maxHeight - box.imgBackground.height ) / 2
             })
 
             // Bu kutunun içini burada doldur.
@@ -277,17 +272,39 @@
 
             box.color = "Bisque"
 
-            // NESNE: İçerik yazısı
+            // LABEL: İçerik yazısı
             box.lblContent = createLabel(0, 0, box.width, "auto")
+            box.add(that)
             that.text = "Sanat, insanın duygu, düşünce ve hayallerini, somut ve soyut malzemelerle yaratıcı gücünü kullanarak kişiyi etkileyecek biçimde anlatmasıdır. Sanat, en genel anlamıyla yaratıcılığın ve hayal gücünün ifadesi olarak anlaşılır."
             that.textAlign = "left"
             that.textColor = "rgba(0, 0, 0, 0.4"
             that.space = 40
 
-            box.height = 0
+            calculateContentHeight(box, box.lblContent)
 
             // Bu kutunun içini burada doldur.
             
+        }
+
+        var calculateContentHeight = function(box, label, onResizeFunc = function() {}) {
+
+            box.height = 0
+            box.maxHeight = 0
+            box.opened = 0
+
+            label.onResize(function(self) {
+                
+                box.maxHeight = self.height
+
+                if (box.opened == 1) {
+                    box.height = box.maxHeight
+                    refreshAccordion()
+                }
+
+                onResizeFunc(box, label)
+
+            });
+
         }
 
         </script>

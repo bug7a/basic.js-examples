@@ -59,10 +59,17 @@
         // DİĞER FONKSİYONLAR
         
         var mouseMoved = function(event) {
+
+            var e = window.event;
+            var posX = e.clientX;
+            var posY = e.clientY;
+
+            mouseX = basic.antiZoom(posX)
+            mouseY = basic.antiZoom(posY)
             
             // Farenin konumunu global değişkenlere aktar.
-            mouseX = event.offsetX;
-            mouseY = event.offsetY;
+            //mouseX = event.offsetX;
+            //mouseY = event.offsetY;
 
             lblMouseInfo.text = mouseX + ", " + mouseY
             

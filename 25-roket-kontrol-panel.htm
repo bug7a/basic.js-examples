@@ -47,6 +47,7 @@
             
             // Roket X (TextBox)
             boxKontrol.txtRoketX = createTextBox()
+            boxKontrol.add(that)
             that.title = "Roketin Yatay Konumu:"
             that.minimal = 1
             that.top = 40
@@ -59,6 +60,7 @@
             
             // Roket Y (TextBox)
             boxKontrol.txtRoketY = createTextBox()
+            boxKontrol.add(that)
             that.title = "Roketin Dikey Konumu:"
             that.minimal = 1
             // boxKontrol.txtRoketX metin kutusunun 30px altına hizala.
@@ -66,12 +68,14 @@
             
             // Roket Yön (TextBox)
             boxKontrol.txtRoketYon = createTextBox()
+            boxKontrol.add(that)
             that.title = "Roketin Açısı:"
             that.minimal = 1
             that.aline(boxKontrol.txtRoketY, "bottom", 30)
             
             // Roket Uygula Butonu (Button)
             boxKontrol.btnUygula = createButton()
+            boxKontrol.add(that)
             that.text = "Değişiklikleri Uygula"
             that.color = "tomato"
             that.width = boxKontrol.txtRoketYon.width

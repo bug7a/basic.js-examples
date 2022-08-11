@@ -48,6 +48,7 @@
 
             // NESNE: kutuların taşıyıcısı
             a0.b1 = cbox()
+            a0.add(that)
             that.height = 44
             that.round = 3
             that.color = "black"
@@ -62,6 +63,7 @@
 
             // NESNE: Yeni kutu ekleme butonu
             a0.btnAddNewBox = cbtn()
+            a0.add(that)
             that.text = "Kutu Ekle"
             that.color = "lightgray"
             that.minimal = 1
@@ -100,6 +102,7 @@
 
             // NESNE: Kutu
             a0.b1[newBoxName] = cbox(0, SPACE_BETWEEN_BOXES, 40, 40)
+            a0.b1.add(that)
             // id, ismini bizim belirlediğimi bir değişkendir.
             that.id = lastBoxId
             // Üzerine gelince, basılabilir imleci çıksın.
@@ -114,6 +117,7 @@
 
             // NESNE: Kutu içideki sayı
             a0.b1[newBoxName].lblNumber = clbl(0, 0, 40, 25)
+            a0.b1[newBoxName].add(that)
             that.text = str(lastBoxId)
             that.textAlign = "center"
             that.textColor = "rgba(0, 0, 0, 0.6)"

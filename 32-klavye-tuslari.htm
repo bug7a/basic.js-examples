@@ -40,28 +40,34 @@
 
             // NESNE: F tuşu
             keyboard.keyF = createKey("f")
+            keyboard.add(that)
             that.left = 80
             that.top = 30
 
             // NESNE: Boşluk tuşu
             keyboard.keySpace = createKey("space", 240)
+            keyboard.add(that)
             that.left = 40
             that.top = 100
             
             // NESNE: Sol yön tuşu
             keyboard.keyLeft = createKey("left", 60)
+            keyboard.add(that)
             that.aline(keyboard.keySpace, "right", 50)
 
             // NESNE: Aşağı yön tuşu
             keyboard.keyDown = createKey("down", 60)
+            keyboard.add(that)
             that.aline(keyboard.keyLeft, "right", 8)
 
             // NESNE: Yukarı yön tuşu
             keyboard.keyUp = createKey("up", 60)
+            keyboard.add(that)
             that.aline(keyboard.keyDown, "top", 8)
 
             // NESNE: Sağ yön tuşu
             keyboard.keyRight = createKey("right", 60)
+            keyboard.add(that)
             that.aline(keyboard.keyDown, "right", 8)
 
             page.onResize(function() {
@@ -188,6 +194,7 @@
 
             // LABEL: Tuş metni
             object.lblText = createLabel(0, 0, "auto", "auto")
+            object.add(that)
             that.text = text
             that.onResize(function(self) {
                 self.center()

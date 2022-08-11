@@ -77,6 +77,7 @@
 
             // NESNE: Anahtar kelimeleri taşıyan kutu.
             b1.boxOfKeywords = cbox(20, 20, 300, "auto")
+            b1.add(that)
             that.round = 13
             that.color = "whitesmoke"
             that.element.style.padding = "10px"
@@ -88,11 +89,13 @@
 
             // NESNE: Yeni anahtar kelime ekleme alanı.
             b1.c1 = cbox(0, 0, b1.width, 120)
+            b1.add(that)
             that.bottom = 0
             that.color = "transparent"
 
             // NESNE: Yeni anahtar kelime metin kutusu.
             b1.c1.txtNewKeyword = ctxt(20, 50, boxOfKeywords.width - 60)
+            b1.c1.add(that)
             that.title = "Yeni Kelime:"
             that.minimal = 1
             that.round = 13
@@ -101,6 +104,7 @@
             
             // NESNE: Yeni anahtar kelime ekleme butonu.
             b1.c1.lblbtnAddNewKeyword = clbl(0, 0, 50, 50)
+            b1.c1.add(that)
             that.text = "+"
             that.textAlign = "center"
             that.fontSize = 35
@@ -178,6 +182,7 @@
             // Parametre ile id gönderilmemiş ise, yenisi oluştur. (|| veya)
             id = id || generateNewKeywordId()
             boxOfKeywords["lbl" + id] = createKeyword(keywordText)
+            boxOfKeywords.add(that)
             that.id = id
 
             print("createKeywordInBox: id: " + id + ", text: " + keywordText)

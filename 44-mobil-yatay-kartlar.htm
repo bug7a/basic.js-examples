@@ -60,6 +60,7 @@
 
             // NESNE: Kartları Taşıyan Kutu.
             boxContent.b1 = createBox(0, 0, CARD_AREA_WIDTH, CARD_AREA_HEIGHT)
+            boxContent.add(that)
             that.border = 0
             that.color = "transparent"
 
@@ -70,6 +71,7 @@
 
                 // NESNE: Kutu içindeki kartlar.
                 boxContent.b1["btn" + i] = createCard(left, rooms[i].name, random(0, 2) + " cihaz aktif", rooms[i].image)
+                boxContent.b1.add(that)
                 left += CARD_WIDTH + CARD_LEFT_SPACE
 
             }
@@ -93,10 +95,12 @@
 
             // NESNE: Arka resim
             cardObject.imgBack = createImage(0, 0)
+            cardObject.add(that)
             that.load("images/44/" + image)
 
             // NESNE: Kartın başlığı.
             cardObject.lblTitle = createLabel(10, 20, "auto")
+            cardObject.add(that)
             that.text = name
             that.fontSize = 22
             that.color = "rgba(255, 255, 255, 0.7)"
@@ -107,6 +111,7 @@
 
             // NESNE: Kartın açıklaması.
             cardObject.lblDesc = createLabel(10, 60, "auto")
+            cardObject.add(that)
             that.text = desc
             that.textColor = "white"
             that.color = "rgba(0, 0, 0, 0.3)"

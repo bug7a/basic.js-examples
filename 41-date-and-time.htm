@@ -62,15 +62,15 @@
         var start = function() {
 
             // 25/6/2021
-            var date1 = date.today + "/" + date.mountNumber + "/" + date.year
+            var date1 = date.today + "/" + date.monthNumber + "/" + date.year
             //print(date1)
 
             // 25 Temmuz 2021
-            var date2 = date.today + " " + aylar[date.mountNumber - 1] + " " + date.year
+            var date2 = date.today + " " + aylar[date.monthNumber - 1] + " " + date.year
             //print(date2)
 
             // Bugün, Temmuz ayının 25. günü.
-            var date3 = "Bugün, " + aylar[date.mountNumber - 1] + " ayının " + date.today + ". günü."
+            var date3 = "Bugün, " + aylar[date.monthNumber - 1] + " ayının " + date.today + ". günü."
             //print(date3)
 
             // Günlerden Pazartesi
@@ -101,9 +101,9 @@
 
             // Diğer Kullanımlar.
             lblToday.addText("<br><span style='font-family:opensans-bold;color:#000000;'>Diğer Kullanımlar:</span>")
-            lblToday.addText(date.ayAdi + " / " + date.mountName)
+            lblToday.addText(date.ayAdi + " / " + date.monthName)
             lblToday.addText(date.gunAdi + " / " + date.dayName)
-            lblToday.addText(twoDigitFormat(date.today) + "/" + twoDigitFormat(date.mountNumber) + "/" + date.year)
+            lblToday.addText(twoDigitFormat(date.today) + "/" + twoDigitFormat(date.monthNumber) + "/" + date.year)
             // Bir alt satıra değil, son eklenenin yanına ekle.
             lblToday.text += " " + twoDigitFormat(clock.hour) + ":" + twoDigitFormat(clock.minute) + ":" + twoDigitFormat(clock.second)
 

@@ -147,6 +147,7 @@
             
             // Arttır düğmesi
             colorEditObject.b1 = createButton(5, 5, 50, 50)
+            colorEditObject.add(that)
             that.color = "lightgray"
             that.text = "-"
             that.minimal = 1
@@ -156,6 +157,7 @@
             
             // Renk sayısı
             colorEditObject.t1 = createTextBox(60, 5, 100, 50)
+            colorEditObject.add(that)
             that.text = "0"
             that.minimal = 1
             that.color = "transparent"
@@ -165,6 +167,7 @@
             
             // Azalt düğmesi
             colorEditObject.b2 = createButton(165, 5, 50, 50)
+            colorEditObject.add(that)
             that.color = "lightgray"
             that.text = "+"
             that.minimal = 1

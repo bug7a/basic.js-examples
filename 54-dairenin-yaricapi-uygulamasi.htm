@@ -38,12 +38,14 @@
 
             // NESNE: Ortadaki daire
             a0.circle = cbox(50, 150)
+            a0.add(that)
             that.color = "#FE5D49"
             // CSS hareketi ekle.
             that.setMotion("left 1s, top 1s, width 1s, height 1s, border-radius 1s")
 
             // NESNE: Dairenin altındaki bilgi yazısı
             a0.lblInfo = clbl(0, 0, 300, 40)
+            a0.add(that)
             that.text = ""
             that.fontSize = 13
             that.textAlign = "center"
@@ -51,6 +53,7 @@
 
             // NESNE: Dairenin yarı çapının yazıldığı, metin kutusu
             a0.txtR = ctxt(50, 50, 150)
+            a0.add(that)
             that.title = "Dairenin Yarıçapı:"
             that.text = "100"
             that.textAlign = "center"
@@ -58,6 +61,7 @@
 
             // NESNE: Metin kutusunun yanındaki, milimetre bilgisi
             a0.txtRDesc = clbl(0, 0, 170, 30)
+            a0.add(that)
             that.text = "milimetre (mm)"
             that.fontSize = 17
             that.textColor = "#00000080"
@@ -68,6 +72,7 @@
 
             // NESNE: En alttaki, açıklama yazısı
             a0.lblBottomInfo = clbl(0, 0, 246, 42)
+            a0.add(that)
             that.text = "Dairenin boyutu PIksel (px) cinsindendir.<br>Milimetre temsilidir."
             // %60 görünür, siyah renk. Arkaplan ile daha uyumlu görünür.
             that.textColor = "rgba(0, 0, 0, 0.6"

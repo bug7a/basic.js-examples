@@ -15,6 +15,7 @@
 
             body {
 
+                overflow: auto !important;
                 font-family: Arial;
 
             }
@@ -72,6 +73,7 @@
 
             // Renk Kutusu
             boxDIV.boxColor = createBox(0, 0, 30, 30)
+            boxDIV.add(that)
             that.color = "white"
             that.border = 0
             that.round = 4
@@ -80,6 +82,7 @@
             
             // Renk İsmi
             boxDIV.lblColor = createLabel(0, 0)
+            boxDIV.add(that)
             that.aline(boxDIV.boxColor, "bottom", 5)
             that.text = "white"
             that.left = 0

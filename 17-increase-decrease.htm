@@ -34,6 +34,7 @@
 
             // BUTTON: Decrease button.
             b1.btnDecrease = createButton(5, 5)
+            b1.add(that)
             that.text = "Decrease"
             that.textColor = "rgba(255, 255, 255, 0.9)"
             that.color = "tomato"
@@ -44,6 +45,7 @@
             
             // LABEL: Number text.
             b1.lblNumber = createLabel()
+            b1.add(that)
             // Starting number.
             that.text = "0"
             that.textAlign = "center"
@@ -56,6 +58,7 @@
 
             // BUTTON: Increase button.
             b1.btnIncrease = createButton()
+            b1.add(that)
             that.text = "Increase"
             that.textColor = "rgba(255, 255, 255, 0.9)"
             that.color = "cadetblue"
@@ -69,7 +72,7 @@
             refreshButtonsStatus()
         }
 
-        // A function that increases the number by 1 when the key is pressed.
+        // A function that increases the number by 1 when the key is clicked.
         var increaseNumber = function() {
             
             // Sum the number in the label object by 1 and write it back to the label.
@@ -79,7 +82,7 @@
             refreshButtonsStatus()
         }
 
-        // A function that increases the number by 1 when the key is pressed.
+        // A function that increases the number by 1 when the key is clicked.
         var decreaseNumber = function() {
             
             // Sum the number in the Label object by 1 and write it back to the label.

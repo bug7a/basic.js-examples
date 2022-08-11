@@ -75,6 +75,7 @@
 
                     // NESNE: Buttonlardan biri
                     menu["item" + i] = createButtonWithIcon(menuData[i].text, menuData[i].width, "images/22/" + menuData[i].icon)
+                    menu.add(that)
                     // CSS ile butonun üzerine geldiğinde renginin değişmesini sağla.
                     that.element.classList.add("btn-type1")
                     // CSS bağlantısını kaldırmak için
@@ -87,6 +88,7 @@
 
                     // NESNE: Ayıraçlardan biri
                     menu["item" + i] = createBox()
+                    menu.add(that)
                     that.color = "whitesmoke"
                     that.width = 4
                     that.height = 50
@@ -116,6 +118,7 @@
 
             // NESNE: Seçilen butonu belirten nokta.
             menu.selectedDot = createBox(0, 0, 10, 3)
+            menu.add(that)
             that.color = "tomato"
             that.round = 10
             that.border = 0
@@ -176,10 +179,12 @@
 
             // NESNE: Resim
             object.imgLogo = createImage(15, 12, 25, 25)
+            object.add(that)
             that.load(iconPath)
 
             // NESNE: Yazı
             object.lblText = createLabel(55, 13)
+            object.add(that)
             that.text = text
             that.textColor = "rgba(0, 0, 0, 0.6)"
             that.fontSize = 18

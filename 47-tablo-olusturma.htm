@@ -64,6 +64,7 @@
 
             // NESNE: Başlık 1
             tblListe.title1 = createButton(0, 0, 140, TITLE_HEIGHT)
+            tblListe.add(that)
             that.text = "Sıra"
             // Butonun üzerine gelindiğinde, el imleci çıkmasın.
             that.buttonElement.style.cursor = "default"
@@ -72,6 +73,7 @@
 
             // NESNE: Başlık 2
             tblListe.title2 = createButton(0, 0, 200, TITLE_HEIGHT)
+            tblListe.add(that)
             that.text = "İsim"
             that.buttonElement.style.cursor = "default"
             that.prop(propListeTitle)
@@ -79,6 +81,7 @@
 
             // NESNE: Başlık 3
             tblListe.title3 = createButton(0, 0, 240, TITLE_HEIGHT)
+            tblListe.add(that)
             that.text = "EPosta"
             that.buttonElement.style.cursor = "default"
             that.prop(propListeTitle)
@@ -86,6 +89,7 @@
             
             // NESNE: Tüm satırları taşıyan kaydırılabilir kutu.
             tblListe.b1 = createBox(0, TITLE_HEIGHT, tblListe.width, tblListe.height - TITLE_HEIGHT)
+            tblListe.add(that)
             that.color = "transparent"
             that.border = 0
             that.scrollY = 1
@@ -95,6 +99,7 @@
 
                 // NESNE: Bir satırı taşıyan kutu.
                 tblListe.b1["b" + i] = createBox(0, (i * 30), tblListe.width, 30)
+                tblListe.b1.add(that)
                 that.border = 0
                 // Her bir satıra, o kişinin bilgilerini ekle.
                 that.person = people[i]
@@ -109,16 +114,19 @@
 
                 // NESNE: Sıra
                 item.lblID = createLabel(tblListe.title1.left, 0, tblListe.title1.width, item.height)
+                item.add(that)
                 that.textAlign = "center"
                 that.text = people[i].id
 
                 // NESNE: İsim
                 item.lblName = createLabel(tblListe.title2.left + 10, 0, tblListe.title2.width - 10, item.height)
+                item.add(that)
                 that.textAlign = "left"
                 that.text = people[i].name
 
                 // NESNE: EPosta
                 item.lblEMail = createLabel(tblListe.title3.left + 10, 0, tblListe.title3.width - 10, item.height)
+                item.add(that)
                 that.textAlign = "left"
                 that.text = people[i].email
 

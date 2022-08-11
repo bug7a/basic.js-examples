@@ -87,11 +87,13 @@
 
             // NESNE: Her bir parçanın taşıyıcı kutusu
             a0["b" + messageId] = createBox(0, 0, 450, 0)
+            a0.add(that)
             that.color = "whitesmoke"
             messageItem = a0["b" + messageId]
             
             // NESNE: Yazılardan biri
             messageItem.lblContent = createLabel(0, 0, 350, "auto")
+            messageItem.add(that)
             that.color = color
             that.fontSize = 20
             that.spaceY = 20
@@ -102,6 +104,7 @@
 
             // NESNE: Kullanıcının küçük resmi.
             messageItem.imgAvatar = createImage(30, 20, 30, 30)
+            messageItem.add(that)
             that.load("images/31/" + icon)
             that.round = 15
             that.space = 3

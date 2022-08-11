@@ -142,11 +142,13 @@
 
             // NESNE: Arkaplanı siyah kaplayan kutu.
             object.boxBlack = createBox(0, 0, page.width, page.height)
+            object.add(that)
             that.border = 0
             that.color = "rgba(0, 0, 0, 0.85)"
             
             // NESNE: Beyaz taşıyıcı.
             object.window = createBox()
+            object.add(that)
             that.width = 450
             that.height = 240
             that.color = "white"
@@ -158,6 +160,7 @@
             
             // NESNE: Başlık.
             object.window.lblTitle = createLabel(0, 0)
+            object.window.add(that)
             that.textSize = 20
             that.text = ""
             that.width = object.window.width
@@ -172,6 +175,7 @@
             
             // NESNE: Açıklama.
             object.window.lblDesc = createLabel()
+            object.window.add(that)
             that.text = ""
             that.top = 50
             that.space = 25
@@ -179,6 +183,7 @@
             
             // NESNE: Onay butonu.
             object.window.btnOkay = createButton()
+            object.window.add(that)
             that.text = ""
             that.color = "lightgray"
             that.minimal = 0
@@ -187,6 +192,7 @@
             
             // NESNE: İptal butonu.
             object.window.btnCancel = createButton()
+            object.window.add(that)
             that.text = "İptal"
             that.textColor = "#4A4A4A"
             that.color = "transparent"

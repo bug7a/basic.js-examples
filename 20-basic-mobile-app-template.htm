@@ -11,11 +11,11 @@
         <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Ortak kullanılan kodlar, farklı bir dosyaya konulmuştur. -->
-        <script src="dosyalar/20/close-button.js" type="text/javascript" charset="utf-8"></script>
+        <script src="files/20/close-button.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Diğer sayfaların kodları -->
-        <script src="dosyalar/20/sayfa1.js" type="text/javascript" charset="utf-8"></script>
-        <script src="dosyalar/20/sayfa2.js" type="text/javascript" charset="utf-8"></script>
+        <script src="files/20/sayfa1.js" type="text/javascript" charset="utf-8"></script>
+        <script src="files/20/sayfa2.js" type="text/javascript" charset="utf-8"></script>
         
         <style>
 
@@ -26,8 +26,6 @@
         </style>
         
         <script>
-        
-        /*
         
         /*
 
@@ -123,6 +121,7 @@
             
             // NESNE: Logo resmi
             a0.imgLogo = createImage(0, 100, 110, 110)
+            a0.add(that)
 
             // NOT: bir kutu nesnesinin elemanı olarak oluşturulan
             // tüm nesneler, o kutunun içine taşınır.
@@ -138,6 +137,7 @@
 
             // NESNE: 1. buton
             a0.btn1 = createButton()
+            a0.add(that)
             // Ortak özellikleri ayarla.
             that.prop(propButton)
             that.text = "Sayfa 1"
@@ -147,6 +147,7 @@
             
             // NESNE: 2. button
             a0.btn2 = createButton()
+            a0.add(that)
             // Ortak özellikleri ayarla.
             that.prop(propButton)
             that.text = "Sayfa 2"
@@ -156,6 +157,7 @@
 
             // NESNE: 3. button
             a0.btn3 = createButton()
+            a0.add(that)
             // Ortak özellikleri ayarla.
             that.prop(propButton)
             that.text = "Sayfa 3"
@@ -184,7 +186,7 @@
 
         // Sayfa3 ü göster.
         var showA3 = function() {
-            go("dosyalar/20/sayfa3.htm")
+            go("files/20/sayfa3.htm")
 
         }
 

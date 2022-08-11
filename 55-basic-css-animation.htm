@@ -35,6 +35,7 @@
 
             // NESNE: Buton 1 üst
             a0.btn1 = cbox(0, 0, 40, 40)
+            a0.add(that)
             that.color = "lightgray"
             that.round = 20
             that.center()
@@ -43,6 +44,7 @@
 
             // NESNE: Buton 2 alt
             a0.btn2 = cbox(0, 0, 40, 40)
+            a0.add(that)
             that.color = "lightgray"
             that.round = 20
             that.center()
@@ -51,8 +53,12 @@
 
             // NESNE: Hareket özelliği olan daire
             a0.circle = cbox(0, 0, 20, 20)
+            a0.add(that)
             that.color = "#FE5D49"
             that.round = 100
+
+            that.center()
+            that.opacity = 0
 
             // Belirlenen özellikleri, CSS ile hareketlendir.
             that.setMotion("left 1s, top 1s, width 1s, height 1s, border-radius 1s, background-color 1s, opacity 1s")
@@ -60,13 +66,23 @@
             // NOT: Bu hareket özelliği, iptal edilene kadar korunur.
             // Hareket özelliğini, iptal etmek için,
             // that.setMotion("none")
-            
-            // İlk oluşturulma konumuna hareketsiz gider.
-            that.center()
-            that.opacity = 0
+
+            /*
+            var self = that;
+
+            setTimeout(function() {
+
+                self.width = 150
+                self.height = 150
+                self.opacity = 1
+                self.center()
+
+            }, 5000);
+            */
 
             // İlk oluşturulma konumundan, aşağıdaki özelliklere yumuşak geçiş (hareket) yap.
             that.withMotion(function(self) {
+                
                 self.width = 150
                 self.height = 150
                 self.opacity = 1

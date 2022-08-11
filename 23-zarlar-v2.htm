@@ -39,14 +39,16 @@
 
             // NESNE: Birinci zar.
             b1.imgZar1 = createImage(20, 20, 100, 100)
-            that.load("images/zar1.png")
+            b1.add(that)
+            that.load("images/dice1.png")
             // Zarların dönüşüne, CSS animasyonu ekle.
             that.setMotion("transform 1s")
             
             // NESNE: İkinci zar.
             b1.imgZar2 = createImage(20, 20, 100, 100)
+            b1.add(that)
             that.right = 20
-            that.load("images/zar6.png")
+            that.load("images/dice6.png")
             that.setMotion("transform 1s")
 
             // NESNE: Kullanım bilgisi veren yazı.
@@ -80,8 +82,8 @@
             var sayi2 = random(1, 6)
             
             // Resim dosyalarını yükle.
-            b1.imgZar1.load("images/zar" + sayi1 + ".png")
-            b1.imgZar2.load("images/zar" + sayi2 + ".png")
+            b1.imgZar1.load("images/dice" + sayi1 + ".png")
+            b1.imgZar2.load("images/dice" + sayi2 + ".png")
             
             // Nesneleri, 0 ile 90 arasında rasgele açılarda döndür.
             b1.imgZar1.rotate = random(0, 90)

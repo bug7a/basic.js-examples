@@ -70,12 +70,14 @@
 
             // NESNE: Butonların taşıyıcısı
             tabs.b1 = createBox(0, 0, 50, 50)
+            tabs.add(that)
             that.color = "white"
             that.border = 0
             that.round = 8
 
             // NESNE: Seçili butonun arkasına hareket eden renkli kutu
             tabs.b1.btnSelected = createBox(0, 0)
+            tabs.b1.add(that)
             that.border = 2
             that.borderColor = "white"
             that.round = 8
@@ -89,6 +91,7 @@
             for (var i = 0; i < tabBarButtons.length; i++) {
                 // NESNE: Buton
                 tabs.b1["btn" + i] = createButton(0, 0, tabBarButtons[i].width, 50)
+                tabs.b1.add(that)
                 that.left = buttonsTotalWidth
                 that.text = tabBarButtons[i].name
                 that.minimal = 1
@@ -109,6 +112,7 @@
 
             // NESNE: İçeriklerin taşıyıcısı
             tabs.b2 = createBox(0, 60, 50, 50)
+            tabs.add(that)
             that.height = TAB_CONTENT_HEIGHT
             that.round = 0
             that.border = 0
@@ -120,6 +124,7 @@
             for (var i = 0; i < tabBarButtons.length; i++) {
                 // Her bir içerik için bir taşıyıcı
                 tabs.b2["box" + i] = createBox(0, 0, TAB_CONTENT_WIDTH, TAB_CONTENT_HEIGHT)
+                tabs.b2.add(that)
                 that.left = contentsTotalWidth
                 that.border = 0
                 that.round = 4
@@ -174,6 +179,7 @@
             box.color = "Lavender"
 
             box.lblTitle = createLabel()
+            box.add(that)
             that.text = "İçerik 1"
             that.textAlign = "center"
             that.height = 30
@@ -190,6 +196,7 @@
             box.color = "PaleTurquoise"
 
             box.lblTitle = createLabel()
+            box.add(that)
             that.text = "İçerik 2"
             that.textAlign = "center"
             that.height = 30
@@ -206,6 +213,7 @@
             box.color = "Bisque"
 
             box.lblTitle = createLabel()
+            box.add(that)
             that.text = "İçerik 3"
             that.textAlign = "center"
             that.height = 30
@@ -222,6 +230,7 @@
             box.color = "whitesmoke"
 
             box.lblTitle = createLabel()
+            box.add(that)
             that.text = "İçerik 4"
             that.textAlign = "center"
             that.height = 30

@@ -88,6 +88,7 @@
 
             // NESNE: Duman beyazı taşıyıcı kutu
             a0.b1 = cbox(0, 0, 370, 470)
+            a0.add(that)
             that.color = "whitesmoke"
             that.round = 13
             that.element.style.boxShadow = "2px 3px 6px rgba(0, 0, 0, 0.2)"
@@ -95,11 +96,13 @@
 
             // NESNE: Küçük logo resimi
             a0.b1.imgLogo = cimg(0, 40, 80, 80)
+            a0.b1.add(that)
             that.load("images/65/logo.png")
             that.center("left")
 
             // NESNE: Başlık
             a0.b1.lblTitle = clbl(0, 140, a0.b1.width, 40)
+            a0.b1.add(that)
             that.text = "Uzunluk Ölçüsü Çevirme"
             that.element.style.fontFamily = "opensans-bold"
             that.textColor = "#141414"
@@ -107,12 +110,14 @@
 
             // NESNE: Metin kutularının arkasındaki beyaz taşıyıcı kutu
             a0.b1.c1 = cbox(20, 210, 330, 240)
+            a0.b1.add(that)
             that.color = "white"
             that.element.style.boxShadow = "2px 3px 6px rgba(0, 0, 0, 0.05)"
             that.round = 13
 
             // NESNE: Verilen uzunluk metin kutusu
             a0.b1.c1.txtGivenLength = ctxt(0, 50)
+            a0.b1.c1.add(that)
             that.title = "Verilen Uzunluk:"
             that.minimal = 1
             that.color = "#D8D8D8"
@@ -125,6 +130,7 @@
 
             // NESNE: Hesaplanan uzunluk metin kutusu
             a0.b1.c1.txtCalculatedLength = ctxt()
+            a0.b1.c1.add(that)
             that.title = "Hesaplanan Uzunluk:"
             that.minimal = 1
             that.color = "#D8D8D8"
@@ -135,18 +141,21 @@
 
             // NESNE: Verilen uzunluk metin kutusunun üstündeki, küçük birim butonu
             a0.b1.c1.subGivenUnit = createSelectedUnitButton(txtGivenLength)
+            a0.b1.c1.add(that)
             that.setSelectedIndex(DEFAULT_GIVEN_LENGTH_UNIT_INDEX)
             subGivenUnit = that
 
             // NESNE: Hesaplanan uzunluk metin kutusunun üstündeki, küçük birim butonu
             a0.b1.c1.subCalculatedUnit = createSelectedUnitButton(txtCalculatedLength)
+            a0.b1.c1.add(that)
             that.setSelectedIndex(DEFAULT_CALCULATED_LENGTH_UNIT_INDEX)
             subCalculatedUnit = that
 
             // NESNE: Birimleri birbirleri ile değiştirme butonu
             a0.b1.c1.imgSwitchUnitsButton = cimg(0, 0, 40, 40)
+            a0.b1.c1.add(that)
             that.load("images/65/change.png")
-            that.space = 12
+            that.space = 26
             that.round = 13
             that.rotate = 90
             that.color = "whitesmoke"
@@ -244,10 +253,12 @@
 
             // NESNE: Karartma kutusu boyutlarındaki, pencereyi kapatma butonu (görünmez).
             object.boxbtnClose = cbox(0, 0, page.width, page.height)
+            object.add(that)
             that.color = "transparent"
 
             // NESNE: Birim butonlarının arkasındaki beyaz kutu.
             object.b1 = cbox(0, 0, 250, 300)
+            object.add(that)
             that.color = "white"
             that.round = 13
 
@@ -267,6 +278,7 @@
             for (var i = 0; i < lengthMeasurementUnits.length; i++) {
 
                 object.b1["btn" + i] = cbtn()
+                object.b1.add(that)
                 that.color = "white"
                 that.fontSize = 20
                 that.round = 0
