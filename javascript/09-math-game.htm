@@ -2,110 +2,110 @@
 <html>
     <head>
 
-        <title>Matematik Oyunu</title>
+        <title>Math Game</title>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
             
         /*
         
-        ALGORİTMA:
+        ALGORITHM:
         
-        - Bir matematik sorusu soruyor ve verilen cevap kontrol ediyor.
+        - It asks a math question and checks the given answer.
         
         */
 
-        // Metin kutusu nesnesi.
-        var txtSonuc
-        // Düğme nesneleri.
-        var btnKontrolEt
-        var btnYeniSoru
+        // TextBox object.
+        var txtAnswer
+        // Button objects.
+        var btnCheckAnswer
+        var btnNewQuestion
         
-        // Sayıların saklandığı değişkenler.
-        var say1
-        var say2
-        var islemNum
-        var sonuc
+        // Variables where numbers are stored.
+        var number1
+        var number2
+        var operationNumber
+        var correctAnswer
 
-        // İlk çalışan fonksiyon.
+        // First running function.
         var start = function() {
             
             page.color = "whitesmoke"
 
-            // Metin kutusu nesnesini oluştur. Parametreler: left, top
-            txtSonuc = createTextBox(50, 50)
+            // Create the TextBox object. Parameters: left, top
+            txtAnswer = createTextBox(50, 50)
             
-            // Düğme nesnesini oluştur. Parametreler: left, top
-            btnYeniSoru = createButton(50, 110)
-            // Nesnenin üzerindeki yazıyı belirle.
-            that.text = "Yeni Soru"
+            // Create the Button object. Parameters: left, top
+            btnNewQuestion = createButton(50, 110)
+            // Set the text on the object.
+            that.text = "New"
             that.color = "lightgray"
-            // Nesneye basıldığında hangi fonksiyonun çalışacağını belirle.
-            that.onClick(soruOlustur)
+            // Determine which function will run when the object is clicked.
+            that.onClick(makeAQuestion)
 
-            // Düğme nesnesini oluştur.
-            btnKontrolEt = createButton()
-            // btnYeniSoru nesnesinin sağına, 10px boşluk bırakarak hizala.
-            that.aline(btnYeniSoru, "right", 10)
-            // Nesnenin üzerindeki yazıyı belirle.
-            that.text = "Kontrol Et"
-            // Nesneye basıldığında, kontrolEt() fonksiyonu çalışsın.
-            that.onClick(kontrolEt)
+            // Create the Button object.
+            btnCheckAnswer = createButton()
+            // Align to the right of the btnNewQuestion object with a 10px spacing.
+            that.aline(btnNewQuestion, "right", 10)
+            // Set the text on the object.
+            that.text = "Check"
+            // When the object is clicked, the checkAnswer() function will run.
+            that.onClick(checkAnswer)
             
-            // Başlangıçta bir soru olustur.
-            soruOlustur()
+            // Make a question at the beginning.
+            makeAQuestion()
 
         }
         
-        // Yeni bir soru oluşturan fonksiyon.
-        var soruOlustur = function() {
+        // Function that creates a new question.
+        var makeAQuestion = function() {
             
-            // Metin kutusunun içini temizle.
-            txtSonuc.text = ""
+            // Clear inside the TextBox.
+            txtAnswer.text = ""
             
-            // Rasgele sayılar, 1 ile 20 arasında olsun.
-            say1 = random(1, 20)
-            say2 = random(1, 20)
+            // Let the random numbers be between 1 and 20.
+            number1 = random(1, 20)
+            number2 = random(1, 20)
             
-            // Rasgele işlem
-            islemNum = random(1, 3)
+            // Random operation.
+            operationNumber = random(1, 3)
             
-            // Not: işlemNum 1, 2, veya 3 olabilir.
-            // 1: toplama, 2: çıkarma, 3: çarpma
+            // NOTE: operationNumber can be 1, 2, or 3.
+            // 1: addition, 2: subtraction, 3: multiplication.
             
-            var soruMetin = " işleminin sonucu kaçtır?"
+            var questionText = " What is the result?"
             
-            // Eğer işlem toplama ise
-            if (islemNum == 1) {
-                sonuc = say1 + say2
-                txtSonuc.title = say1 + " + " + say2 + soruMetin
+            // If the operation is addition:
+            if (operationNumber == 1) {
+                correctAnswer = number1 + number2
+                txtAnswer.title = number1 + " + " + number2 + questionText
                 
-            } else if (islemNum == 2) {
-                sonuc = say1 - say2
-                txtSonuc.title = say1 + " - " + say2 + soruMetin
+            } else if (operationNumber == 2) {
+                correctAnswer = number1 - number2
+                txtAnswer.title = number1 + " - " + number2 + questionText
                 
-            } else if (islemNum == 3) {
-                sonuc = say1 * say2
-                txtSonuc.title = say1 + " x " + say2 + soruMetin
+            } else if (operationNumber == 3) {
+                correctAnswer = number1 * number2
+                txtAnswer.title = number1 + " x " + number2 + questionText
                 
             }
             
         }
 
-        // Düğmeye basıldığında, işlem sonucunu kontrol eden fonksiyon.
-        var kontrolEt = function() {
+        // The function that checks the txtAnswer.text with the correctAnswer variable when the button is clicked.
+        var checkAnswer = function() {
             
-            // Eğer verilen cevap, sonuc değişkenine eşit ise,
-            if (txtSonuc.text == sonuc) {
-                txtSonuc.text = "Tebrikler, doğru."
+            // If the given answer is equal to the variable correctAnswer,
+            if (txtAnswer.text == correctAnswer) {
+                txtAnswer.text = "The answer is correct."
                 
             } else {
-                txtSonuc.text = "Tekrar deneyin."
+                txtAnswer.text = "Try again."
                 
             }
             
@@ -113,12 +113,12 @@
         
         /*
         
-        GELİŞTİRME ÖNERİLERİ:
+        DEVELOPMENT SUGGESTIONS:
         
-        - Metin kutusunun yanında, küçük (50x50) bir kutu olsun.
-          Doğru cevap verildiğinde, "green" ve yanlış cevap verildiğinde, "red" renk ile boyansın.
-        - Verilen toplam doğru ve yanlış cevap sayısı ekranda gösterilsin. Otomatik arttırılsın.
-        
+        - Have a small (50x50) box next to the TextBox.
+          If the correct answer is given, it will be colored "green" and if the wrong answer is given, it will be colored "red".
+        - Show the total number of correct and incorrect answers given on the screen. Automatically increase.
+
         */
 
         </script>

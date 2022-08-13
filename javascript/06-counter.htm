@@ -2,110 +2,104 @@
 <html>
     <head>
         
-        <title>Sayaç</title>
+        <title>Counter</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- DIŞARIDAN YÜKLENEN KÜTÜPHANE DOSYALARI -->
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
         
         <script>
             
         /*
 
-        ALGORİTMA:
+        ALGORITHM:
             
-        - Her saniye, etiket (Label) üzerindeki sayının bir arttırılması 
-          ve düğmeye (Button) basıldığında sıfırlanması.
+        - Every second, the number on the label is increased by one
+          and resetting it when the button (Button) is clicked.
 
 
-        ÇALIŞMA MANTIĞI:
+        WORKING LOGIC:
             
-        - Düğmeye basıldığında, sıfırlama işlemini yapacak fonksiyon çalıştırılır.
-        - Sayıyı bir arttıran başka bir fonksiyon ise, 
-          her saniye çalıştırılan loop() fonksiyonunun içine eklenmiştir.
+        - When the button is clicked, the function that will perform the reset is activated.
+        - Another function that increases the number by one,
+          It's built into the loop() function, which is run every second.
 
         */
 
             
-        // Görünen sayı.
-        var lblSayi
-        // Sıfırlama butonu.
-        var btnArttir
+        // Display number.
+        var lblNumber
+        // Reset button.
+        var btnIncrease
 
-        // İlk çalışan fonksiyon.
+        // First running function.
         var start = function() {
             
             page.color = "lightblue"
 
-            // Bir etiket nesnesi oluştur. Parametreler: left, top
-            lblSayi = createLabel(50, 50)
+            // LABEL: Create a label object. Parameters: left, top
+            lblNumber = createLabel(50, 50)
             that.text = "0"
-            // Yazıyı, kendi genişliğinin içerisinde ortalanmış olarak yaz.
+            // Write the text centered within its own width.
             that.textAlign = "center"
-            // Yazının boyutunu, 40px yap.
+            // Make the text size 40px.
             that.fontSize = 40
 
-            // Bir düğme nesnesi oluştur. Parametreler: left, top
-            btnArttir = createButton(50, 120)
-            that.text = "Sıfırla"
-            that.onClick(sayiSifirla)
+            // BUTTON: Create a button object. Parameters: left, top
+            btnIncrease = createButton(50, 120)
+            that.text = "Reset"
+            that.onClick(resetTheNumber)
 
-            // lblSayi nesnesini, btnArttir ile uyumlu hale getirelim.
+            // Let's make the lblNumber object compatible with btnIncrease.
             
-            // Yazının rengini, düğmenin rengi ile aynı yap.
-            lblSayi.textColor = btnArttir.color
-            // Yazının kapladığı genişliği, düğmenin genişliği ile aynı yap.
-            lblSayi.width = btnArttir.width
+            // Make the text color the same as the color of the button.
+            lblNumber.textColor = btnIncrease.color
+            // Make the width of the text the same as the width of the button.
+            lblNumber.width = btnIncrease.width
             
-            // Not: Bu örnekte, hızlı kod yazabilmek için 
-            // bazı kısa yazımlar kullanılmıştır.
+            // NOTE: In this example, to write fast code
+            // some short spellings are used.
             
-            // Not: that değişkeni, son oluşturulan nesneyi taşımaktadır.
+            // NOTE: that variable carries the last created object.
             
         }
 
-        // Her saniye çalışan fonksiyon. (Otomatik çalıştırılır.)
+        // Function running every second. (It is run automatically.)
         var loop = function() {
             
-            // Sayıyı 1 arttır.
-            sayiArttir()
+            // Increment the number by 1.
+            increaseTheNumber()
             
         }
 
-        // Düğmeye basıldığında sayinın 1 arttırılmasını sağlayan fonksiyon.
-        var sayiArttir = function() {
+        // Function that increases the number by 1 when the button is clicked.
+        var increaseTheNumber = function() {
             
-            // Etiket (Label) nesnesindeki değeri 1 ile topla ve geri yaz.
-            lblSayi.text = num(lblSayi.text) + 1
+            // Sum the value in the Label object by 1 and write it back.
+            lblNumber.text = num(lblNumber.text) + 1
 
-            // Not: Nesnenin .text özelliği, taşıdığı bilgiyi
-            // otomatik metin (string) veri tipine dönüştürülür.
+            // NOTE: The .text property of the object displays the information it contains.
+            // Converted to automatically text data type (string).
             
         }
         
-        // Düğmeye basıldığında, sayinın 0 olmasını sağlayan fonksiyon.
-        var sayiSifirla = function() {
+        // Function that makes the number 0 when the button is clicked.
+        var resetTheNumber = function() {
             
-            // Etiket (Label) nesnesindeki değeri "0" yap.
-            lblSayi.text = "0"
+            // Set the value in the Label object to "0".
+            lblNumber.text = "0"
             
         }
         
         /*
         
-        GELİŞTİRME ÖNERİLERİ:
+        DEVELOPMENT SUGGESTIONS:
         
-        - Artan sayı; saat formatında, dakika ve saniye olarak (00:00) gösterilebilir.
-        - Başka ne geliştirme yapılabilir diye düşünüp, tasarlayın ve geliştirmeye çalışın.
-
-        
-        İNGİLİZCE - TÜRKÇE SÖZLÜK:
-        
-        Anlamını bilmediğiniz ingilizce kelimeler için,
-        https://translate.google.com/ internet sitesini kullanabilirsiniz.
+        - Increasing number; in hour format, it can be displayed in minutes and seconds (00:00).
+        - Think, design and try to develop what else can be improved.
         
         */
 

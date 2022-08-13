@@ -2,106 +2,112 @@
 <html>
     <head>
         
-        <title>XOX Oyunu</title>
+        <title>XOX Game</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
         /*
 
-        ALGORİTMA:
+        ALGORITHM:
             
-        - Üç'e üç (3x3) bir alan üzerinde, boş karelere basarak; "x" veya "o" sembolu olarak işaretliyor.
+        - By pressing empty squares on a three by three (3x3) field; It marks it as the "x" or "o" symbol.
 
 
-        ÇALIŞMA MANTIĞI:
+        WORKING LOGIC:
             
-        - Her bir alan, bir resim nesnesidir.
-        - Üzerine basılan nesne, kendine sıradaki sembolün resim dosyasını yüklüyor.
+        - Each field is a image object.
+        - The clicked object loads itself the image file of the next symbol.
           
 
-        OYUNUN OYNANIŞI:
+        GAME PLAY:
         
-        - Bir oyuncu "x", diğeri ise "o" sembolünü kullanır.
-        - Sıra ile, boş karelerden birine kendi sembollerini koyarak devam ederler.
-        - Kendi sembolünden üç tane yatay, dikey veya çapraz olarak 
-          yan yana ilk getiren oyuncu, bir puan kazanır.
-        - Boş kareler dolana kadar, kimse başarılı olamaz ise berabere olur. Ve oyun yeniden başlatılır.
+        - One player uses the symbol "x" and the other uses the symbol "o".
+        - They continue in turn by placing their symbols on one of the empty squares.
+        - Three of its own symbols horizontally, vertically or diagonally
+        The first player to bring them together wins a point.
+        - Until the empty squares are filled, if no one succeeds, it is a draw. And the game restarts.
         
+
+        PROJECT DESCRIPTION:
+
+        A step-by-step video of the project. (Language: Turkish)
+        https://www.youtube.com/watch?v=DQBqankxnUM
+
         */
 
-        // Sıranın kimde olduğunu saklayan değişken.
-        var siraKimde = "x"
+        // A variable that stores whose turn it is.
+        var whoIsNext = "x"
         
-        // Not: resimDegistir() fonksiyonu, ilk çalıştığında "x" eklemesi için,
-        // siraKimde değişkeni tanımlanırken, "x" değeri aktarılmıştır.
+        // NOTE: for the changeImage() function to append "x" when it first runs,
+        // While defining the whoIsNext variable, the value "x" is passed.
 
-        // İlk çalıştırılan fonksiyon.
+        // First run function.
         var start = function() {
             
             page.color = "whitesmoke"
             
-            // 3 x 3 tane resim nesnesini ekranda oluştur ve hizala.
+            // Create and align 3 x 3 image objects on the screen.
             for (var y = 0; y <= 2; y++) {
                 for (var x = 0; x <= 2; x++) {
                     
-                    // Bir resim nesnesi oluştur.
+                    // IMAGE: Create an image object.
                     createImage()
-                    that.load("resimler/xox-bos.svg")
+                    that.load("images/xox-empty.svg")
                     that.width = 150
                     that.height = 150
-                    // Döngü sayılarına göre nesneleri hizala.
+                    // Align objects according to their number of loops.
                     that.left = 40 + (180 * x)
                     that.top = 40 + (180 * y)
-                    // Nesneye taşıması için bir bilgi ekleyelim.
-                    that.value = "bos"
-                    // Üzerine basıldığında fonksiyonu çalıştır.
-                    that.onClick(resimDegistir)
+                    // Let's add an information to the object to keep it.
+                    that.value = "empty"
+                    // Call the function when clicked on it.
+                    that.onClick(changeImage)
                     
-                    // Not: that, en son oluşturulan nesnenin taşındığı bir değişkendir.
+                    // NOTE: that is a variable to which the most recently created object is moved.
                     
-                    // Not: Bu örnekte, 9 tane resim nesnesi oluşturulmuştur. 
-                    // Ve bu nesneler değişkenlere aktarılmamıştır.
-                    // Sonradan ulaşabileceğimiz özel isimleri yoktur.
+                    // Note: In this example, 9 image objects are created.
+                    // And these objects are not passed to variables.
+                    // They do not have special names that we can access later.
                     
                 }
             }
 
         }
 
-        // Resimlerden birine basıldığında çalışan fonksiyon.
-        var resimDegistir = function(basilanDugme) {
+        // Function that works when one of the images is clicked.
+        var changeImage = function(clickedButton) {
             
-            // Not: Bir nesneye basıldığında, 
-            // nesnenin kendisi parametre olarak gönderilir.
+            // NOTE: When an object is clicked,
+            // the object itself is sent as a parameter.
             
-            // Nesnenin, taşıdığı değer boş ise,
-            // (Demek ki; bir sembol seçilmemiş ve resme basılabilir.)
-            if (basilanDugme.value == "bos") {
+            // If the value of the object is empty,
+            // (This means that a symbol is not selected and the image can be clickable.)
+            if (clickedButton.value == "empty") {
             
-                // Sıra "x" sembolünde ise,
-                if (siraKimde == "x") {
+                // If the sequence is in the symbol "x",
+                if (whoIsNext == "x") {
                     
-                    // Basılan nesnenin özelliklerini düzenle.
-                    // "x" sembolunun resmini yükle.
-                    basilanDugme.load("resimler/xox-x.svg")
-                    // Taşınan değeri "x" olarak düzenle.
-                    basilanDugme.value = "x"
-                    // Sıradaki sembolu "o" olarak düzenle.
-                    siraKimde = "o"
+                    // Change the properties of the clicked object.
+                    // Load a image of the "x" symbol.
+                    clickedButton.load("images/xox-x.svg")
+                    // Change the value to "x".
+                    clickedButton.value = "x"
+                    // Edit the next symbol to be "o".
+                    whoIsNext = "o"
                     
-                } else if (siraKimde == "o") {
+                } else if (whoIsNext == "o") {
                     
-                    // Veya sıra "o" sembolünde ise, aynı işlemleri onun için yap.
+                    // Or if it's the "o" symbol, do the same for it.
                     
-                    basilanDugme.load("resimler/xox-o.svg")
-                    basilanDugme.value = "o"
-                    siraKimde = "x"
+                    clickedButton.load("images/xox-o.svg")
+                    clickedButton.value = "o"
+                    whoIsNext = "x"
                     
                 }
                 
@@ -111,21 +117,16 @@
         
         /*
         
-        GELİŞTİRME ÖNERİLERİ:
+        DEVELOPMENT SUGGESTIONS:
         
-        - Oyun bittiğinde, yeniden başlatma düğmesi eklenebilir.
-        - Skorları tutmak için, bir bölüm geliştirilebilir.
-          Örneğin: Her kullanıcı için bir skor etiketi ve 
-          onları arttıran birer düğme.
-        - (ZOR) Kazananı otomatik tespit edip, skorunu arttıran ve
-          yeni oyun başlatan bir algoritma eklenebilir.
-        - Başka ne geliştirme yapılabilir diye düşünüp, tasarlayın ve geliştirmeye çalışın.
+        - When the game is over, the restart button can be added.
+        - To keep the scores, a section can be developed.
+          For example: A score tag for each user and
+          a button that increases them.
+        - (DIFFICULT) Automatically detecting the winner, increasing the score and
+          A new game-starting algorithm can be added.
+        - Think, design and try to develop what else can be improved.
 
-        
-        İNGİLİZCE - TÜRKÇE SÖZLÜK:
-        
-        Anlamını bilmediğiniz ingilizce kelimeler için,
-        https://translate.google.com/ internet sitesini kullanabilirsiniz.
         
         */
         

@@ -2,136 +2,112 @@
 <html>
     <head>
 
-        <title>Merhaba Dünya</title>
+        <title>Hello World</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- DIŞARIDAN YÜKLENEN KÜTÜPHANE DOSYALARI -->
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
-        // KOD YAZMA ALANI BAŞLANGICI
+        // BEGINNING OF THE CODE WRITE AREA
 
         /*
 
-        ALGORİTMA:
+        ALGORITHM:
 
-        Bir düğme / tuş (Button) nesnesine basıldığında,
-        bir metin kutusu (TextBox) nesnesinin içine "Merhaba Dünya" yazdıran algoritma.
-
-
-        ÇALIŞMA MANTIĞI:
-
-        - Bir metin kutusu ve bir düğme nesnesi, oluşturuluyor ve istenilen konumlara hizalanıyor.
-        - btnYaz isimli düğme nesnesine basıldığında,  mesajYaz() fonksiyonu çalışıyor.
-        - mesajYaz() fonksiyonu, txtMesaj isimli metin kutusu nesnesine "Merhaba Dünya" yazdırıyor.
+        When a Button object is clicked,
+        the algorithm that prints "Hello World" inside a TextBox object.
 
 
-        TEMEL EĞİTİM:
+        WORKING LOGIC:
 
-        Konu anlatımları ve daha fazlası için mobil uygulamayı kullanabilirsiniz.
-        (Android) https://play.google.com/store/apps/details?id=com.bugraozden.cik
+        - A TextBox and a Button object are rendered and aligned to the desired positions.
+        - When the Button object named btnWrite is clicked, the writeMessage() function is running.
+        - writeMessage() function prints "Hello World" to TextBox object named txtMessage.
 
 
-        PROJE ANLATIMI:
+        PROJECT DESCRIPTION:
 
-        Projenin, adım adım anlatım videosu.
+        A step-by-step video of the project. (Language: Turkish)
         https://youtu.be/zPOKz3w1YmY
 
         */
         
-        // Kullanılacak değişkenleri tanımla.
+        // Define the variables to use.
 
-        // Metin kutusu (TextBox) nesnesini taşıyacak değişkeni tanımla.
-        var txtMesaj
-        // Düğme (Button) nesnesini taşıyacak değişkeni tanımla.
-        var btnYaz
+        // Define the variable to hold the TextBox object.
+        var txtMessage
+        // Define the variable that will hold the Button object.
+        var btnWrite
 
-        // NOT: Değişkenlerin başındaki ilk 3 harf (kısaltma)
-        // içlerinde taşıdıkları nesneleri, algoritma içinde
-        // daha rahat takip edebilmemiz için eklenmiştir.
+        // NOTE: The first 3 letters at the beginning of the variables (abbreviation)
+        // the objects they carry inside the algorithm
+        // has been added so that we can follow it more easily.
 
-        // İlk çalışan fonksiyon; her şey yüklendiğinde, otomatik çalıştırılır.
+        // First running function; when everything is loaded, it will run automatically.
         var start = function() {
 
-            // Programın görünümünü oluştur.
+            // Create the view of the program.
 
-            // Metin kutusu (TextBox) nesnesini oluştur.
-            txtMesaj = createTextBox()
-            // Nesnenin sola olan mesafesini belirle. (Pixel cinsinden)
-            txtMesaj.left = 50
-            // Nesnenin yukarıya olan mesafesini belirle. (Pixel cinsinden)
-            txtMesaj.top = 50
+            // TEXTBOX: Create the TextBox object.
+            txtMessage = createTextBox()
+            // Set the distance of the object to the left. (in pixels)
+            txtMessage.left = 50
+            // Set the distance of the object up. (in pixels)
+            txtMessage.top = 50
 
-            // Düğme (Button) nesnesini oluştur.
-            btnYaz = createButton()
-            // Nesnenin üzerindeki yazıyı belirle.
-            btnYaz.text = "Yaz"
-            // Nesnenin solo olan mesafesini belirle.
-            btnYaz.left = 50
-            // Nesnenin yukarıya olan mesafesini belirle.
-            btnYaz.top = 110
+            // BUTTON: Create the Button object.
+            btnWrite = createButton()
+            // Determine the text on the object.
+            btnWrite.text = "Write"
+            // Determine the distance of the object from the solo.
+            btnWrite.left = 50
+            // Set the distance of the object up.
+            btnWrite.top = 110
 
-            // Nesneye her basıldığında, mesajYaz() fonksiyonun çalışsın.
-            btnYaz.onClick(mesajYaz)
+            // Every time the object is clicked, the WriteMessage() function will run.
+            btnWrite.onClick(writeMessage)
 
-            // NOT: mesajYaz() fonksiyonun sonunda parantez kullandığımızda,
-            // fonksiyonun çalışmasını istemiş oluyoruz.
-            // Parametre olarak bir fonksiyon gönderirken,
-            // parantezleri yazmıyoruz.
+            // NOTE: When we use parentheses at the end of the WriteMessage() function,
+            // we want the function to run.
+            // When sending a function as a parameter,
+            // we don't write the parentheses.
             
         }
 
-        // Düğmeye basıldığında, metin kutusunda mesajı gösteren fonksiyon.
-        var mesajYaz = function() {
+        // Function that displays the message in the TextBox when the Button is clicked.
+        var writeMessage = function() {
 
-            // Metin kutusunun içine mesajı aktar.
-            txtMesaj.text = "Merhaba Dünya"
+            // Pass the message inside the TextBox.
+            txtMessage.text = "Hello World"
             
         }
 
         /*
 
-        GELİŞTİRME ÖNERİSİ:
+        DEVELOPMENT PROPOSAL:
 
-        txtMesaj isimli metin kutusunu (TextBox) temizleyen,
-        başka bir Tuş / Düğme (Button) nesnesi eklenebilir.
-        Button ismi, btnTemizle ve çağırdığı fonksiyon ismi, 
-        mesajTemizle() olabilir.
-
-        
-        İNGİLİZCE - TÜRKÇE SÖZLÜK:
-
-        Kullanılan kelimelerin, türkçe karşılıkları.
-
-        variable (kısaltılmışı var) = değişken
-        start = başlat
-        create = oluştur, oluşturmak
-        text = metin
-        box = kutu
-        pixel (kısaltılmışı px) = piksel, görüntü elemanı
-        top = üst
-        left = sol
-        button = buton, düğme
-        on = üzerinde, üstünde, esnasında
-        click = tıkla, tıklamak
-        function = fonksiyon, işlev
+        - Clearing the TextBox named txtMessage,
+          another Button object can be added.
+          Button name, btnClear and its calling function name,
+          message can be clear().
 
         */
 
-        // KOD YAZMA ALANI SONU
+        // END OF CODE WRITE AREA
 
         </script>
 
-        <!-- NOT: Kod yazma alanının dışındakiler, standart HTML etiketleridir. -->
+        <!-- NOTE: Outside the coding area are standard HTML tags. -->
 
     </head>
     <body>
         
-        <!-- HTML içeriği -->
+        <!-- HTML content -->
         
     </body>
 </html>

@@ -2,158 +2,156 @@
 <html>
     <head>
 
-        <title>Kronometre</title>
+        <title>Stopwatch</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
         /*
             
-        ALGORİTMA:
+        ALGORITHM:
         
-        - Ne kadar zaman geçtiğini ölçen bir uygulama.
+        - An application that measures how much time has passed.
         
         */
         
-        // Nesneleri taşıyan değişkenler.
-        var imgArkaplan
-        var imgDakika
-        var imgSaniye
-        var btnBaslat
-        var lblSayac
+        // Variables that carry objects.
+        var imgBackground
+        var imgMinute
+        var imgSecond
+        var btnStart
+        var lblCount
         
-        // Geçen zamanın saklandığı değişkenler.
-        var sayacSaniye = 0
-        var sayacDakika = 0
+        // Variables that store the elapsed time.
+        var secondCount = 0
+        var minuteCount = 0
 
-        // İlk çalışan fonksiyon.
+        // First running function.
         var start = function() {
 
             page.color = "indianred"
 
-            // Saatin arka plan resmini oluştur. Parametreler: left, top, width, height
-            imgArkaplan = createImage(0, 0, 200, 200)
-            that.load("resimler/saat-bos.png")
-            // Nesneyi, page nesnesinin tam ortasına hizala.
+            // Create the background image of the clock. Parameters: left, top, width, height
+            imgBackground = createImage(0, 0, 200, 200)
+            that.load("images/clock-empty.png")
+            // Align the object to the center of the page object.
             that.center()
             
-            // Not: nesne.center() fonksiyonu, nesneyi, 
-            // içinde bulunduğu nesneye göre, otomatik ortalar.
-            // Sadece yatay ortalama için: nesne.center("left")
-            // Sadece dikey ortalama için: nesne.center("top")
+            // NOTE: object.center() function, centers according to the object it is in.
+            // For horizontal centering only: object.center("left")
+            // For vertical center only: object.center("top")
             
-            // Saat üzerindeki, sayısal bilgi.
-            lblSayac = createLabel()
+            // Numerical information on the clock.
+            lblCount = createLabel()
             that.text = "00:00"
             that.textAlign = "center"
-            that.width = imgArkaplan.width
-            that.left = imgArkaplan.left
-            that.top = imgArkaplan.top + 135
+            that.width = imgBackground.width
+            that.left = imgBackground.left
+            that.top = imgBackground.top + 135
             
-            // Not: Sayısal bölüm, oluşturulma sırası sebebi ile,
-            // saniye ve dakika çubuklarının altında kalacaktır.
-            // Son oluşturulan nesne, en üstte görünür.
+            // NOTE: The numeric section, due to the order in which it was created,
+            // will stay under the second and minute bars.
+            // The last created object appears at the top.
             
-            // Saatin dakika çubuğu.
-            imgDakika = createImage()
-            that.load("resimler/saat-dakika.png")
-            boyutKopyala(that, imgArkaplan)
+            // The minute bar of the clock.
+            imgMinute = createImage()
+            that.load("images/clock-minute.png")
+            copySizes(that, imgBackground)
             
-            // Saatin saniye çubuğu.
-            imgSaniye = createImage()
-            that.load("resimler/saat-saniye.png")
-            boyutKopyala(that, imgArkaplan)
+            // The second bar of the clock.
+            imgSecond = createImage()
+            that.load("images/clock-second.png")
+            copySizes(that, imgBackground)
             
-            // Kronometre başlatma/durdurma düğmei
-            btnBaslat = createButton()
-            that.text = "Başlat"
+            // Stopwatch start/stop button.
+            btnStart = createButton()
+            that.text = "Start"
             that.color = "cadetblue"
-            // Nesneyi, saatin altında ortalanmış ve 25px boşluk bırakarak hizala.
-            that.top = imgArkaplan.top + imgArkaplan.height + 25
-            that.left = imgArkaplan.left + ((imgArkaplan.width - btnBaslat.width) / 2)
-            that.onClick(baslatDurdur)
+            // Align the object centered under the clock with a 25px spacing.
+            that.top = imgBackground.top + imgBackground.height + 25
+            that.left = imgBackground.left + ((imgBackground.width - btnStart.width) / 2)
+            that.onClick(startOrStop)
 
         }
         
-        // Her saniye tekrar eden fonksiyon.
+        // Function that repeats every second.
         var loop = function() {
 
-            // Eğer başlat düğmesine basılı ise
-            if (btnBaslat.text == "Durdur") {
+            // If the start button is clicked:
+            if (btnStart.text == "Stop") {
 
-                // Saniye değişkenini 1 arttır.
-                sayacSaniye++
+                // Increment the seconds variable by 1.
+                secondCount++
 
-                // Eğer saniye değişkeni 60'a gelmiş ise
-                if (sayacSaniye == 60) {
-                    // Saniye değişkenini sıfırla.
-                    sayacSaniye = 0
-                    // Dakika değişkenini 1 arttır.
-                    sayacDakika++
+                // If the second variable has reached 60:
+                if (secondCount == 60) {
+                    // Reset the seconds variable.
+                    secondCount = 0
+                    // Increment the minute variable by 1.
+                    minuteCount++
                 }
 
-                // Saat görünümünü güncelle.
-                guncelle()
+                // Update watch display.
+                updateWatch()
 
             }
 
         }
         
-        // Bir nesnenin boyutlarını, verilen örnek ile aynı yapan fonksiyon.
-        var boyutKopyala = function(yeniNesne, ornekNesne) {
+        // Set the newObject at the position and size of the sampleObject.
+        var copySizes = function(newObject, sampleObject) {
             
-            // yeni nesnesinin boyutlarını, ornek ile aynı yap.
-            yeniNesne.width = ornekNesne.width
-            yeniNesne.height = ornekNesne.height
-            yeniNesne.top = ornekNesne.top
-            yeniNesne.left = ornekNesne.left
+            newObject.width = sampleObject.width
+            newObject.height = sampleObject.height
+            newObject.top = sampleObject.top
+            newObject.left = sampleObject.left
             
         }
         
-        // Düğmeye basıldığında çalışacak fonksiyon.
-        var baslatDurdur = function() {
+        // Function that will run when the button is clicked.
+        var startOrStop = function() {
             
-            // Eğer görünen düğme başlat ise
-            if (btnBaslat.text == "Başlat") {
-                // Düğmeyi durdur yap ve boya
-                btnBaslat.text = "Durdur"
-                btnBaslat.color = "tomato"
+            // If the button that appears is start:
+            if (btnStart.text == "Start") {
+                // Make stop button and paint.
+                btnStart.text = "Stop"
+                btnStart.color = "tomato"
             
-            // Eğer görünen düğme durdur ise
-            } else if (btnBaslat.text == "Durdur") {
-                // Düğmeyi başlat yap ve boya
-                btnBaslat.text = "Başlat"
-                btnBaslat.color = "cadetblue"
+            // If the button that appears is stop:
+            } else if (btnStart.text == "Stop") {
+                // Make start button and paint.
+                btnStart.text = "Start"
+                btnStart.color = "cadetblue"
                 
             }
             
         }
         
-        // Saat parçalarını ve sayısal ekranı güncelleyen fonksiyon.
-        var guncelle = function() {
+        // Function that updates clock parts and numeric display.
+        var updateWatch = function() {
             
-            // Saat parçalarını güncelle.
-            imgSaniye.rotate = sayacSaniye * 6
-            imgDakika.rotate = sayacDakika * 6
+            // Update watch parts.
+            imgSecond.rotate = secondCount * 6
+            imgMinute.rotate = minuteCount * 6
             
-            // Sayısal ekranı güncelle.
-            lblSayac.text = sayacDakika + ":" + sayacSaniye
+            // Update numeric display.
+            lblCount.text = minuteCount + ":" + secondCount
             
         }
         
         /*
         
-        GELİŞTİRME ÖNERİLERİ: 
+        DEVELOPMENT SUGGESTIONS:
         
-        - Sıfırlama düğmesi eklenebilir.
-        - Zamanın gösterildiği format 0:2, şu şekilde olmalı 00:02.
-          Saniye ve dakika, her zaman iki basamaklı görünmeli. 
-          if (x < 10) "0" + x olarak "göster".
+         - Reset button can be added.
+         - The format in which the time is displayed is 0:2, it should be 00:02.
+           Seconds and minutes should always appear as two digits.
+           if (x < 10) show as "0" + x.
           
         */
         

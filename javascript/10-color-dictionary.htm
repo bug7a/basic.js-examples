@@ -2,107 +2,105 @@
 <html>
     <head>
 
-        <title>Renkler Sozlüğü</title>
+        <title>Color Dictionary</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
         /*
         
-        ALGORİTMA:
+        ALGORITHM:
         
-        - Türkçe ismi girilen bir rengin, ingilizce karşılığını dizi değişkeninden
-          bulup, getiren bir sözlük uygulaması.
+        - A dictionary application that finds and returns the English equivalent of a color whose Turkish name is entered from the array variable.
         
         */
 
-        // Metin kutuları.
-        var txtTurkce
-        var txtInglizce
-        // Düğme.
-        var btnCevir
+        // TextBox objects.
+        var txtTurkish
+        var txtEnglish
+        // Button object.
+        var btnTranslate
         
-        // Kelimelerin listesi.
-        var kelimeListe = [
+        // List of words.
+        var wordList = [
         
-          {turkce: "kırmızı", ingilizce: "red"},
-          {turkce: "mavi", ingilizce: "blue"},
-          {turkce: "yeşil", ingilizce: "green"},
-          {turkce: "sarı", ingilizce: "yellow"},
-          {turkce: "turuncu", ingilizce: "orange"},
-          {turkce: "siyah", ingilizce: "black"},
-          {turkce: "beyaz", ingilizce: "white"},
-          {turkce: "pembe", ingilizce: "pink"},
-          {turkce: "gri", ingilizce: "gray"},
-          {turkce: "lacivert", ingilizce: "darkblue"},
-          {turkce: "mor", ingilizce: "purple"},
-          {turkce: "kahverengi", ingilizce: "brown"}
+          { turkish: "kırmızı", english: "red" },
+          { turkish: "mavi", english: "blue" },
+          { turkish: "yeşil", english: "green" },
+          { turkish: "sarı", english: "yellow" },
+          { turkish: "turuncu", english: "orange" },
+          { turkish: "siyah", english: "black" },
+          { turkish: "beyaz", english: "white" },
+          { turkish: "pembe", english: "pink" },
+          { turkish: "gri", english: "gray" },
+          { turkish: "lacivert", english: "darkblue" },
+          { turkish: "mor", english: "purple" },
+          { turkish: "kahverengi", english: "brown" }
             
         ]
         
-        // NOT: kelimeListe bir dizidir. 
-        // Her bir elememan ise birer nesnedir.
+        // NOTE: wordList is an array.
+        // And each element is an object.
         
-        // Nesnelerin de turkce ve ingilizce isimlerinde,
-        // kendi elemanları vardır.
+        // Objects also have their own elements with turkish and english names.
 
-        // İlk çalışan fonksiyon.
+        // First running function.
         var start = function() {
             
-            // Arkaplan rengini belirle.
+            // Set the background color.
             page.color = "white"
 
-            // Türkçe Metin Kutusu. Parametreler: left, top, width
-            txtTurkce = createTextBox(50, 50, 150)
-            that.text = "yeşil"
+            // TEXTBOX: Turkish TextBox. Parameters: left, top, width
+            txtTurkish = createTextBox(50, 50, 150)
+            that.text = "pembe"
             that.title = "Türkçe:"
-            // Efekleri kaldır.
+            // Remove effects.
             that.minimal = 1
             that.color = "lightgray"
             
-            // İngilizce Metin Kutusu.
-            txtInglizce = createTextBox()
+            // TEXTBOX: English TextBox.
+            txtEnglish = createTextBox()
             that.width = 150
-            that.title = "İngilizce:"
-            // Efekleri kaldır.
+            that.title = "English:"
+            // Remove effects.
             that.minimal = 1
             that.color = "lightgray"
-            // Nesneye, metin girişi yapılamasın.
+            // Do not enter text into the object.
             that.enabled = 0
-            // txtTurkce nesnesinin sağına, 25px boşluk bırakarak hizala.
-            that.aline(txtTurkce, "right", 25)
+            // Align it to the right of the txtTurkish object, leaving a 25px spacing.
+            that.aline(txtTurkish, "right", 25)
 
-            // Çevir Düğmesi.
-            btnCevir = createButton()
-            that.text = "Çevir"
+            // BUTTON: Translate Button.
+            btnTranslate = createButton()
+            that.text = "Translate"
             that.width = 150
             that.color = "lightgray"
-            // txtTurkce nesnesinin altına, 10px boşluk bırakarak hizala.
-            that.aline(txtTurkce, "bottom", 10)
+            // txtTurkish nesnesinin altına, 10px boşluk bırakarak hizala.
+            that.aline(txtTurkish, "bottom", 10)
             // Nesneye basıldığında, hangi fonksiyonun çalışacağını belirle.
-            that.onClick(kelimeCevir)
+            that.onClick(translateWord)
 
         }
 
-        // Kelimenin ingilizce karşılığı bulan fonksiyon.
-        var kelimeCevir = function() {
+        // Function that finds the English equivalent of the word.
+        var translateWord = function() {
             
-            // Dizi uzunluğu kadar tekar et.
-            for (var i = 0; i < kelimeListe.length; i++) {
+            // Repeat for the length of the list.
+            for (var i = 0; i < wordList.length; i++) {
                 
-                // Kaçıncı sırada olduğunu tespit et.
-                if (kelimeListe[i].turkce == txtTurkce.text) {
+                // Find the index of the word in the list.
+                if (wordList[i].turkish == txtTurkish.text) {
                     
-                    // İngilizce karşılığını yaz.
-                    txtInglizce.text = kelimeListe[i].ingilizce
+                    // Write the English equivalent.
+                    txtEnglish.text = wordList[i].english
                     
-                    // Renk ismine göre, boyama yap.
-                    btnCevir.color = txtInglizce.text
+                    // Color by color name.
+                    btnTranslate.color = txtEnglish.text
                     
                 }
                 
@@ -112,14 +110,14 @@
         
         /*
         
-        GELİŞTİRME ÖNERİLERİ:
+        DEVELOPMENT SUGGESTIONS:
         
-        - İngilizce renkler de yazılabilsin. O zaman da Türkçe'ye çevirsin.
-        1. Öncelikle, İngilizce metin kutusunun .enabled özelliği 1 olmalı.
-        2. İngilizce'den Türkçe'ye çeviri farklı bir düğme ile yapılabilir veya
-           eğer İngilizce metin kutusu dolu ise, ingilice'den Türkçe'ye çevir.
-           yok eğer sadece Türkçe metin kutusu dolu ise, Tükçe'den İngilizce'ye çevir.
-           olarak yapılabilir.
+        - English colors can also be written. Then translate it into Turkish.
+        1. First, the .enabled property of the English TextBox must be 1.
+        2. Translation from English to Turkish can be done with a different button or
+        - If the English TextBox is full, translate from English to Turkish.
+        no, if only the Turkish TextBox is full, translate from Turkish to English.
+        as can be done.
           
         */
 

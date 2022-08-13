@@ -2,205 +2,174 @@
 <html>
     <head>
         
-        <title>Hesap Makinesi</title>
+        <title>Basic Calculator</title>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- DIŞARIDAN YÜKLENEN KÜTÜPHANE DOSYALARI -->
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
 
         
         <script>
             
         /*
 
-        ALGORİTMA:
+        ALGORITHM:
             
-        - İki metin kutusu (TextBox) ile, işlem yapılacak sayılar isteniyor.
-        - Matematiksel işlemleri yapmak için, dört düğme (Button) kullanılmış.
-        - Yapılan işlemin sonucu, başka bir metin kutusunda gösteriliyor.
+         - With two TextBoxes, numbers to be processed are requested.
+         - Four Buttons are used to perform mathematical operations.
+         - The result of the action is displayed in another TextBox.
         
 
-        TEMEL EĞİTİM:
-        
-        Konu anlatımları ve daha fazlası için mobil uygulamayı kullanabilirsiniz.
-        (Android) https://play.google.com/store/apps/details?id=com.bugraozden.cik
+         PROJECT DESCRIPTION:
 
-
-        PROJE ANLATIMI:
-
-        Projenin, adım adım anlatım videosu.
-        https://youtu.be/fAMWzewpE1Q
+         A step-by-step video of the project. (Language: Turkish)
+         https://youtu.be/fAMWzewpE1Q
         
         */
         
-        // Giriş ve sonuç metin kutuları. (TextBox)
-        var txtSayi1
-        var txtSayi2
-        var txtSonuc
+        // Input and result TextBoxes.
+        var txtNum1
+        var txtNum2
+        var txtResult
         
-        // İşlem düğmeleri. (Button)
-        var btnTopla
-        var btnCikar
-        var btnCarp
-        var btnBol
+        // Action Buttons.
+        var btnSum
+        var btnMinus
+        var btnMultiply
+        var btnDivide
         
-        // İlk çalıştırılan fonksiyon.
+        // First run function.
         var start = function() {
             
-            // Sayfanın arka plan rengini duman grisi olarak belirle.
+            // Set the background color of the page as white smoke.
             page.color = "whitesmoke"
 
-            // Birinci sayı girişi için metin kutusu (TextBox) oluştur.
-            txtSayi1 = createTextBox()
-            // Metin olarak algılanması için, tırnak içinde yazalım.
-            txtSayi1.text = "0"
-            txtSayi1.title = "Sayı 1:"
-            txtSayi1.left = 20
-            txtSayi1.top = 50
+            // TEXTBOX: Create a TextBox (TextBox) for the first number input.
+            txtNum1 = createTextBox()
+            // For it to be perceived as text, let's write it in quotes.
+            txtNum1.text = "0"
+            txtNum1.title = "Number 1:"
+            txtNum1.left = 20
+            txtNum1.top = 50
 
-            // İkinci sayı girişi için metin kutusu oluştur.
-            txtSayi2 = createTextBox()
-            txtSayi2.text = "0"
-            txtSayi2.title = "Sayı 2:"
-            txtSayi2.left = txtSayi1.left
-            // Bu nesneyi, txtSayi1 nesnesinin 40px (piksel) altına yerleştir.
-            txtSayi2.top = txtSayi1.top + txtSayi1.height + 40
+            // TEXTBOX: Create TextBox for second number input.
+            txtNum2 = createTextBox()
+            txtNum2.text = "0"
+            txtNum2.title = "Number 2:"
+            txtNum2.left = txtNum1.left
+            // Place this object 40px (pixels) below the txtNum1 object.
+            txtNum2.top = txtNum1.top + txtNum1.height + 40
 
-            // Toplama düğmesi oluştur.
-            btnTopla = createButton()
-            btnTopla.text = "Topla"
-            btnTopla.left = txtSayi1.left
-            // Bu nesneyi, txtSayi2 nesnesinin 10px altına yerleştir.
-            btnTopla.top = txtSayi2.top + txtSayi2.height + 10
-            btnTopla.onClick(toplamaYap)
+            // BUTTON: Create addition button.
+            btnSum = createButton()
+            btnSum.text = "Sum"
+            btnSum.left = txtNum1.left
+            // Place this object 10px below the txtNum2 object.
+            btnSum.top = txtNum2.top + txtNum2.height + 10
+            btnSum.onClick(doAddition)
 
-            // Çıkartma düğmesi oluştur.
-            btnCikar = createButton()
-            btnCikar.text = "Çıkart"
-            // Bu nesneyi, btnTopla nesnesinin 10px sağına yerleştir.
-            btnCikar.left = btnTopla.left + btnTopla.width + 10
-            btnCikar.top = btnTopla.top
-            // Nesnenin rengini domates kırmızısı yap.
-            btnCikar.color = "tomato"
-            btnCikar.onClick(cikarmaYap)
+            // BUTTON: Create subtraction button.
+            btnMinus = createButton()
+            btnMinus.text = "Minus"
+            // Place this object 10px to the right of the btnSum object.
+            btnMinus.left = btnSum.left + btnSum.width + 10
+            btnMinus.top = btnSum.top
+            // Change the color of the object to tomato red.
+            btnMinus.color = "tomato"
+            btnMinus.onClick(doSubtraction)
 
-            // Çarpma düğmesi oluştur.
-            btnCarp = createButton()
-            btnCarp.text = "Çarp"
-            btnCarp.left = txtSayi1.left
-            // Bu nesneyi, btnTopla nesnesinin 10px altına yerleştir.
-            btnCarp.top = btnTopla.top + btnTopla.height + 10
-            btnCarp.color = "lightgray"
-            btnCarp.onClick(carpmaYap)
+            // BUTTON: Create multiplication button.
+            btnMultiply = createButton()
+            btnMultiply.text = "Multiply"
+            btnMultiply.left = txtNum1.left
+            // Place this object 10px below the btnSum object.
+            btnMultiply.top = btnSum.top + btnSum.height + 10
+            btnMultiply.color = "lightgray"
+            btnMultiply.onClick(doMultiplication)
 
-            // Bölme düğmesi oluştur.
-            btnBol = createButton()
-            btnBol.text = "Böl"
-            // Nesneyi, btnCikar nesnesi ile aynı soldan boşluk olsun.
-            btnBol.left = btnCikar.left
-            // Nesneyi, btnCarp nesnesi ile aynı yukarıdan boşluk olsun.
-            btnBol.top = btnCarp.top
-            btnBol.color = "lightgray"
-            btnBol.onClick(bolmeYap)
+            // BUTTON: Create division button.
+            btnDivide = createButton()
+            btnDivide.text = "Divide"
+            // Let the object be the same left space as the btnMinus object.
+            btnDivide.left = btnMinus.left
+            // Let the object be the same top space as the btnMultiply object.
+            btnDivide.top = btnMultiply.top
+            btnDivide.color = "lightgray"
+            btnDivide.onClick(doDivision)
 
-            // Sonuç için metin kutusu oluştur.
-            txtSonuc = createTextBox()
-            txtSonuc.title = "Sonuç:"
-            txtSonuc.left = txtSayi1.left
-            txtSonuc.top = btnCarp.top + btnCarp.height + 40
+            // TEXTBOX: Create TextBox for result.
+            txtResult = createTextBox()
+            txtResult.title = "Result:"
+            txtResult.left = txtNum1.left
+            txtResult.top = btnMultiply.top + btnMultiply.height + 40
 
         }
 
-        // Toplama yapan fonksiyon
-        var toplamaYap = function() {
+        // Addition function.
+        var doAddition = function() {
             
-            // Toplama işlemini yap ve sonucu, metin kutusuna yaz.
-            txtSonuc.text = num(txtSayi1.text) + num(txtSayi2.text)
+            // Perform the addition and write the result in the TextBox.
+            txtResult.text = num(txtNum1.text) + num(txtNum2.text)
 
-            // NOT: num(metin) fonksiyonu,
-            // metin olarak gönderilen parametrenin, 
-            // sayıya çevrilmiş halini cevap verir.
+            // NOTE: num(text) function,
+            // parameter sent as text,
+            // returns the converted number.
 
-            // ÖRNEK KULLANIMLAR:
-            // num("5") cevap: 5
-            // num("5.5") cevap: 5.5
-            // num("5.5", "integer") cevap: 5
-            // str(5) cevap: "5"
+            // EXAMPLE USES:
+            // num("5") answer: 5
+            // num("5.5") answer: 5.5
+            // num("5.5", "integer") answer: 5
+            // str(5) answer: "5"
 
-            // NOT: str(numara) fonksiyonu ise,
-            // sayı olarak gönderilen parametrenin, 
-            // metne çevrilmiş halini cevap verir.
-            
-        }
-
-        // Çıkarma yapan fonksiyon.
-        var cikarmaYap = function() {
-            
-            // Çıkarma işlemini sonucunu metin kutusuna yaz.
-            txtSonuc.text = num(txtSayi1.text) - num(txtSayi2.text)
+            // NOTE: If the str(number) function is
+            // parameter sent as a number,
+            // returns the translated version of the text.
             
         }
 
-        // Çarpma yapan fonksiyon.
-        var carpmaYap = function() {
+        // Subtraction function.
+        var doSubtraction = function() {
             
-            // Çarpma işlemini sonucunu metin kutusuna yaz.
-            txtSonuc.text = num(txtSayi1.text) * num(txtSayi2.text)
+            // Write the result in the TextBox.
+            txtResult.text = num(txtNum1.text) - num(txtNum2.text)
             
         }
 
-        // Bölme yapan fonksiyon.
-        var bolmeYap = function() {
+        // Multiplication function.
+        var doMultiplication = function() {
             
-            // Bölüme işlemini sonucunu metin kutusuna yaz.
-            txtSonuc.text = num(txtSayi1.text) / num(txtSayi2.text)
+            // Write the result in the TextBox.
+            txtResult.text = num(txtNum1.text) * num(txtNum2.text)
+            
+        }
 
-            // Not: Ondalıklı sayıyı, tam sayıya çevirmek:
-            // 3 / 2 işleminin cevabı ondalıklı sayıdır. 1.5
-            // num("1.5", "integer") fonksiyonu, sonucu tam sayıya çevirir. 1
-            // txtSonuc.text = num(num(txtSayi1.text) / num(txtSayi2.text), "integer")
+        // Division function.
+        var doDivision = function() {
+            
+            // Write the result in the TextBox.
+            txtResult.text = num(txtNum1.text) / num(txtNum2.text)
+
+            // Note: Converting decimal to integer:
+            // The answer to 3 / 2 is a decimal number. 1.5
+            // The num("1.5", "integer") function converts the result to an integer. 1
+            // txtResult.text = num(num(txtNum1.text) / num(txtNum2.text), "integer")
 
         }
         
         
         /*
         
-        GELİŞTİRME ÖNERİLERİ:
+        DEVELOPMENT SUGGESTIONS:
         
-        - Her işlem düğmesine basıldığında, sonuç metin kutusunun başlığı (.title) değişebilir.
-          "Toplama işleminin sonucu:", "Çıkarma işleminin sonucu:" vb.
-        - Sonuç, tam işlem olarak gösterilebilir. 2 + 1 = 3
-        - İşleme devam et düğmesi eklenebilir. Sonucu, ilk metin kutusuna yazar
-          ve ikinci metin kutusunu temizler.
+         - Each action button is clicked, the title (.title) of the result TextBox may change.
+           "Result of addition:", "Result of subtraction:" etc.
+         - The result can be displayed as a full transaction. 2 + 1 = 3
+         - Continue operation button can be added. Writes the result in the first TextBox
+           and clears the second TextBox.
 
-
-        İNGİLİZCE - TÜRKÇE SÖZLÜK:
-
-        Kullanılan kelimelerin, türkçe karşılıkları.
-
-        variable (kısaltılmışı var) = değişken
-        start = başlat
-        page = sayfa
-        color = renk
-        create = oluştur, oluşturmak
-        text = metin
-        box = kutu
-        title = başlık
-        pixel (kısaltılmışı px) = piksel, görüntü elemanı
-        top = üst
-        left = sol
-        width = genişlik
-        height = yükseklik
-        button = buton, düğme
-        on = üzerinde, üstünde, esnasında
-        click = tıkla, tıklamak
-        function = fonksiyon, işlev
-        number (kısaltılmışı num) = numara, sayı
-        integer = tam sayı tipinde değişken.   110
-        float = ondalıklı sayı tipinde değişken.   0.5
 
         */
             
@@ -209,7 +178,7 @@
     </head>
     <body>
         
-        <!-- HTML içeriği -->
+        <!-- HTML content -->
         
     </body>
 </html>

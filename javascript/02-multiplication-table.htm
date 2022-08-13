@@ -2,109 +2,103 @@
 <html>
     <head>
         
-        <title>Çarpım Tablosu</title>
+        <title>Multiplication Table</title>
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- DIŞARIDAN YÜKLENEN KÜTÜPHANE DOSYALARI -->
-        <link rel="stylesheet" type="text/css" href="kutuphane/basic.css">
-        <script src="kutuphane/basic.js" type="text/javascript" charset="utf-8"></script>
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
         
         <script>
             
         /*
 
-        ALGORİTMA:
+        ALGORITHM:
         
-        Bir metin kutusu (TextBox) ile, işlem yapılacak sayı isteniyor. 
-        Ve düğmeye (Button) basıldığında; verilen sayının, 1 den 10 a kadar çarpımları listeleniyor.
+        With a TextBox, the number to be processed is requested.
+        And when the Button is clicked; The products of the given number from 1 to 10 are listed.
         
+        
+        PROJECT DESCRIPTION:
 
-        TEMEL EĞİTİM:
-        
-        Konu anlatımları ve daha fazlası için mobil uygulamayı kullanabilirsiniz.
-        (Android) https://play.google.com/store/apps/details?id=com.bugraozden.cik
-
-        
-        PROJE ANLATIMI:
-
-        Projenin, adım adım anlatım videosu.
+        A step-by-step video of the project. (Language: Turkish)
         https://www.youtube.com/watch?v=euFpefGUNYs
         
-        */ 
+        */
         
-        // Sayının alınacağı metin kutusu. (TextBox)
-        var txtSayi
-        // Oluşturma düğmesi. (Button)
-        var btnOlustur
-        // Çarpım tablosunun listeleneceği etiket. (Label)
-        var lblCarpimTablosu
+        // TextBox to get the number.
+        var txtNumber
+        // Create Button.
+        var btnCreate
+        // Label to list the multiplication table.
+        var lblTable
         
-        // İlk çalıştırılan fonksiyon.
+        // First run function.
         var start = function() {
 
-            // Sayfanın arka plan rengini beyaz duman olarak belirle.
+            // Set the background color of the page as white smoke.
             page.color = "whitesmoke"
 
-            // Metin kutusu (TextBox) nesnesi oluştur.
-            txtSayi = createTextBox()
-            // Nesnenin içeriğini belirle.
-            txtSayi.text = "8"
-            // Nesnenin başlığını belirle.
-            txtSayi.title = "Bir sayı giriniz:"
-            // Nesnenin sola olan mesafesini belirle.
-            txtSayi.left = 50
-            // Nesnenin yukarıya olan mesafesini belirle.
-            txtSayi.top = 50
-            // Nesnenin genişliğini belirle. (Pixel cinsinden)
-            txtSayi.width = 130
+            // TEXTBOX: Create a TextBox object.
+            txtNumber = createTextBox()
+            // Determine the content of the object.
+            txtNumber.text = "8"
+            // Set the title of the object.
+            txtNumber.title = "Enter a number:"
+            // Set the distance of the object to the left.
+            txtNumber.left = 50
+            // Set the distance of the object up.
+            txtNumber.top = 50
+            // Set the width of the object. (in pixels)
+            txtNumber.width = 130
 
-            // Düğme (Button) nesnesi oluştur.
-            btnOlustur = createButton()
-            // Nesnenin üzerindeki yazıyı belirle.
-            btnOlustur.text = "Oluştur"
-            // Konumunu, txtSayi nesnesine göre hesaplayarak belirle.
-            btnOlustur.left = txtSayi.left
-            btnOlustur.top = txtSayi.top + txtSayi.height + 10
-            // Düğmeye basıldığında çalışacak fonksiyonu belirle.
-            btnOlustur.onClick(tabloOlustur)
+            // BUTTON: Create Button object.
+            btnCreate = createButton()
+            // Determine the text on the object.
+            btnCreate.text = "Create"
+            // Determine its location by calculating it relative to the txtNumber object.
+            btnCreate.left = txtNumber.left
+            btnCreate.top = txtNumber.top + txtNumber.height + 10
+            // Set the function to run when the button is clicked.
+            btnCreate.onClick(createTable)
             
-            // Etiket (Label) nesnesi oluştur.
-            lblCarpimTablosu = createLabel()
-            // Nesnenin içeriğini temizle.
-            lblCarpimTablosu.text = ""
-            // Sola olan mesafesi txtSayi nesnesinin 30px sağında olsun.
-            lblCarpimTablosu.left = txtSayi.left + txtSayi.width + 30
-            // Yukarıya olan mesafesi txtSayi nesnesi ile aynı olsun.
-            lblCarpimTablosu.top = txtSayi.top
+            // LABEL: Create Label object.
+            lblTable = createLabel()
+            // Clear the contents of the object.
+            lblTable.text = ""
+            // Let the distance to the left be 30px to the right of the txtNumber object.
+            lblTable.left = txtNumber.left + txtNumber.width + 30
+            // Let the distance to the top be the same as the txtNumber object.
+            lblTable.top = txtNumber.top
             
         }
 
-        // Düğmeye basıldığında, çarpım tablosunu oluşturan fonksiyon.
-        var tabloOlustur = function() {
+        // Function that creates the multiplication table when the button is clicked.
+        var createTable = function() {
             
-            // Etiketin içini temizle.
-            lblCarpimTablosu.text = ""
+            // Clear the inside of the tag.
+            lblTable.text = ""
             
-            // 10 kere tekrar et.
+            // repeat 10 times.
             for (var i = 1; i <= 10; i++) {
                 
-                // İşlemin görünümünü oluştur. Örnek: 1 x 7 =
-                var islem = i + " x " + txtSayi.text + " = "
+                // Create the view of the process. Example: 1 x 7 =
+                var process = i + " x " + txtNumber.text + " = "
                 
-                // Çarpma işleminin sonucunu hesapla.
-                var sonuc = num(txtSayi.text) * i
+                // Calculate the result of the multiplication operation.
+                var result = num(txtNumber.text) * i
                 
-                // Not: num(metin) fonksiyonu,
-                // metin olarak gönderilen parametrenin, 
-                // sayıya çevrilmiş halini cevap verir.
+                // Note: the num(text) function,
+                // parameter sent as text,
+                // returns the converted number.
 
-                // İşlemi etikete ekle
-                lblCarpimTablosu.text = lblCarpimTablosu.text + islem + sonuc + "<br>"
+                // Add the action to the tag
+                lblTable.text = lblTable.text + process + result + "<br>"
                 
-                // Not: <br> kelimesi, HTM (Hyper Text Markup) dilinde,
-                // bir alt satıra geçmek için kullanılır.
+                // Note: The word <br> is in HTM (Hyper Text Markup) language,
+                // used to move to a lower line.
                 
             }
             
@@ -112,35 +106,11 @@
         
         /*
         
-        GELİŞTİRME ÖNERİSİ:
+        DEVELOPMENT PROPOSAL:
         
-        lblCarpimTablosu nesnesinin sağında, aynısından bir tane daha olsun ve 
-        istenen sayının bir fazlası ile ikinci bir çarpım tablosu daha oluşturulsun.
+        - Have another one of the same, to the right of the lblTable object, and
+          Create a second multiplication table with one more of the desired number.
 
-
-        İNGİLİZCE - TÜRKÇE SÖZLÜK:
-
-        Kullanılan kelimelerin, türkçe karşılıkları.
-
-        variable (kısaltılmışı var) = değişken
-        start = başlat
-        page = sayfa
-        color = renk
-        create = oluştur, oluşturmak
-        text = metin
-        box = kutu
-        title = başlık
-        pixel (kısaltılmışı px) = piksel, görüntü elemanı
-        top = üst
-        left = sol
-        width = genişlik
-        height = yükseklik
-        button = buton, düğme
-        on = üzerinde, üstünde, esnasında
-        click = tıkla, tıklamak
-        function = fonksiyon, işlev
-        number (kısaltılmışı num) = numara, sayı
-        
         */
 
         </script>
@@ -148,7 +118,7 @@
     </head>
     <body>
         
-        <!-- HTML içeriği -->
+        <!-- HTML content -->
         
     </body>
 </html>
