@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Character Counter</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+        <!-- LIBRARY FILES -->
+        <link rel="stylesheet" type="text/css" href="library/basic.css">
+        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+
+        <style>
+
+        /*
+        body {
+            overflow: auto !important;
+        }
+        */
+
+        </style>
+
+        <script>
+
+        var box
+        var LABEL_FORMAT = "The sentence has {value} characters."
+        
+        var start = function() {
+
+            page.color = "whitesmoke"
+
+            // BOX: Container box.
+            box = createBox(0, 0, 360, 180)
+            that.color = 'white'
+            that.round = 14
+            that.border = 2
+            that.borderColor = "rgba(0, 0, 0, 0.1)"
+            that.center()
+
+            // TEXTBOX: Sentence textbox.
+            box.txtText = createTextBox(0, 60)
+            box.add(that)
+            that.title = "Enter a sentence:"
+            that.center("left")
+            that.inputElement.addEventListener("keyup" ,function(self) {
+                box.lblTextCount.text = LABEL_FORMAT.replace("{value}", box.txtText.text.length)
+            })
+
+            // LABEL: Text count information label.
+            box.lblTextCount = createLabel(0, 0)
+            box.add(box.lblTextCount)
+            box.lblTextCount.aline(box.txtText, "bottom", 10)
+            box.lblTextCount.text = LABEL_FORMAT.replace("{value}", "0")
+            that.fontSize = 16
+            that.textColor = "gray"
+
+            page.onResize(pageResized)
+            
+        }
+
+        var pageResized = function() {
+            box.center()
+        }
+
+        </script>
+
+    </head>
+    <body>
+        
+        <!-- HTML content -->
+        
+    </body>
+</html>
