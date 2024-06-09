@@ -44,6 +44,7 @@ var createSearcableList = function(objectWidth = 400, objectHeight = 450) {
 
     // NESNE: ARAMA İÇİN TAŞIYICI ALAN
     object.boxSearchArea = createBox(10, 10)
+    object.add(that)
     that.width = objectWidth - 20
     that.height = 60
     that.color = "white"
@@ -52,11 +53,13 @@ var createSearcableList = function(objectWidth = 400, objectHeight = 450) {
 
     // NESNE: ARAMA KÜÇÜK RESİM
     object.boxSearchArea.imgIcon = createImage(15, 15, 30 ,30)
+    object.boxSearchArea.add(that)
     that.load("images/37/search.svg")
     that.opacity = 0.6
 
     // NESNE: ARAMA METİN KUTUSU
     object.boxSearchArea.txtSearch = createTextBox(60, 5)
+    object.boxSearchArea.add(that)
     that.width = 310
     that.border = 0
     that.minimal = 1
@@ -66,6 +69,7 @@ var createSearcableList = function(objectWidth = 400, objectHeight = 450) {
 
     // NESNE: PARÇALAR İÇİN TAŞIYICI ALANI
     object.boxItemsArea = createBox()
+    object.add(that)
     that.left = 0
     that.top = object.boxSearchArea.height + 20
     that.width = objectWidth
@@ -92,6 +96,7 @@ var createSearcableList = function(objectWidth = 400, objectHeight = 450) {
 
         // NESNE: PARÇANIN RESMİ
         itemObject.imgLogo = createImage(30, 10, 70, 70)
+        itemObject.add(that)
         that.load("images/37/" + image)
         that.round = 4
         that.color = "transparent"
@@ -99,10 +104,12 @@ var createSearcableList = function(objectWidth = 400, objectHeight = 450) {
 
         // NESNE: PARÇANIN BAŞLIĞI // default top: 10
         itemObject.lblTitle = createLabel(120, 23, 280, "auto")
+        itemObject.add(that)
         that.text = title
 
         // NESNE: PARÇANIN AÇIKLAMASI // default top: 34
         itemObject.lblDesc = createLabel(120, 47, 280, "auto")
+        itemObject.add(that)
         that.text = desc
         that.textColor = "gray"
         that.fontSize = 14
@@ -185,6 +192,7 @@ var createSearcableList = function(objectWidth = 400, objectHeight = 450) {
 
                     // Yeni bir parça oluştur ve ekle.
                     object.boxItemsArea["item" + i] = object.createSearcableListItem(item.title, item.desc, item.logo, itemCount * 90)
+                    object.boxItemsArea.add(that)
                     // Sıra numarasını nesnenin içinde sakla.
                     that.itemIndex = i
                     itemCount++

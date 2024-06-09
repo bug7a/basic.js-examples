@@ -25,11 +25,11 @@ contentNum7.create = function(boxView) {
     // NESNE: Tam ekran içeriği kapatma butonu
     boxView.btnClose = closeButton.create()
     that.onClick(function() {
-        contentNum7.box.upperObject.visible = 0
+        contentNum7.box.containerBox.visible = 0
     })
 
 }
 
 contentNum7.writeMessage = function() {
-    print("İçerik Sayfası")
+    println("İçerik Sayfası")
 }

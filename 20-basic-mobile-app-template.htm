@@ -7,8 +7,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Ortak kullanılan kodlar, farklı bir dosyaya konulmuştur. -->
         <script src="files/20/close-button.js" type="text/javascript" charset="utf-8"></script>
@@ -139,7 +139,7 @@
             a0.btn1 = createButton()
             a0.add(that)
             // Ortak özellikleri ayarla.
-            that.prop(propButton)
+            that.props(propButton)
             that.text = "Sayfa 1"
             that.top = 250
             that.center("left")
@@ -149,7 +149,7 @@
             a0.btn2 = createButton()
             a0.add(that)
             // Ortak özellikleri ayarla.
-            that.prop(propButton)
+            that.props(propButton)
             that.text = "Sayfa 2"
             // Önceki butonun altına hizala.
             that.aline(a0.btn1, "bottom", 10)
@@ -159,7 +159,7 @@
             a0.btn3 = createButton()
             a0.add(that)
             // Ortak özellikleri ayarla.
-            that.prop(propButton)
+            that.props(propButton)
             that.text = "Sayfa 3"
             // Önceki butonun altına hizala.
             that.aline(a0.btn2, "bottom", 10)

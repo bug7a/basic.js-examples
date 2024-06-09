@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <style>
 
@@ -69,11 +69,11 @@
             // NESNE: BAŞLANGIÇ SAYFASI ***
 
             // NESNE: Başlangıç sayfası
-            a0 = cbox(0, 0, APP_ORIGINAL_WIDTH, page.height)
+            a0 = Box(0, 0, APP_ORIGINAL_WIDTH, page.height)
             that.color = basic.ACTION2_COLOR
             that.center("left")
 
-            a0.btnStart = cbtn()
+            a0.btnStart = Button()
             a0.add(that)
             that.text = "Sayfa'yı Göster"
             that.width = 200
@@ -89,18 +89,18 @@
             // NESNE: SAYFA 1 ***
 
             // NESNE: Sayfa 1
-            a1 = cbox(0, 0, APP_ORIGINAL_WIDTH, page.height)
+            a1 = Box(0, 0, APP_ORIGINAL_WIDTH, page.height)
             that.color = "black"
             that.center()
             a1.visible = 0
 
             // NESNE: Üst bölüm
-            a1.b1 = cbox(0, 0, a1.width, APP_B1_HEIGHT)
+            a1.b1 = Box(0, 0, a1.width, APP_B1_HEIGHT)
             a1.add(that)
             that.color = "lightgray"
 
             // NESNE: Üst bölümde bir geri butonu
-            a1.b1.imgBack = cimg(20, 0, 30, 30)
+            a1.b1.imgBack = Icon(20, 0, 30, 30)
             a1.b1.add(that)
             that.load("images/63/back.png")
             that.center("top")
@@ -111,7 +111,7 @@
             })
 
             // NESNE: Üst bölüm içinde bir nesne
-            a1.b1.lblTitle = clbl(0, 0, "auto", "auto")
+            a1.b1.lblTitle = Label(0, 0, "auto", "auto")
             a1.b1.add(that)
             that.text = "a1.b1.lblTitle"
             that.onResize(function(self){
@@ -121,7 +121,7 @@
             title = a1.b1.lblTitle
             
             // NESNE: Orta bölüm
-            a1.b2 = cbox()
+            a1.b2 = Box()
             a1.add(that)
             that.width = a1.width
             that.height = a1.height - APP_B1_HEIGHT - APP_B3_HEIGHT
@@ -130,20 +130,20 @@
             that.scrollY = 1
 
             // NESNE: Orta bölümde bir nesne
-            a1.b2.lblContent = clbl(20, 20, 250, 30)
+            a1.b2.lblContent = Label(20, 20, 250, 30)
             a1.b2.add(that)
             that.text = "a1.b2.lblContent"
             that.textColor = "white"
 
             // NESNE: Orta bölüm içinde bir alt bölüm
-            a1.b2.c1 = cbox(0, 0, APP_ORIGINAL_WIDTH - 40, 150)
+            a1.b2.c1 = Box(0, 0, APP_ORIGINAL_WIDTH - 40, 150)
             a1.b2.add(that)
             that.color = "white"
             that.left = 20
             that.top = 300
 
             // NESNE: Alt bölüm içinde bir nesne
-            a1.b2.c1.lblContent = clbl(0, 0, "auto", "auto")
+            a1.b2.c1.lblContent = Label(0, 0, "auto", "auto")
             a1.b2.c1.add(that)
             that.text = "a1.b2.c1.lblContent"
             that.textColor = "black"
@@ -154,14 +154,14 @@
             content = a1.b2.c1.lblContent
 
             // NESNE: Orta bölüm içinde başka bir alt bölüm
-            a1.b2.c2 = cbox(0, 0, APP_ORIGINAL_WIDTH - 40, 150)
+            a1.b2.c2 = Box(0, 0, APP_ORIGINAL_WIDTH - 40, 150)
             a1.b2.add(that)
             that.color = "white"
             that.left = 20
             that.top = page.height + 100
 
             // NESNE: Alt bölüm içinde bir nesne
-            a1.b2.c2.lblContent = clbl(0, 0, "auto", "auto")
+            a1.b2.c2.lblContent = Label(0, 0, "auto", "auto")
             a1.b2.c2.add(that)
             that.text = "a1.b2.c2.lblContent"
             that.textColor = "black"
@@ -170,7 +170,7 @@
             })
 
             // NESNE: Alt bölüm
-            a1.b3 = cbox()
+            a1.b3 = Box()
             a1.add(that)
             that.width = a1.width
             that.height = 150
@@ -178,7 +178,7 @@
             that.bottom = 0
 
             // NESNE: Alt bölüm içinde bir nesne
-            a1.b3.lblTitle = clbl()
+            a1.b3.lblTitle = Label()
             a1.b3.add(that)
             that.text = "a1.b3.lblTitle"
             that.width = "auto"

@@ -25,5 +25,5 @@ contentNum8.create = function(boxView) {
 }
 
 contentNum8.writeMessage = function() {
-    print("Başlangıç Sayfası")
+    println("Başlangıç Sayfası")
 }

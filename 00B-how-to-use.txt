@@ -18,14 +18,14 @@ https://www.youtube.com/watch?v=vSt5EFDkhpI
 - Each numbered HTM file is a software project developed with JavaScript.
 - Projects are numbered starting from easy.
 - Each project can run on any browser.
-- The "library" folder contains the basic.js library.
+- The "basic" folder contains the basic.js library.
 - The "images" folder contains images used by some sample projects.
-- When creating a new project; Copy the "00C-blank-project-theme.htm" file and the "library" folder to a different folder. Rename the HTM file you copied (project-name.htm etc.) and open this folder in the development environment. (In the narration videos, these stages are shown.)
+- When creating a new project; Copy the "00C-empty-project-theme.htm" file and the "basic" folder to a different folder. Rename the HTM file you copied (project-name.htm etc.) and open this folder in the development environment. (In the narration videos, these stages are shown.)
 
 
 3. FIRST EXAMPLE PROJECT:
 
-The first example is the project "01-hello.htm".
+The first example is the project "01-hello-world.htm".
 
 Development video:
 https://youtu.be/zPOKz3w1YmY
@@ -44,6 +44,5 @@ RECOMMENDED WORKING METHOD:
 - To use in your project; Also note the use of codes.
 
 
-I wish you well,
-Good work.
+I wish you to see its benefits.
 

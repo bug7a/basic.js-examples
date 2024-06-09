@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <style>
 
@@ -69,14 +69,14 @@
             page.color = APP_COLOR + "30"
 
             // NESNE: Taşıyıcı kutu.
-            b1 = cbox(20, 20, 340)
+            b1 = Box(20, 20, 340)
             that.color = "white"
             that.element.style.boxShadow = "2px 3px 6px rgba(0, 0, 0, 0.05)"
             that.borderColor = "lightgray"
             that.round = 13
 
             // NESNE: Anahtar kelimeleri taşıyan kutu.
-            b1.boxOfKeywords = cbox(20, 20, 300, "auto")
+            b1.boxOfKeywords = Box(20, 20, 300, "auto")
             b1.add(that)
             that.round = 13
             that.color = "whitesmoke"
@@ -88,13 +88,13 @@
             boxOfKeywords = b1.boxOfKeywords
 
             // NESNE: Yeni anahtar kelime ekleme alanı.
-            b1.c1 = cbox(0, 0, b1.width, 120)
+            b1.c1 = Box(0, 0, b1.width, 120)
             b1.add(that)
             that.bottom = 0
             that.color = "transparent"
 
             // NESNE: Yeni anahtar kelime metin kutusu.
-            b1.c1.txtNewKeyword = ctxt(20, 50, boxOfKeywords.width - 60)
+            b1.c1.txtNewKeyword = Input(20, 50, boxOfKeywords.width - 60)
             b1.c1.add(that)
             that.title = "Yeni Kelime:"
             that.minimal = 1
@@ -103,7 +103,7 @@
             txtNewKeyword = b1.c1.txtNewKeyword
             
             // NESNE: Yeni anahtar kelime ekleme butonu.
-            b1.c1.lblbtnAddNewKeyword = clbl(0, 0, 50, 50)
+            b1.c1.lblbtnAddNewKeyword = Label(0, 0, 50, 50)
             b1.c1.add(that)
             that.text = "+"
             that.textAlign = "center"
@@ -134,8 +134,8 @@
             // Eğer daha önce kaydedilmiş anahtar kelimeler varsa, onları kullan.
             keywordList = storage.load("app66-keywordList") || keywordList
 
-            print("loadSavedKeywords: ")
-            print(keywordList)
+            println("loadSavedKeywords: ")
+            println(keywordList)
 
             // Yüklenen, en son id değerini al.
             if (keywordList.length == 0) {
@@ -144,7 +144,7 @@
                 keywordId = num(keywordList[keywordList.length - 1].id)
             }
 
-            print("current keywordId: " + keywordId)
+            println("current keywordId: " + keywordId)
             
             // Yüklenen anahtar kelimeleri ekle.
             for (var i = 0; i < keywordList.length; i++) {
@@ -172,7 +172,7 @@
 
             b1.height = boxOfKeywords.height + 160
             b1.center()
-            print("refresh height: " + b1.height)
+            println("refresh height: " + b1.height)
 
         }
 
@@ -185,7 +185,7 @@
             boxOfKeywords.add(that)
             that.id = id
 
-            print("createKeywordInBox: id: " + id + ", text: " + keywordText)
+            println("createKeywordInBox: id: " + id + ", text: " + keywordText)
 
             return that
 
@@ -195,7 +195,7 @@
         var generateNewKeywordId = function() {
 
             keywordId++
-            print("generateNewKeywordId: " + keywordId)
+            println("generateNewKeywordId: " + keywordId)
 
             return keywordId
 
@@ -204,7 +204,7 @@
         var createKeyword = function(keywordText) {
             
             // NESNE: Anahtar kelimenin yazısı
-            var lblKeyword = clbl(0, 0, "auto", "auto")
+            var lblKeyword = Label(0, 0, "auto", "auto")
             that.text = keywordText
             that.spaceX = 10
             that.spaceY = 3
@@ -224,7 +224,7 @@
             // Nesneler, satır dolana kadar; yan yana dizilir:
             that.element.style.display = "inline-block"
 
-            print("createKeyword: text: " + keywordText)
+            println("createKeyword: text: " + keywordText)
 
             makeBasicObject(lblKeyword)
 
@@ -239,7 +239,7 @@
 
             if (index >= 0) {
 
-                print("removeKeyword: id: " + self.id + ", index: " + index)
+                println("removeKeyword: id: " + self.id + ", index: " + index)
 
                 keywordList.splice(index, 1)
                 storage.save("app66-keywordList", keywordList)
@@ -258,7 +258,7 @@
             for (var i = 0; i < keywordList.length; i++) {
                 if (keywordList[i].id == id) {
 
-                    print("getKeywordIndexById: " + i)
+                    println("getKeywordIndexById: " + i)
                     return i
 
                 }

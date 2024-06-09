@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
@@ -31,10 +31,10 @@
         var start = function() {
 
             // NESNE: İlk sayfa taşıyıcısı
-            a0 = cbox(0, 0, page.width, page.height)
+            a0 = Box(0, 0, page.width, page.height)
 
             // NESNE: Buton 1 üst
-            a0.btn1 = cbox(0, 0, 40, 40)
+            a0.btn1 = Box(0, 0, 40, 40)
             a0.add(that)
             that.color = "lightgray"
             that.round = 20
@@ -43,7 +43,7 @@
             that.onClick(refreshCircle)
 
             // NESNE: Buton 2 alt
-            a0.btn2 = cbox(0, 0, 40, 40)
+            a0.btn2 = Box(0, 0, 40, 40)
             a0.add(that)
             that.color = "lightgray"
             that.round = 20
@@ -52,7 +52,7 @@
             that.onClick(refreshCircle)
 
             // NESNE: Hareket özelliği olan daire
-            a0.circle = cbox(0, 0, 20, 20)
+            a0.circle = Box(0, 0, 20, 20)
             a0.add(that)
             that.color = "#FE5D49"
             that.round = 100

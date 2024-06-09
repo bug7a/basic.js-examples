@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
@@ -80,7 +80,7 @@
 
         // 1 numaralı diyalog kutusunun, onay butonuna basıldığında;
         var dialog1OkayClicked = function() {
-            print("Diyalog1, onayla butonuna basıldı.")
+            println("Diyalog1, onayla butonuna basıldı.")
 
             // Yapılması istenen görevleri buraya yaz.
 
@@ -88,7 +88,7 @@
 
         // 1 numaralı diyalog kutusunun, iptal butonuna basıldığında;
         var dialog1CancelClicked = function() {
-            print("Diyalog1, iptal butonuna basıldı.")
+            println("Diyalog1, iptal butonuna basıldı.")
 
             // Yapılması istenen görevleri buraya yaz.
             
@@ -113,7 +113,7 @@
 
         // 2 numaralı diyalog kutusunun, onay butonuna basıldığında;
         var dialog2OkayClicked = function() {
-            print("Diyalog2, tamam butonuna basıldı.")
+            println("Diyalog2, tamam butonuna basıldı.")
 
             // Yapılması istenen görevleri buraya yaz.
 
@@ -177,6 +177,7 @@
             object.window.lblDesc = createLabel()
             object.window.add(that)
             that.text = ""
+            that.left = 0
             that.top = 50
             that.space = 25
             that.width = object.window.width

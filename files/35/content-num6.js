@@ -31,5 +31,5 @@ contentNum6.create = function(boxView) {
 }
 
 contentNum6.writeMessage = function() {
-    print("İçerik Sayfası")
+    println("İçerik Sayfası")
 }

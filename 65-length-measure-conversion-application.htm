@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <style>
 
@@ -83,11 +83,11 @@
             page.fit(APP_ORIGINAL_WIDTH, APP_MAX_WIDTH)
 
             // NESNE: Başlangıç sayfası
-            a0 = cbox(0, 0, page.width, page.height)
+            a0 = Box(0, 0, page.width, page.height)
             that.color = "#FEC108"
 
             // NESNE: Duman beyazı taşıyıcı kutu
-            a0.b1 = cbox(0, 0, 370, 470)
+            a0.b1 = Box(0, 0, 370, 470)
             a0.add(that)
             that.color = "whitesmoke"
             that.round = 13
@@ -95,13 +95,13 @@
             that.center()
 
             // NESNE: Küçük logo resimi
-            a0.b1.imgLogo = cimg(0, 40, 80, 80)
+            a0.b1.imgLogo = Icon(0, 40, 80, 80)
             a0.b1.add(that)
             that.load("images/65/logo.png")
             that.center("left")
 
             // NESNE: Başlık
-            a0.b1.lblTitle = clbl(0, 140, a0.b1.width, 40)
+            a0.b1.lblTitle = Label(0, 140, a0.b1.width, 40)
             a0.b1.add(that)
             that.text = "Uzunluk Ölçüsü Çevirme"
             that.element.style.fontFamily = "opensans-bold"
@@ -109,14 +109,14 @@
             that.textAlign = "center"
 
             // NESNE: Metin kutularının arkasındaki beyaz taşıyıcı kutu
-            a0.b1.c1 = cbox(20, 210, 330, 240)
+            a0.b1.c1 = Box(20, 210, 330, 240)
             a0.b1.add(that)
             that.color = "white"
             that.element.style.boxShadow = "2px 3px 6px rgba(0, 0, 0, 0.05)"
             that.round = 13
 
             // NESNE: Verilen uzunluk metin kutusu
-            a0.b1.c1.txtGivenLength = ctxt(0, 50)
+            a0.b1.c1.txtGivenLength = Input(0, 50)
             a0.b1.c1.add(that)
             that.title = "Verilen Uzunluk:"
             that.minimal = 1
@@ -129,7 +129,7 @@
             txtGivenLength = that
 
             // NESNE: Hesaplanan uzunluk metin kutusu
-            a0.b1.c1.txtCalculatedLength = ctxt()
+            a0.b1.c1.txtCalculatedLength = Input()
             a0.b1.c1.add(that)
             that.title = "Hesaplanan Uzunluk:"
             that.minimal = 1
@@ -152,7 +152,7 @@
             subCalculatedUnit = that
 
             // NESNE: Birimleri birbirleri ile değiştirme butonu
-            a0.b1.c1.imgSwitchUnitsButton = cimg(0, 0, 40, 40)
+            a0.b1.c1.imgSwitchUnitsButton = Icon(0, 0, 40, 40)
             a0.b1.c1.add(that)
             that.load("images/65/change.png")
             that.space = 26
@@ -186,7 +186,7 @@
         // Metin kutusunun üstünde, küçük bir birim butonu oluşturur.
         var createSelectedUnitButton = function(txtObject) {
             
-            var object = clbl(0, 0, "auto", 28)
+            var object = Label(0, 0, "auto", 28)
             that.color = "white"
             that.textColor = "#4A4A4A"
             that.fontSize = 16
@@ -198,7 +198,7 @@
 
             // Konumu, sağa yaslanmış olarak hesapla:
             // Böylece, metin değiştiğinde, sola doğru uzar.
-            that.right = txtObject.upperObject.width - txtObject.left - txtObject.width + 10
+            that.right = txtObject.containerBox.width - txtObject.left - txtObject.width + 10
             that.top = txtObject.top
             that.top += (txtObject.height / 2) - (that.height / 2)
             // NOT: Yükseklik manuel olarak ayarlanmıştır.
@@ -248,16 +248,16 @@
             // Ve seçim yapıldığında, diyalog nesnesi silinir.
             
             // NESNE: Diyalog penceresinin arkasındaki karartma kutusu.
-            var object = cbox(0, 0, page.width, page.height)
+            var object = Box(0, 0, page.width, page.height)
             that.color = "rgba(0, 0, 0, 0.8)"
 
             // NESNE: Karartma kutusu boyutlarındaki, pencereyi kapatma butonu (görünmez).
-            object.boxbtnClose = cbox(0, 0, page.width, page.height)
+            object.boxbtnClose = Box(0, 0, page.width, page.height)
             object.add(that)
             that.color = "transparent"
 
             // NESNE: Birim butonlarının arkasındaki beyaz kutu.
-            object.b1 = cbox(0, 0, 250, 300)
+            object.b1 = Box(0, 0, 250, 300)
             object.add(that)
             that.color = "white"
             that.round = 13
@@ -277,7 +277,7 @@
             // Birim seçme butonlarını oluştur.
             for (var i = 0; i < lengthMeasurementUnits.length; i++) {
 
-                object.b1["btn" + i] = cbtn()
+                object.b1["btn" + i] = Button()
                 object.b1.add(that)
                 that.color = "white"
                 that.fontSize = 20
@@ -285,6 +285,7 @@
                 that.text = lengthMeasurementUnits[i].name
                 that.width = object.b1.width
                 that.top = i * 50 + TOP_BOTTOM_SPACE
+                that.left = 0;
                 that.minimal = 1
                 // Nesnenin taşıdığı index değeri.
                 that.index = i

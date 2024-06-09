@@ -1,6 +1,6 @@
-### Information
+### JAVASCRIPT EXAMPLES
 
-Object-based project examples for programming beginners.<br />
+Object-based JavaScript project examples for programming beginners.<br />
 
 * The first 10 projects are specifically designed to help you learn software development logic.
 * HTML and CSS codes are written automatically by the library. Thus, students can initially focus only on algorithm development.
@@ -11,26 +11,20 @@ Object-based project examples for programming beginners.<br />
 * With these techniques, fully customizable and interactive applications can be developed.
 * The programming language used is JavaScript. Projects can be run in the browser or WebView.
 
-### Some of the Sample Projects
+### LIVE
+https://bug7a.github.io/basic.js-examples/
 
 ![alt tag](https://bug7a.github.io/basic.js-examples/preview.png)
 
-### Contact information
+### CONTACT
 
-Starting Date: 25 October 2020<br>
 Developer: Bugra Ozden<br>
 Email: bugra.ozden@gmail.com<br>
-Web Site: http://bugraozden.com<br><br>
+Web: https://bug7a.github.io/<br><br>
 
-I wish you well,<br />
-Good work.<br /><br />
+I wish you to see its benefits.<br /><br />
 
-### License
+### LICENSE
 
-You are free:<br />
-
-to Share — to copy, distribute and transmit the work<br />
-to Remix — to adapt the work<br />
-to make commercial use of the work<br />
-
-<https://creativecommons.org/licenses/by/4.0/><br /><br />
+Copyright 2020-2024 Bugra Ozden <bugra.ozden@gmail.com><br />
+Licensed under the Apache License, Version 2.0<br /><br />

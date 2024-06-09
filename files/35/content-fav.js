@@ -27,5 +27,5 @@ contentFav.create = function(boxView) {
 }
 
 contentFav.writeMessage = function() {
-    print("Sık Kullanılanlar Sayfası")
+    println("Sık Kullanılanlar Sayfası")
 }

@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
@@ -64,8 +64,8 @@
             var posX = e.clientX;
             var posY = e.clientY;
 
-            mouseX = basic.antiZoom(posX)
-            mouseY = basic.antiZoom(posY)
+            mouseX = withPageZoom(posX)
+            mouseY = withPageZoom(posY)
             
             // Farenin konumunu global değişkenlere aktar.
             //mouseX = event.offsetX;

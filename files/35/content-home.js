@@ -27,5 +27,5 @@ contentHome.create = function(boxView) {
 }
 
 contentHome.writeMessage = function() {
-    print("Başlangıç Sayfası")
+    println("Başlangıç Sayfası")
 }

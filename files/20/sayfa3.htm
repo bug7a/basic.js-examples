@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <!-- Kütüphane dosyaları, buradan 2 dizin geride olduğu için, dosya yolu ../../ ile başlıyor. -->
-        <link rel="stylesheet" type="text/css" href="../../library/basic.css">
-        <script src="../../library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="../../basic/basic.min.css">
+        <script src="../../basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Ortak kullanılan kodlar, farklı bir dosyaya konulmuştur. -->
         <script src="close-button.js" type="text/javascript" charset="utf-8"></script>
@@ -88,10 +88,12 @@
 
             // Kapatma düğmesi olutur.
             a0.closeButton = createCloseButton()
+            a0.add(that)
             that.onClick(goBack)
             
             // Sayfa1 yazısı.
             a0.lblDesc = createLabel()
+            a0.add(that)
             that.text = "Sayfa 3"
             that.fontSize = 40
             that.textColor = "white"
@@ -101,7 +103,7 @@
         }
 
         var goBack = function () {
-            go("../../20-temel-mobil-uygulama-sablonu.htm")
+            go("../../20-basic-mobile-app-template.htm")
         }
         
         </script>

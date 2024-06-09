@@ -27,5 +27,5 @@ contentAlert.create = function(boxView) {
 }
 
 contentAlert.writeMessage = function() {
-    print("Uyarılar Sayfası")
+    println("Uyarılar Sayfası")
 }

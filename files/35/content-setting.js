@@ -27,5 +27,5 @@ contentSetting.create = function(boxView) {
 }
 
 contentSetting.writeMessage = function() {
-    print("Ayarlar Sayfası")
+    println("Ayarlar Sayfası")
 }

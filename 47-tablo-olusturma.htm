@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
@@ -68,7 +68,7 @@
             that.text = "Sıra"
             // Butonun üzerine gelindiğinde, el imleci çıkmasın.
             that.buttonElement.style.cursor = "default"
-            that.prop(propListeTitle)
+            that.props(propListeTitle)
             that.color = "lightblue"
 
             // NESNE: Başlık 2
@@ -76,7 +76,7 @@
             tblListe.add(that)
             that.text = "İsim"
             that.buttonElement.style.cursor = "default"
-            that.prop(propListeTitle)
+            that.props(propListeTitle)
             that.aline(tblListe.title1, "right")
 
             // NESNE: Başlık 3
@@ -84,7 +84,7 @@
             tblListe.add(that)
             that.text = "EPosta"
             that.buttonElement.style.cursor = "default"
-            that.prop(propListeTitle)
+            that.props(propListeTitle)
             that.aline(tblListe.title2, "right")
             
             // NESNE: Tüm satırları taşıyan kaydırılabilir kutu.
@@ -141,7 +141,7 @@
         // Bir satıra basıldığında, ismini yazdır.
         var itemClicked = function(self) {
             
-            print(self.person.name)
+            println(self.person.name)
             
         }
 

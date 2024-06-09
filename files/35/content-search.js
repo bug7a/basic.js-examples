@@ -35,13 +35,13 @@ contentSearch.create = function(boxView) {
 }
 
 contentSearch.writeMessage = function() {
-    print("Arama Sayfası")
+    println("Arama Sayfası")
 }
 
 // Basılan parçanın bilgilerini consola yazdır.
 contentSearch.listItemClicked = function(self, item, itemIndex, itemData) {
 
-    print(itemIndex + "-" + itemData.title)
+    println(itemIndex + "-" + itemData.title)
 
     // - self, üzerine basılan liste nesnesi.
     // - item, üzerine basılan parça.

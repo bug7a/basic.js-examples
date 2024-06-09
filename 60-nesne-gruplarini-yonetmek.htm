@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
@@ -44,10 +44,10 @@
         var start = function() {
 
             // NESNE: ilk sayfa taşıyıcısı
-            a0 = cbox(0, 0, page.width, page.height)
+            a0 = Box(0, 0, page.width, page.height)
 
             // NESNE: kutuların taşıyıcısı
-            a0.b1 = cbox()
+            a0.b1 = Box()
             a0.add(that)
             that.height = 44
             that.round = 3
@@ -62,7 +62,7 @@
             }
 
             // NESNE: Yeni kutu ekleme butonu
-            a0.btnAddNewBox = cbtn()
+            a0.btnAddNewBox = Button()
             a0.add(that)
             that.text = "Kutu Ekle"
             that.color = "lightgray"
@@ -101,7 +101,7 @@
             var newBoxName = "box" + lastBoxId
 
             // NESNE: Kutu
-            a0.b1[newBoxName] = cbox(0, SPACE_BETWEEN_BOXES, 40, 40)
+            a0.b1[newBoxName] = Box(0, SPACE_BETWEEN_BOXES, 40, 40)
             a0.b1.add(that)
             // id, ismini bizim belirlediğimi bir değişkendir.
             that.id = lastBoxId
@@ -116,7 +116,7 @@
             // that.width = random(40, 100)
 
             // NESNE: Kutu içideki sayı
-            a0.b1[newBoxName].lblNumber = clbl(0, 0, 40, 25)
+            a0.b1[newBoxName].lblNumber = Label(0, 0, 40, 25)
             a0.b1[newBoxName].add(that)
             that.text = str(lastBoxId)
             that.textAlign = "center"
@@ -160,7 +160,7 @@
 
             refreshBoxes()
 
-            print(id + " id'li kutu nesnesi silindi.")
+            println(id + " id'li kutu nesnesi silindi.")
 
         }
         

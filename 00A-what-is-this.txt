@@ -8,7 +8,7 @@ WHO CAN BENEFIT?
 
 - Middle school, high school, and university students.
 - Those who want to write code as a hobby.
-- Beginners to programming.
+- Beginners in programming.
 - Teachers and parents who want to use it as educational content.
 
 
@@ -56,25 +56,18 @@ USAGE AREAS:
 5. Websites.
 
 
-CONTACT INFORMATION:
+CONTACT:
 
 Developer: Bugra OZDEN
 Email: bugra.ozden@gmail.com
-Personal Site: http://bugraozden.com
+Personal Site: https://bug7a.github.io/
 Project Site: https://bug7a.github.io/basic.js/
 
 
 LICENCE:
 
-You are free:
-
-to Share — to copy, distribute and transmit the work
-to Remix — to adapt the work
-to make commercial use of the work
-
-https://creativecommons.org/licenses/by/4.0/
+Copyright 2020-2024 Bugra Ozden <bugra.ozden@gmail.com>
+Licensed under the Apache License, Version 2.0
 
 
-I wish you well,
-Good work.
-
+I wish you to see its benefits.

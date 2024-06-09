@@ -7,8 +7,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
             
@@ -90,7 +90,7 @@
                 for (var yataySira = 1; yataySira <= 8; yataySira++) {
                     
                     // Bir kare oluştur.
-                    var birKare = new Box()
+                    var birKare = Box()
                     birKare.width = 60
                     birKare.height = 60
                     // Döngünün ürettiği sayılara göre konumlandır.
@@ -129,13 +129,13 @@
             for (var i = 0; i < 8; i++) {
                 
                 // a, b, c..
-                var lblYatayAdres = new Label()
+                var lblYatayAdres = Label()
                 lblYatayAdres.text = yatayKonumlar[i]
                 lblYatayAdres.left = 60 + (i * 60) + 20
                 lblYatayAdres.top = 60 + (8 * 60) + 10
 
                 // 1, 2, 3..
-                var lblDikeyAdres = new Label()
+                var lblDikeyAdres = Label()
                 lblDikeyAdres.text = dikeyKonumlar[i]
                 lblDikeyAdres.left = 35
                 lblDikeyAdres.top = 60 + (i * 60) + 15
@@ -146,7 +146,7 @@
             for (var i = 0; i < taslarBilgi.length; i++) {
                 
                 // Bir tas oluştur.
-                var birTas = new Image()
+                var birTas = Icon()
                 // Oluşturulan taşın resmini yükle.
                 birTas.load("images/satranc/" + taslarBilgi[i].tip + "-" + taslarBilgi[i].renk + ".png")
                 birTas.width = 60
@@ -174,7 +174,7 @@
             for (var x = 1; x <= 8; x++) {
                 for (var y = 1; y <= 8; y++) {
                     
-                    var birSecim = new Box()
+                    var birSecim = Box()
                     birSecim.width = 60
                     birSecim.height = 60
                     birSecim.left = x * 60

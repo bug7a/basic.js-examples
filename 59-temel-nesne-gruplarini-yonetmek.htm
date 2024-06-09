@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- LIBRARY FILES -->
-        <link rel="stylesheet" type="text/css" href="library/basic.css">
-        <script src="library/basic.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="basic/basic.min.css">
+        <script src="basic/basic.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
 
@@ -31,7 +31,7 @@
             for (var i = 0; i < 8; i++) {
 
                 // NESNE: Her bir parça.
-                var box = cbox(0, 0, 80, 80)
+                var box = Box(0, 0, 80, 80)
                 that.color = "orangered"
                 that.round = 4
                 that.onClick(removeBox)
@@ -41,7 +41,7 @@
                 // that.height = random(50, 100)
 
                 // NESNE: Parça içindeki sayı.
-                box.lblNumber = clbl(0, 0, 50, 25)
+                box.lblNumber = Label(0, 0, 50, 25)
                 box.add(that)
                 that.text = str(i + 1)
                 that.textAlign = "center"
