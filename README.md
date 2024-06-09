@@ -11,10 +11,14 @@ Object-based JavaScript project examples for programming beginners.<br />
 * With these techniques, fully customizable and interactive applications can be developed.
 * The programming language used is JavaScript. Projects can be run in the browser or WebView.
 
-### LIVE
+### LIVE PREVIEW
 https://bug7a.github.io/basic.js-examples/
 
+<br>
+
 ![alt tag](https://bug7a.github.io/basic.js-examples/preview.png)
+
+<br>
 
 ### CONTACT
 
